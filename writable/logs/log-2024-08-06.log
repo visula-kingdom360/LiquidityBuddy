@@ -153,3 +153,39 @@ CRITICAL - 2024-08-06 12:31:14 --> Undefined variable $StoredText
 #8 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #10 {main}
+CRITICAL - 2024-08-06 12:35:58 --> Undefined variable $StoredText
+#0 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\app\Views\Home\index.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 11)
+#1 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\Common.php(1089): CodeIgniter\View\View->render('Home/index', Array, true)
+#4 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\app\Controllers\Home.php(10): view('Home/index')
+#5 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-08-06 12:36:07 --> Undefined variable $StoredText
+#0 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\app\Views\Home\index.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 11)
+#1 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\Common.php(1089): CodeIgniter\View\View->render('Home/index', Array, true)
+#4 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\app\Controllers\Home.php(10): view('Home/index')
+#5 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-08-06 12:36:08 --> Undefined variable $StoredText
+#0 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\app\Views\Home\index.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 11)
+#1 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\Common.php(1089): CodeIgniter\View\View->render('Home/index', Array, true)
+#4 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\app\Controllers\Home.php(10): view('Home/index')
+#5 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\Esoft-Project\LiquidityBuddy\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
