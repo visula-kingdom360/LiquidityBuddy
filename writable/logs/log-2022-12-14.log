@@ -1,0 +1,104 @@
+CRITICAL - 2022-12-14 02:29:20 --> Invalid file: /login.php
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/login.php')
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('/login', Array, true)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(12): view('/login')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->merchentHome()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-14 02:29:21 --> Invalid file: /login.php
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/login.php')
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('/login', Array, true)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(12): view('/login')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->merchentHome()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-14 11:04:03 --> Illegal string offset 'PromotionID'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 119, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('10')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-14 11:04:53 --> Illegal string offset 'PromotionID'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 119, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('10')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-14 11:05:09 --> Illegal string offset 'PromotionID'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 120, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('10')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-14 11:05:54 --> Illegal string offset 'PromotionID'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(121): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 121, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('10')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-14 11:12:17 --> Illegal string offset 'CategoryID'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(143): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 143, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(126): App\Controllers\MainController->categoryPromoLink('5')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('10')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-14 11:14:05 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(150): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 150, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(126): App\Controllers\MainController->categoryPromoLink('5')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('10')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-14 11:14:43 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(150): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 150, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(126): App\Controllers\MainController->categoryPromoLink('5')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('10')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-14 11:18:36 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(150): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 150, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(126): App\Controllers\MainController->categoryPromoLink('5')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('10')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-14 11:19:32 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(150): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 150, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(126): App\Controllers\MainController->categoryPromoLink('5')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('10')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-14 11:20:15 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(151): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 151, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(126): App\Controllers\MainController->categoryPromoLink('5')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('10')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}

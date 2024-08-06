@@ -1,0 +1,186 @@
+CRITICAL - 2023-01-02 02:28:57 --> Undefined variable: return
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(298): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 298, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(108): App\Controllers\SupplierController->promotionalInsertUpdate('insert')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->addPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2023-01-02 02:32:52 --> Cannot add or update a child row: a foreign key constraint fails (`ooms`.`promotion`, CONSTRAINT `FK_promotion_corparation` FOREIGN KEY (`CorparationID`) REFERENCES `corparation` (`CorparationID`))
+CRITICAL - 2023-01-02 02:32:52 --> Cannot add or update a child row: a foreign key constraint fails (`ooms`.`promotion`, CONSTRAINT `FK_promotion_corparation` FOREIGN KEY (`CorparationID`) REFERENCES `corparation` (`CorparationID`))
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `pr...', 0)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Models\Database\DBAccess.php(95): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(149): App\Models\Database\DBAccess->insertCommonData('promotion', Array)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(263): App\Controllers\BlueprintController->insertDatatoDB('promotion', Array)
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(108): App\Controllers\SupplierController->promotionalInsertUpdate('insert')
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->addPromo()
+#9 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#10 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-01-02 02:43:23 --> Undefined variable: _SESSION
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(263): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 263, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(108): App\Controllers\SupplierController->promotionalInsertUpdate('insert')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->addPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-01-02 02:43:41 --> Undefined variable: _SESSION
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(263): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 263, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(108): App\Controllers\SupplierController->promotionalInsertUpdate('insert')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->addPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-01-02 02:44:02 --> Undefined variable: _SESSION
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(263): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 263, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(108): App\Controllers\SupplierController->promotionalInsertUpdate('insert')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->addPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-01-02 02:55:44 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(213): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 213, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(140): App\Controllers\MainController->categoryPromoLink('12')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(187): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-01-02 02:56:14 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(213): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 213, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(140): App\Controllers\MainController->categoryPromoLink('12')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(187): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-01-02 04:47:40 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(213): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 213, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(140): App\Controllers\MainController->categoryPromoLink('12')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(187): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-01-02 04:53:42 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(213): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 213, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(140): App\Controllers\MainController->categoryPromoLink('12')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(187): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-01-02 05:09:08 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(215): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 215, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(140): App\Controllers\MainController->categoryPromoLink('12')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(187): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-01-02 05:10:10 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(215): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 215, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(140): App\Controllers\MainController->categoryPromoLink('12')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(187): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-01-02 05:10:42 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(215): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 215, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(140): App\Controllers\MainController->categoryPromoLink('12')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(187): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-01-02 05:16:36 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(215): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 215, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(140): App\Controllers\MainController->categoryPromoLink('12')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(187): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-01-02 05:20:44 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(215): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 215, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(140): App\Controllers\MainController->categoryPromoLink('12')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(187): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-01-02 05:22:38 --> Undefined index: CategoryID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(215): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 215, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(140): App\Controllers\MainController->categoryPromoLink('12')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(187): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-01-02 08:20:51 --> Illegal string offset 'ScreenCode'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 59, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(56): App\Controllers\MainController->screenMaps('merchent-brnd')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->segmentMerchent()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-01-02 10:14:10 --> Undefined variable: StoredText
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\Merchent\detail_promo.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 4, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('Merchent/detail...', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(199): view('Merchent/detail...', Array)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->detailPromo('6')
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-01-02 10:14:23 --> Undefined variable: StoredText
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\Merchent\detail_promo.php(4): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 4, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('Merchent/detail...', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(199): view('Merchent/detail...', Array)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->detailPromo('6')
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-01-02 12:01:14 --> Illegal string offset 'StoredText'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 35, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(211): App\Controllers\MainController->storedText('promo-detail', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->detailPromo('6')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-01-02 12:37:59 --> Undefined variable: PromoDetails
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\Merchent\detail_promo.php(6): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 6, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('Merchent/detail...', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(215): view('Merchent/detail...', Array)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->detailPromo('6')
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

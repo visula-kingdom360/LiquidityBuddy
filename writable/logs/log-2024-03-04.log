@@ -1,0 +1,8 @@
+CRITICAL - 2024-03-04 17:36:46 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 C:\xampp\htdocs\SR-Productions\CodeIgniter4-Reusable\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\SR-Productions\CodeIgniter4-Reusable\public\index.php(28): require('C:\\xampp\\htdocs...')
+#2 {main}
+CRITICAL - 2024-03-04 17:37:00 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 C:\xampp\htdocs\SR-Productions\CodeIgniter4-Reusable\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\SR-Productions\CodeIgniter4-Reusable\public\index.php(28): require('C:\\xampp\\htdocs...')
+#2 {main}

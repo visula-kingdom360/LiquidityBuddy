@@ -1,0 +1,7 @@
+CRITICAL - 2022-12-10 23:51:26 --> Undefined index: Access
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 12, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->merchentHome()
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}

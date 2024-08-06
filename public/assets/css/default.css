@@ -1,0 +1,121 @@
+:root {
+    --color-purple: #660F56;
+    --color-pink: #AE2D6B;
+    --color-dark-purple: #200128;
+    --block-shadow: rgba(0, 0, 0, 0.8);
+    --head-size-1: 60px;
+    --head-size-2: 48px;
+    --head-size-3: 36px;
+    --text-size-1: 18px;
+    --text-size-2: 16px;
+    --text-size-3: 14px;
+    --font-weight-1: 400;
+    --font-weight-2: 600;
+    --font-weight-3: 900;
+}
+  
+.head-type-1 {
+    font-weight: bolder;
+    font-size: var(--head-size-1);
+}
+
+.head-type-2 {
+    font-weight: var(--font-weight-3);
+    font-size: var(--head-size-2);
+}
+
+.head-type-3 {
+    font-weight: var(--font-weight-2);
+    font-size: var(--head-size-3);
+}
+
+.text-type-1 {
+    font-size: var(--text-size-1);
+}
+
+.text-type-2 {
+    font-size: var(--text-size-2);
+}
+
+.text-type-3 {
+    font-size: var(--text-size-3);
+}
+
+.font-weight-600 {
+    font-weight: var(--font-weight-2);
+}
+
+.font-weight-900 {
+    font-weight: var(--font-weight-3);
+}
+
+.font-color-1 {
+    color: var(--color-purple);
+}
+
+.font-color-2 {
+    color: var(--color-pink);
+}
+
+.font-color-3 {
+    color: #fff;
+}
+
+.bg-default{
+    background-color: var(--color-pink);
+}
+
+.bg-shadow{
+    background-color: var(--block-shadow);
+}
+
+.content-convert-right{
+    text-align: right;
+}
+
+.disable-btn {
+    opacity: .66;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.width-500 {
+    width: 500px;
+    height: 50px;
+}
+
+.width-250 {
+    width: 250px;
+    height: 50px;
+}
+
+.width-150 {
+    width: 150px;
+    height: 50px;
+}
+
+.width-50 {
+    width: 50px;
+    height: 50px;
+}
+
+.pl-1 {padding-left: 0.25rem!important;}
+.pl-2 {padding-left: 0.5rem!important;}
+.pl-3 {padding-left: 1rem!important;}
+.pl-4 {padding-left: 1.5rem!important;}
+.pl-5 {padding-left: 3rem!important;}
+.pr-1 {padding-right: 0.25rem!important;}
+.pr-2 {padding-right: 0.5rem!important;}
+.pr-3 {padding-right: 1rem!important;}
+.pr-4 {padding-right: 1.5rem!important;}
+.pr-5 {padding-right: 3rem!important;}
+.ml-1 {margin-left: 0.25rem!important;}
+.ml-2 {margin-left: 0.5rem!important;}
+.ml-3 {margin-left: 1rem!important;}
+.ml-4 {margin-left: 1.5rem!important;}
+.ml-5 {margin-left: 3rem!important;}
+.mr-1 {margin-right: 0.25rem!important;}
+.mr-2 {margin-right: 0.5rem!important;}
+.mr-3 {margin-right: 1rem!important;}
+.mr-4 {margin-right: 1.5rem!important;}
+.mr-5 {margin-right: 3rem!important;}

@@ -1,0 +1,263 @@
+CRITICAL - 2022-12-05 00:51:50 --> Undefined index: stored_text
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(15): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 15, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 00:53:59 --> Illegal offset type
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal offset ...', 'C:\\xampp\\htdocs...', 16, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 00:56:43 --> Undefined index: 
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 00:56:55 --> Undefined index: 
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 10, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 01:00:30 --> Undefined index: Values
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(26): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 26, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 01:01:56 --> Undefined index: Values
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 28, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 01:02:21 --> Undefined index: Values
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(26): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 26, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 01:04:46 --> Undefined index: Header
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(26): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 26, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 01:05:07 --> Undefined index: Values
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 28, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 01:23:35 --> Undefined index: Values
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 29, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 03:38:22 --> syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST)
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(5): spl_autoload_call('App\\Controllers...')
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Autoloader\Autoloader.php(264): include_once('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Autoloader\Autoloader.php(241): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Autoloader\Autoloader.php(219): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#7 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#8 [internal function]: spl_autoload_call('App\\Controllers...')
+#9 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(797): class_exists('\\App\\Controller...', true)
+#10 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(406): CodeIgniter\CodeIgniter->startController()
+#11 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2022-12-05 03:38:34 --> Undefined index: screen_code
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 69, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(9): App\Controllers\BlueprintController->getDatafromDB('screen', Array, Array)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-05 03:38:49 --> Undefined variable: storedText
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(40): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 40, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 03:39:02 --> Undefined index: Header
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\User\login.php(20): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 20, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('User/login', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(11): view('User/login', Array)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-12-05 03:39:29 --> Undefined index: lang_code
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(69): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 69, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(15): App\Controllers\BlueprintController->getDatafromDB('language', Array, Array)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(9): App\Controllers\MainController->storedText('login', 'en')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->loginScreen()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-05 07:52:12 --> Undefined index: UserID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(114): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 114, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(41): App\Controllers\UserController->accessValidation('Visula', 'Abc@12345')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->validateLogin()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 07:52:56 --> Undefined index: UserID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(114): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 114, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(41): App\Controllers\UserController->accessValidation('Visula', 'Abc@12345')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->validateLogin()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 07:53:10 --> Undefined index: UserID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(114): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 114, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(41): App\Controllers\UserController->accessValidation('Visula', 'Abc@12345')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->validateLogin()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 07:55:09 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 69, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(136): App\Controllers\BlueprintController->getDatafromDB('supplier', Array, Array)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(41): App\Controllers\UserController->accessValidation('Visula', 'Abc@12345')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->validateLogin()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-05 07:59:20 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 69, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(136): App\Controllers\BlueprintController->getDatafromDB('supplier', Array, Array)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(41): App\Controllers\UserController->accessValidation('Visula', 'Abc@12345')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->validateLogin()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-05 08:01:15 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 69, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(136): App\Controllers\BlueprintController->getDatafromDB('supplier', Array, Array)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(41): App\Controllers\UserController->accessValidation('Visula', 'Abc@12345')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->validateLogin()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-05 09:19:53 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 69, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(136): App\Controllers\BlueprintController->getDatafromDB('supplier', Array, Array)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(41): App\Controllers\UserController->accessValidation('Visula', 'Abc@12345')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->validateLogin()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-05 09:21:22 --> Undefined index: CorparationID
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(139): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 139, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(41): App\Controllers\UserController->accessValidation('Visula', 'Abc@12345')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->validateLogin()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 09:22:45 --> Undefined index: error_id
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\UserController.php(43): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 43, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\UserController->validateLogin()
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-12-05 11:15:39 --> Trait 'App\Controllers\Traits\DB\ShoppingTraits' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-12-05 11:16:08 --> Undefined variable: condition
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(92): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 92, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(9): App\Controllers\BlueprintController->getDatafromDB('screen', Array, Array)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\Home.php(13): App\Controllers\MainController->storedText('home', 'en')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-05 11:17:52 --> Undefined variable: query
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Models\Database\DBAccess.php(49): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 49, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(93): App\Models\Database\DBAccess->selectCommonCondition('screen', Array)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(9): App\Controllers\BlueprintController->getDatafromDB('screen', Array, Array)
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\Home.php(13): App\Controllers\MainController->storedText('home', 'en')
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-12-05 11:23:42 --> Call to undefined method App\Controllers\Home::customer_category_linkStructure()
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\Home.php(35): App\Controllers\BlueprintController->getDatafromDB('customer_catego...', Array, Array, Array, 20)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\Home.php(11): App\Controllers\Home->productionList(NULL)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-05 11:26:53 --> Argument 1 passed to CodeIgniter\Database\BaseBuilder::orderBy() must be of the type string, array given, called in C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Models\Database\DBAccess.php on line 41
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Models\Database\DBAccess.php(41): CodeIgniter\Database\BaseBuilder->orderBy(Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(93): App\Models\Database\DBAccess->selectCommonCondition('customer_access...', Array, Array, 20)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\Home.php(35): App\Controllers\BlueprintController->getDatafromDB('customer_access...', Array, Array, Array, 20)
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\Home.php(11): App\Controllers\Home->productionList(NULL)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-12-05 11:36:51 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\BlueprintController.php(93): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 93, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(9): App\Controllers\BlueprintController->getDatafromDB('screen', Array, Array)
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\Home.php(14): App\Controllers\MainController->storedText('home', 'en')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-05 12:15:20 --> Undefined index: category
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\Home.php(21): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 21, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}

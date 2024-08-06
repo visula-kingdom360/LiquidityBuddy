@@ -1,0 +1,95 @@
+CRITICAL - 2022-12-16 09:27:28 --> Undefined property: App\Controllers\SupplierController::$promoDetails
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(86): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 86, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-12-16 21:59:32 --> Array to string conversion
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(172): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xampp\\htdocs...', 172, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(130): App\Controllers\MainController->categoryPromoLink('6')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-16 22:01:30 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(170): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 170, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(130): App\Controllers\MainController->categoryPromoLink('6')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-16 22:01:40 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(170): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 170, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(130): App\Controllers\MainController->categoryPromoLink('6')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-16 22:02:10 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(170): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 170, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(130): App\Controllers\MainController->categoryPromoLink('6')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-16 22:02:54 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(169): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 169, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(130): App\Controllers\MainController->categoryPromoLink('6')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-16 22:06:42 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(169): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 169, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(130): App\Controllers\MainController->categoryPromoLink('6')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-16 22:07:45 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(169): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 169, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(130): App\Controllers\MainController->categoryPromoLink('6')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-16 22:08:23 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(168): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 168, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(130): App\Controllers\MainController->categoryPromoLink('6')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): App\Controllers\MainController->promotionalDetails('5')
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-12-16 22:26:09 --> Undefined index: Photo
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(131): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 131, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(72): App\Controllers\MainController->promotionalDetails('5')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-16 22:26:32 --> Undefined index: Photo
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(131): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 131, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(72): App\Controllers\MainController->promotionalDetails('5')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}

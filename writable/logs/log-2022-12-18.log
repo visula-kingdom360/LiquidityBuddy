@@ -1,0 +1,162 @@
+CRITICAL - 2022-12-18 03:47:41 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\Merchent\ourpromo.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 34, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('Merchent/ourpro...', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(79): view('Merchent/ourpro...', Array)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->currentPromo()
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-12-18 04:38:39 --> Undefined variable: PromoDetails
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\Merchent\addnewpromo.php(20): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 20, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('Merchent/addnew...', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(67): view('Merchent/addnew...', Array)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->newPromo()
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-12-18 06:08:17 --> Undefined variable: MenuData
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\layouts\merchent.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 19, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(226): CodeIgniter\View\View->render('layouts/merchen...', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('Merchent/addnew...', Array, true)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(78): view('Merchent/addnew...', Array)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->newPromo()
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2022-12-18 06:14:18 --> Undefined variable: _SESSION
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 41, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(77): App\Controllers\SupplierController->merchentMenu()
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->newPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-18 06:14:23 --> Undefined variable: _SESSION
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 41, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(77): App\Controllers\SupplierController->merchentMenu()
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->newPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-18 06:47:23 --> Undefined variable: _SESSION
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 41, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(76): App\Controllers\SupplierController->merchentMenu()
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->newPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-18 07:05:27 --> Illegal string offset 'ScreenCode'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 60, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(55): App\Controllers\MainController->screenMaps('merchent-serv')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->segmentMerchent()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-18 07:05:29 --> Undefined variable: _SESSION
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(41): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 41, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(76): App\Controllers\SupplierController->merchentMenu()
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->newPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-18 07:14:14 --> Illegal string offset 'ScreenCode'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 60, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(55): App\Controllers\MainController->screenMaps('merchent-serv')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->segmentMerchent()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-18 07:14:18 --> Illegal string offset 'ScreenCode'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 60, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(55): App\Controllers\MainController->screenMaps('merchent-brnd')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->segmentMerchent()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-18 07:14:19 --> Undefined variable: CurrentClass
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\layouts\merchent.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 28, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(226): CodeIgniter\View\View->render('layouts/merchen...', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('Merchent/addnew...', Array, true)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(84): view('Merchent/addnew...', Array)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->newPromo()
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2022-12-18 07:32:46 --> Undefined variable: CurrentClass
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\layouts\merchent.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 28, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(226): CodeIgniter\View\View->render('layouts/merchen...', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('Merchent/addnew...', Array, true)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(84): view('Merchent/addnew...', Array)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->newPromo()
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2022-12-18 07:37:15 --> Undefined variable: CurrentClass
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\layouts\merchent.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 28, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(226): CodeIgniter\View\View->render('layouts/merchen...', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('Merchent/addnew...', Array, true)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(84): view('Merchent/addnew...', Array)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->newPromo()
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2022-12-18 07:38:38 --> Undefined variable: CurrentClass
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Views\layouts\merchent.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 28, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\View\View.php(226): CodeIgniter\View\View->render('layouts/merchen...', Array, true)
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\Common.php(1089): CodeIgniter\View\View->render('Merchent/addnew...', Array, true)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(87): view('Merchent/addnew...', Array)
+#6 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->newPromo()
+#7 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#8 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2022-12-18 07:51:27 --> Illegal string offset 'ScreenCode'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 60, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(55): App\Controllers\MainController->screenMaps('merchent-serv')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->segmentMerchent()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-18 07:52:15 --> Illegal string offset 'ScreenCode'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 60, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(55): App\Controllers\MainController->screenMaps('merchent-brnd')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->segmentMerchent()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-12-18 07:52:16 --> Illegal string offset 'ScreenCode'
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\MainController.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'C:\\xampp\\htdocs...', 60, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(55): App\Controllers\MainController->screenMaps('merchent-brnd')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->segmentMerchent()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}

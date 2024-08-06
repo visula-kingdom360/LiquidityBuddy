@@ -1,0 +1,8 @@
+CRITICAL - 2023-01-01 23:48:40 --> Undefined index: Photo
+#0 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(280): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 280, Array)
+#1 C:\xampp\htdocs\SR_Productions\CodeIgniter4\app\Controllers\SupplierController.php(226): App\Controllers\SupplierController->promotionalInsertUpdate('update')
+#2 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(832): App\Controllers\SupplierController->modPromo()
+#3 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplierController))
+#4 C:\xampp\htdocs\SR_Productions\CodeIgniter4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\SR_Productions\CodeIgniter4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
