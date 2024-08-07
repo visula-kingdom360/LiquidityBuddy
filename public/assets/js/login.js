@@ -5,6 +5,10 @@
 
 $(document).ready(function(){
     console.log('ters');
+    $('#login-request').on('click',function(){
+        console.log('testing');
+    });
+
     // // $("input").change(function(){
     // //     alert("The text has been changed.");
     // //   });
