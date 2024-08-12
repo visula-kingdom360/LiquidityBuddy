@@ -32,7 +32,11 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('', 'Home::index');
-
+$routes->get('/account/list', 'AccountController::accountList');
+$routes->get('/account/addnew', 'AccountController::addAccount');
+$routes->get('/account/change', 'AccountController::changeAccount');
+$routes->get('/transaction/list', 'AccountController::transactionList');
+$routes->post('/account/js-request/account/transferred', 'AccountController::internalTransaction');
 
 /*
  * --------------------------------------------------------------------

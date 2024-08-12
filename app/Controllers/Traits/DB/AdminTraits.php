@@ -36,72 +36,72 @@ trait AdminTraits{
         $this->table = 'user';
         
         $this->primaryKeys = [
-            'UserID'  => 'UserID'
+            'UserID'  => 'id'
         ];
         
         $this->allKeys = [
-            'UserID'        => 'UserID',
-            'Username'      => 'Username',
-            'Password'      => 'Password',
-            'Email'         => 'Email',
-            'TelephoneNo'   => 'TelephoneNo',
-            'Address'       => 'Address',
-            'Status'        => 'Status'
-        ];
-        
-        $this->foreignKeyMaps = [
-        ];
-    }
-
-    # Corparation Table Structure assigned
-    public function corparationStructure()
-    {
-        $this->table = 'corparation';
-        
-        $this->primaryKeys = [
-            'CorparationID' => 'CorparationID'
-        ];
-        
-        $this->allKeys = [
-            'CorparationID' => 'CorparationID',
-            'Name'          => 'Name',
-            'Summary'       => 'Summary',
-            'Description'   => 'Description',
-            'BIR'           => 'BIR',
-            'Logo'          => 'Logo',
-            'Rate'          => 'Rate',
-            'Status'        => 'Status'
+            'UserID'        => 'id',
+            'UserSessionID' => 'sessionid',
+            'UserContactNo' => 'contactno',
+            'Username'      => 'username',
+            'Password'      => 'password',
+            'UserEmail'     => 'email',
+            'UserStatus'    => 'status'
         ];
         
         $this->foreignKeys = [
         ];
     }
 
-    # Supplier Table Structure assigned
-    public function supplierStructure()
-    {
-        $this->table = 'supplier';
+    // # Corparation Table Structure assigned
+    // public function corparationStructure()
+    // {
+    //     $this->table = 'corparation';
         
-        $this->primaryKeys = [
-            'SupplierID' => 'SupplierID'
-        ];
+    //     $this->primaryKeys = [
+    //         'CorparationID' => 'CorparationID'
+    //     ];
         
-        $this->allKeys = [
-            'SupplierID' => 'SupplierID',
-            'FullName'      => 'FullName',
-            'About'         => 'About',
-            'SupplierType'  => 'SupplierType',
-            'Status'        => 'Status',
-            'UserID'        => 'UserID',
-            'CorparationID' => 'CorparationID'
-        ];
+    //     $this->allKeys = [
+    //         'CorparationID' => 'CorparationID',
+    //         'Name'          => 'Name',
+    //         'Summary'       => 'Summary',
+    //         'Description'   => 'Description',
+    //         'BIR'           => 'BIR',
+    //         'Logo'          => 'Logo',
+    //         'Rate'          => 'Rate',
+    //         'Status'        => 'Status'
+    //     ];
         
-        $this->foreignKeys = [
-            // 'UserID'        => 'UserID',
-            // 'CorparationID' => 'CorparationID',
-        ];
+    //     $this->foreignKeys = [
+    //     ];
+    // }
 
-    }
+    // # Supplier Table Structure assigned
+    // public function supplierStructure()
+    // {
+    //     $this->table = 'supplier';
+        
+    //     $this->primaryKeys = [
+    //         'SupplierID' => 'SupplierID'
+    //     ];
+        
+    //     $this->allKeys = [
+    //         'SupplierID' => 'SupplierID',
+    //         'FullName'      => 'FullName',
+    //         'About'         => 'About',
+    //         'SupplierType'  => 'SupplierType',
+    //         'Status'        => 'Status',
+    //         'UserID'        => 'UserID',
+    //         'CorparationID' => 'CorparationID'
+    //     ];
+        
+    //     $this->foreignKeys = [
+    //         // 'UserID'        => 'UserID',
+    //         // 'CorparationID' => 'CorparationID',
+    //     ];
+
+    // }
 
     # Screen Map Table Structure assigned
     public function screen_mapStructure()
@@ -219,127 +219,4 @@ trait AdminTraits{
         $this->foreignKeys = [
         ];
     }
-
-    // ##################### U S E R   C R U D #####################
-    // public function getUserInfobyUserID($userID)
-    // {
-    //     $this->module = new Common();
- 
-    //     # Initate Task table structures
-    //     $this->userStructure();
-    //     $this->condition = [
-    //         $this->foreignKeys['UserID'] => $userID
-    //     ];
-
-    //     # Calendar from DB directly
-    //     $this->directData = $this->module->selectCommonCondition($this->table, $this->condition);
-
-    //     if(isset($this->directData['error_id'])){
-    //         return $this->directData;
-    //     }
-
-    //     # Converting the DB Data to an Array
-    //     $this->data = $this->pushModelDBDataToTableStructure($this, $this->directData);
-
-    //     return $this->data;
-    // }
-
-    // public function getUserInfobyUsername($username)
-    // {
-    //     $this->module = new Common();
- 
-    //     # Initate Task table structures
-    //     $this->userStructure();
-    //     $this->condition = [
-    //         $this->foreignKeys['Username'] => $username,
-    //         $this->foreignKeys['Status'] => 'A'
-    //     ];
-
-    //     # Calendar from DB directly
-    //     $this->directData = $this->module->selectCommonCondition($this->table, $this->condition);
-
-    //     if(isset($this->directData['error_id'])){
-    //         return $this->directData;
-    //     }
-
-    //     # Converting the DB Data to an Array
-    //     $this->data = $this->pushModelDBDataToTableStructure($this, $this->directData);
-
-    //     return $this->data;
-    // }
-
-    // public function getUserInfobyEmail($email)
-    // {
-    //     $this->module = new Common();
- 
-    //     # Initate Task table structures
-    //     $this->userStructure();
-    //     $this->condition = [
-    //         $this->foreignKeys['Email'] => $email,
-    //         $this->foreignKeys['Status'] => 'A'
-    //     ];
-
-    //     # Calendar from DB directly
-    //     $this->directData = $this->module->selectCommonCondition($this->table, $this->condition);
-
-    //     if(isset($this->directData['error_id'])){
-    //         return $this->directData;
-    //     }
-
-    //     # Converting the DB Data to an Array
-    //     $this->data = $this->pushModelDBDataToTableStructure($this, $this->directData);
-
-    //     return $this->data;
-    // }
-
-    // ##################### C O R P A R A T I O N   C R U D #####################
-    // public function getCorparationInfobyCorparationID($corparationID)
-    // {
-    //     $this->module = new Common();
- 
-    //     # Initate Task table structures
-    //     $this->corparationStructure();
-    //     $this->condition = [
-    //         $this->foreignKeys['CorparationID'] => $corparationID,
-    //         $this->foreignKeys['Status'] => 'A'
-    //     ];
-
-    //     # Calendar from DB directly
-    //     $this->directData = $this->module->selectCommonCondition($this->table, $this->condition);
-
-    //     if(isset($this->directData['error_id'])){
-    //         return $this->directData;
-    //     }
-
-    //     # Converting the DB Data to an Array
-    //     $this->data = $this->pushModelDBDataToTableStructure($this, $this->directData);
-
-    //     return $this->data;
-    // }
-
-    // ##################### S U P P L I E R   C R U D #####################
-    // public function getSupplierInfobyCorparationID($corparationID)
-    // {
-    //     $this->module = new Common();
- 
-    //     # Initate Task table structures
-    //     $this->supplierStructure();
-    //     $this->condition = [
-    //         $this->foreignKeys['CorparationID'] => $corparationID,
-    //         $this->foreignKeys['Status'] => 'A'
-    //     ];
-
-    //     # Calendar from DB directly
-    //     $this->directData = $this->module->selectCommonCondition($this->table, $this->condition);
-
-    //     if(isset($this->directData['error_id'])){
-    //         return $this->directData;
-    //     }
-
-    //     # Converting the DB Data to an Array
-    //     $this->data = $this->pushModelDBDataToTableStructure($this, $this->directData);
-
-    //     return $this->data;
-    // }
-
 }

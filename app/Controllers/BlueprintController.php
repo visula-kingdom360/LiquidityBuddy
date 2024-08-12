@@ -6,13 +6,15 @@ use App\Models\Database\DBAccess;
 
 class BlueprintController extends BaseController
 {
+    protected $table  = [];
     protected $primaryKeys = [];
     protected $allKeys = [];
     protected $foreignKeys = [];
 
-    // use Traits\DB\UserTraits;
-    // use Traits\DB\DriverTraits;
-    // use Traits\DB\ChatTraits;
+    use Traits\DB\AdminTraits;
+    use Traits\DB\PaymentTraits;
+    use Traits\DB\PurchaseTraits;
+    use Traits\DB\TransactionTraits;
 
     ################# DB Direct Data Accessing Methodology #################
     public function getDatafromDB($tables, $conditions, $feilds = NULL, $organizer = NULL)
@@ -284,9 +286,23 @@ class BlueprintController extends BaseController
         }
     }
 
+    public function handlePOSTBodyDataList()
+    {
+        return $this->request->getPost();
+    }
+
     public function handlePOSTAPIBodyDataList()
     {
         return $this->request->getJson('request_data');
+    }
+
+    public function errorHandleLogAndPageRedirection($errorDataList, $redirect = '')
+    {
+        error_log($errorDataList);
+        if($redirect != ''){
+            return redirect()->to(base_url($redirect))->with('msg', $errorDataList['error_message']);
+        }
+
     }
 
     public function errorHandleforAPIResponses($errorDataList)
