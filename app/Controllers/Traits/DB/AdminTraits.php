@@ -30,195 +30,195 @@ trait AdminTraits{
     //     ];
     // }
 
-    # User Table Structure assigned
-    public function userStructure()
-    {
-        $this->table = 'user';
+    // # User Table Structure assigned
+    // public function userStructure()
+    // {
+    //     $this->table = 'user';
         
-        $this->primaryKeys = [
-            'UserID'  => 'UserID'
-        ];
+    //     $this->primaryKeys = [
+    //         'UserID'  => 'UserID'
+    //     ];
         
-        $this->allKeys = [
-            'UserID'        => 'UserID',
-            'Username'      => 'Username',
-            'Password'      => 'Password',
-            'Email'         => 'Email',
-            'TelephoneNo'   => 'TelephoneNo',
-            'Address'       => 'Address',
-            'Status'        => 'Status'
-        ];
+    //     $this->allKeys = [
+    //         'UserID'        => 'UserID',
+    //         'Username'      => 'Username',
+    //         'Password'      => 'Password',
+    //         'Email'         => 'Email',
+    //         'TelephoneNo'   => 'TelephoneNo',
+    //         'Address'       => 'Address',
+    //         'Status'        => 'Status'
+    //     ];
         
-        $this->foreignKeyMaps = [
-        ];
-    }
+    //     $this->foreignKeyMaps = [
+    //     ];
+    // }
 
-    # Corparation Table Structure assigned
-    public function corparationStructure()
-    {
-        $this->table = 'corparation';
+    // # Corparation Table Structure assigned
+    // public function corparationStructure()
+    // {
+    //     $this->table = 'corparation';
         
-        $this->primaryKeys = [
-            'CorparationID' => 'CorparationID'
-        ];
+    //     $this->primaryKeys = [
+    //         'CorparationID' => 'CorparationID'
+    //     ];
         
-        $this->allKeys = [
-            'CorparationID' => 'CorparationID',
-            'Name'          => 'Name',
-            'Summary'       => 'Summary',
-            'Description'   => 'Description',
-            'BIR'           => 'BIR',
-            'Logo'          => 'Logo',
-            'Rate'          => 'Rate',
-            'Status'        => 'Status'
-        ];
+    //     $this->allKeys = [
+    //         'CorparationID' => 'CorparationID',
+    //         'Name'          => 'Name',
+    //         'Summary'       => 'Summary',
+    //         'Description'   => 'Description',
+    //         'BIR'           => 'BIR',
+    //         'Logo'          => 'Logo',
+    //         'Rate'          => 'Rate',
+    //         'Status'        => 'Status'
+    //     ];
         
-        $this->foreignKeys = [
-        ];
-    }
+    //     $this->foreignKeys = [
+    //     ];
+    // }
 
-    # Supplier Table Structure assigned
-    public function supplierStructure()
-    {
-        $this->table = 'supplier';
+    // # Supplier Table Structure assigned
+    // public function supplierStructure()
+    // {
+    //     $this->table = 'supplier';
         
-        $this->primaryKeys = [
-            'SupplierID' => 'SupplierID'
-        ];
+    //     $this->primaryKeys = [
+    //         'SupplierID' => 'SupplierID'
+    //     ];
         
-        $this->allKeys = [
-            'SupplierID' => 'SupplierID',
-            'FullName'      => 'FullName',
-            'About'         => 'About',
-            'SupplierType'  => 'SupplierType',
-            'Status'        => 'Status',
-            'UserID'        => 'UserID',
-            'CorparationID' => 'CorparationID'
-        ];
+    //     $this->allKeys = [
+    //         'SupplierID' => 'SupplierID',
+    //         'FullName'      => 'FullName',
+    //         'About'         => 'About',
+    //         'SupplierType'  => 'SupplierType',
+    //         'Status'        => 'Status',
+    //         'UserID'        => 'UserID',
+    //         'CorparationID' => 'CorparationID'
+    //     ];
         
-        $this->foreignKeys = [
-            // 'UserID'        => 'UserID',
-            // 'CorparationID' => 'CorparationID',
-        ];
+    //     $this->foreignKeys = [
+    //         // 'UserID'        => 'UserID',
+    //         // 'CorparationID' => 'CorparationID',
+    //     ];
 
-    }
+    // }
 
-    # Screen Map Table Structure assigned
-    public function screen_mapStructure()
-    {
-        $this->table = 'screen_map';
+    // # Screen Map Table Structure assigned
+    // public function screen_mapStructure()
+    // {
+    //     $this->table = 'screen_map';
         
-        $this->primaryKeys = [
-            'ParentCode' => 'parent_code',
-            'ScreenCode'  => 'screen_code'
-        ];
+    //     $this->primaryKeys = [
+    //         'ParentCode' => 'parent_code',
+    //         'ScreenCode'  => 'screen_code'
+    //     ];
         
-        $this->allKeys = [
-            'ParentCode' => 'parent_code',
-            'ScreenCode' => 'screen_code',
-            'Order'      => 'order'
-        ];
+    //     $this->allKeys = [
+    //         'ParentCode' => 'parent_code',
+    //         'ScreenCode' => 'screen_code',
+    //         'Order'      => 'order'
+    //     ];
         
-        $this->foreignKeys = [
-        ];
-    }
+    //     $this->foreignKeys = [
+    //     ];
+    // }
 
-    # Screen Table Structure assigned
-    public function screenStructure()
-    {
-        $this->table = 'screen';
+    // # Screen Table Structure assigned
+    // public function screenStructure()
+    // {
+    //     $this->table = 'screen';
         
-        $this->primaryKeys = [
-            'ScreenCode'  => 'screen_code',
-        ];
+    //     $this->primaryKeys = [
+    //         'ScreenCode'  => 'screen_code',
+    //     ];
         
-        $this->allKeys = [
-            'ScreenCode'  => 'screen_code',
-            'ScreenTitle' => 'screen_title',
-            'ScreenURL'   => 'screen_url'
-        ];
+    //     $this->allKeys = [
+    //         'ScreenCode'  => 'screen_code',
+    //         'ScreenTitle' => 'screen_title',
+    //         'ScreenURL'   => 'screen_url'
+    //     ];
         
-        $this->foreignKeys = [
-        ];
-    }
+    //     $this->foreignKeys = [
+    //     ];
+    // }
 
-    # Stored Text Table Structure assigned
-    public function stored_textStructure()
-    {
-        $this->table = 'stored_text';
+    // # Stored Text Table Structure assigned
+    // public function stored_textStructure()
+    // {
+    //     $this->table = 'stored_text';
         
-        $this->primaryKeys = [
-            'ScreenCode'  => 'screen_code',
-            'StoredText'  => 'stored_text'
-        ];
+    //     $this->primaryKeys = [
+    //         'ScreenCode'  => 'screen_code',
+    //         'StoredText'  => 'stored_text'
+    //     ];
         
-        $this->allKeys = [
-            'ScreenCode'  => 'screen_code',
-            'StoredText'  => 'stored_text'
-        ];
+    //     $this->allKeys = [
+    //         'ScreenCode'  => 'screen_code',
+    //         'StoredText'  => 'stored_text'
+    //     ];
         
-        $this->foreignKeys = [
-        ];
-    }
+    //     $this->foreignKeys = [
+    //     ];
+    // }
 
-    # Language Table Structure assigned
-    public function languageStructure()
-    {
-        $this->table = 'language';
+    // # Language Table Structure assigned
+    // public function languageStructure()
+    // {
+    //     $this->table = 'language';
         
-        $this->primaryKeys = [
-            'LangCode'  => 'lang_code',
-            'LangDesc'  => 'lang_desc'
-        ];
+    //     $this->primaryKeys = [
+    //         'LangCode'  => 'lang_code',
+    //         'LangDesc'  => 'lang_desc'
+    //     ];
         
-        $this->allKeys = [
-            'LangCode'  => 'lang_code',
-            'LangDesc'  => 'lang_desc'
-        ];
+    //     $this->allKeys = [
+    //         'LangCode'  => 'lang_code',
+    //         'LangDesc'  => 'lang_desc'
+    //     ];
         
-        $this->foreignKeys = [
-        ];
-    }
+    //     $this->foreignKeys = [
+    //     ];
+    // }
 
-    # Stored Text Lang Map Table Structure assigned
-    public function stored_text_lang_mapStructure()
-    {
-        $this->table = 'stored_text_lang_map';
+    // # Stored Text Lang Map Table Structure assigned
+    // public function stored_text_lang_mapStructure()
+    // {
+    //     $this->table = 'stored_text_lang_map';
         
-        $this->primaryKeys = [
-            'StoredText' => 'stored_text',
-            'LangCode'   => 'lang_code'
-        ];
+    //     $this->primaryKeys = [
+    //         'StoredText' => 'stored_text',
+    //         'LangCode'   => 'lang_code'
+    //     ];
         
-        $this->allKeys = [
-            'StoredText' => 'stored_text',
-            'LangCode'   => 'lang_code',
-            'Values'     => 'values'
-        ];
+    //     $this->allKeys = [
+    //         'StoredText' => 'stored_text',
+    //         'LangCode'   => 'lang_code',
+    //         'Values'     => 'values'
+    //     ];
         
-        $this->foreignKeys = [
-        ];
-    }
+    //     $this->foreignKeys = [
+    //     ];
+    // }
 
-    # Parameter Table Structure assigned
-    public function parameterStructure()
-    {
-        $this->table = 'parameter';
+    // # Parameter Table Structure assigned
+    // public function parameterStructure()
+    // {
+    //     $this->table = 'parameter';
         
-        $this->primaryKeys = [
-            'ParameterCode' => 'code'
-        ];
+    //     $this->primaryKeys = [
+    //         'ParameterCode' => 'code'
+    //     ];
         
-        $this->allKeys = [
-            'ParameterCode' => 'code',
-            'DataType'      => 'datatype',
-            'Parameter'     => 'value',
-            'ParaType'      => 'type'
-        ];
+    //     $this->allKeys = [
+    //         'ParameterCode' => 'code',
+    //         'DataType'      => 'datatype',
+    //         'Parameter'     => 'value',
+    //         'ParaType'      => 'type'
+    //     ];
         
-        $this->foreignKeys = [
-        ];
-    }
+    //     $this->foreignKeys = [
+    //     ];
+    // }
 
     // ##################### U S E R   C R U D #####################
     // public function getUserInfobyUserID($userID)
