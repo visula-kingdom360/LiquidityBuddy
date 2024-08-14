@@ -15,7 +15,8 @@ trait TransactionTraits{
         $this->table = 'account';
         
         $this->primaryKeys = [
-            'AccountID'  => 'ID'
+            'AccountID'  => 'id',
+            'AccountSessionID'          => 'sessionid'
         ];
         
         $this->allKeys = [
@@ -41,25 +42,54 @@ trait TransactionTraits{
         $this->table = 'transaction';
         
         $this->primaryKeys = [
-            'AccountID'  => 'ID'
+            'TransactionID'         => 'id',
+            'TransactionSessionID'          => 'sessionid'
         ];
         
         $this->allKeys = [
             'TransactionID'                 => 'id',
-            'AccountSessionID'              => 'accsessionid',
             'TransactionSessionID'          => 'sessionid',
+            'AccountSessionID'              => 'accountsessionid',
+            'BudgetSessionID'               => 'budgetsessionid',
             'TransactionDescription'        => 'description',
             'TransactionDate'               => 'date',
             'TransactionAmount'             => 'amount',
-            'TransactionType'               => 'type',
+            'TransactionPayableType'        => 'paymenttype',
             'TransactionCreatedDateTime'    => 'createddatetime',
             'TransactionUpdatedDateTime'    => 'updateddatetime',
             'TransactionStatus'             => 'status'
         ];
         
         $this->foreignKeys = [
-            'AccountSessionID'              => 'account'
+            'AccountSessionID' => 'account',
+            'BudgetSessionID'  => 'budget'
         ];
     }
 
+    # Budget Table Structure assigned
+    public function budgetStructure()
+    {
+        $this->table = 'budget';
+        
+        $this->primaryKeys = [
+            'BudgetID'  => 'id',
+            'BudgetSessionID' => 'sessionid'
+        ];
+        
+        $this->allKeys = [
+            'BudgetID'              => 'id',
+            'BudgetSessionID'       => 'sessionid',
+            'UserSessionID'         => 'usersessionid',
+            'BudgetName'            => 'name',
+            'BudgetPeriodic'        => 'periodic',
+            'BudgetAmount'          => 'amount',
+            'BudgetCreatedDateTime' => 'createddatetime',
+            'BudgetUpdatedDateTime' => 'updateddatetime',
+            'BudgetStatus'          => 'status'
+        ];
+        
+        $this->foreignKeys = [
+            'UserSessionID' => 'user'
+        ];
+    }
 }

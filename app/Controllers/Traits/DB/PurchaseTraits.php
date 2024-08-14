@@ -15,7 +15,8 @@ trait PurchaseTraits{
         $this->table = 'shop';
         
         $this->primaryKeys = [
-            'ShopID' => 'id',
+            'ShopID'        => 'id',
+            'ShopSessionID' => 'sessionid'
         ];
         
         $this->allKeys = [
@@ -31,46 +32,20 @@ trait PurchaseTraits{
         ];
     }
 
-    # Purchase Table Structure assigned
-    public function purchaseStructure()
-    {
-        $this->table = 'purchase';
-        
-        $this->primaryKeys = [
-            'PurchaseID'  => 'ID'
-        ];
-        
-        $this->allKeys = [
-            'PurchaseID'                 => 'id',
-            'ShopSessionID'              => 'shopsessionid',
-            'PurchaseSessionID'          => 'sessionid',
-            'PurchaseDescription'        => 'description',
-            'PurchaseDate'               => 'date',
-            'PurchaseTotalAmount'        => 'totalamount',
-            'PurchaseTotalDiscount'      => 'totaldiscount',
-            'PurchaseFinalAmount'        => 'finalamount',
-            'PurchaseCreatedDateTime'    => 'createddatetime',
-            'PurchaseUpdatedDateTime'    => 'updateddatetime'
-        ];
-        
-        $this->foreignKeys = [
-            'ShopSessionID'              => 'shopsessionid'
-        ];
-    }
-
     # Item Table Structure assigned
     public function itemStructure()
     {
         $this->table = 'item';
         
         $this->primaryKeys = [
-            'ItemID'  => 'ID'
+            'ItemID'        => 'id',
+            'ItemSessionID' => 'sessionid'
         ];
         
         $this->allKeys = [
             'ItemID'                => 'id',
-            'PurchaseSessionID'     => 'purchasesessionid',
             'ItemSessionID'         => 'sessionid',
+            'PurchaseSessionID'     => 'purchasesessionid',
             'ItemName'              => 'name',
             'ItemDescription'       => 'description',
             'ItemDate'              => 'date',
@@ -82,7 +57,89 @@ trait PurchaseTraits{
         ];
         
         $this->foreignKeys = [
-            'PurchaseSessionID' => 'purchasesessionid'
+            'PurchaseSessionID' => 'purchase'
+        ];
+    }
+
+    # Purchase Table Structure assigned
+    public function purchaseStructure()
+    {
+        $this->table = 'purchase';
+        
+        $this->primaryKeys = [
+            'PurchaseID'        => 'id',
+            'PurchaseSessionID' => 'sessionid'
+        ];
+        
+        $this->allKeys = [
+            'PurchaseID'                 => 'id',
+            'PurchaseSessionID'          => 'sessionid',
+            'ShopSessionID'              => 'shopsessionid',
+            'PurchaseDescription'        => 'description',
+            'PurchaseDate'               => 'date',
+            'PurchaseTotalAmount'        => 'totalamount',
+            'PurchaseTotalDiscount'      => 'totaldiscount',
+            'PurchaseFinalAmount'        => 'finalamount',
+            'PurchaseCreatedDateTime'    => 'createddatetime',
+            'PurchaseUpdatedDateTime'    => 'updateddatetime'
+        ];
+        
+        $this->foreignKeys = [
+            'ShopSessionID'              => 'shop'
+        ];
+    }
+
+    # Borrowed Table Structure assigned
+    public function borrowedStructure()
+    {
+        $this->table = 'borrowed';
+        
+        $this->primaryKeys = [
+            'BorrowedID'        => 'id',
+            'BorrowedSessionID' => 'sessionid'
+        ];
+        
+        $this->allKeys = [
+            'BorrowedID'                => 'id',
+            'BorrowedSessionID'         => 'sessionid',
+            'StackholderSessionID'      => 'stackholdersessionid',
+            'BorrowedAmount'            => 'amount',
+            'BorrowedDate'              => 'date',
+            'BorrowedPaidDate'          => 'paiddate',
+            'BorrowedExpected'          => 'expected',
+            'BorrowedCreatedDateTime'   => 'createddatetime',
+            'BorrowedUpdatedDateTime'   => 'updateddatetime'
+        ];
+        
+        // TODO: Update with with user information
+        $this->foreignKeys = [
+            'StackholderSessionID' => 'stackholder'
+        ];
+    }
+
+    # Travel Table Structure assigned
+    public function travelStructure()
+    {
+        $this->table = 'travel';
+        
+        $this->primaryKeys = [
+            'TravelID' => 'id',
+        ];
+        
+        $this->allKeys = [
+            'TravelID'              => 'id',
+            // 'TravelSessionID'         => 'sessionid',
+            'TravelTransportType'   => 'transporttype',
+            'TravelCost'            => 'cost',
+            'TravelDate'            => 'date',
+            'TravelFromLocation'    => 'fromlocation',
+            'TravelToLocation'      => 'tolocation',
+            'TravelCreatedDateTime' => 'createddatetime',
+            'TravelUpdatedDateTime' => 'updateddatetime'
+        ];
+        
+        // TODO: Update with with user information
+        $this->foreignKeys = [
         ];
     }
 

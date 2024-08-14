@@ -58,9 +58,29 @@ class AccountController extends MainController
             $transactions = $transactionDetails;
         }
 
+        // TODO:: link user default user
+        // $this->limit = 5;
+        $budgetDetails = $this->budgetList($this->user_id);
+        // $this->limit = 0;
+
+        // TODO:: Error Handling Method
+        if(isset($budgetDetails['error_id'])){
+
+            // TODO:: Change the route the accout create URL
+            return $this->errorHandleLogAndPageRedirection($budgetDetails, '/account/list');
+            // return redirect()->to(base_url('/account/list'))->with('msg', $accountDetails['error_message']);
+        }
+
+        if(!isset($budgetDetails[0])){
+            $bugdets[] = $budgetDetails;
+        }else{
+            $bugdets = $budgetDetails;
+        }
+
         // var_dump($accounts);
         // die;
         $data['accountInfo'] = $accounts;
+        $data['bugdetInfo'] = $bugdets;
         $data['transactionInfo'] = $transactions;
 
         return view('Account/list', $data);
@@ -176,6 +196,32 @@ class AccountController extends MainController
         exit;
     }
 
+    // Active Budget List Access of the User ID
+    private function budgetList($userID, $budgetID = '')
+    {
+        $condtionList = ['UserSessionID' => $userID, 'BudgetStatus' => 'A'];
+        $feildList = ['BudgetSessionID','BudgetName','BudgetPeriodic','BudgetAmount'];
+        $organizerList = [];
+
+        if($budgetID != ''){
+            $condtionList['BudgetSessionID'] = $budgetID;
+        }
+
+        if($this->limit != 0){
+            $organizerList['limit'] = $this->limit;
+        }
+
+        // TODO:: User Session ID need to be handled from user login
+        $response = $this->getDatafromDB(
+                        ['budget'], 
+                        $condtionList,
+                        $feildList,
+                        $organizerList
+                    );
+
+        return $response;
+    }
+
     // Active Account List Access of the User ID
     private function activeAccountListAccess($userID, $accountID = '')
     {
@@ -206,7 +252,7 @@ class AccountController extends MainController
     private function activeTransactionListAccess($userID, $accountID = '')
     {
         $condtionList = ['UserSessionID' => $userID, 'AccountStatus' => 'A', 'TransactionStatus' => 'A'];
-        $feildList = ['AccountName','TransactionDescription','TransactionDate','TransactionAmount','TransactionType','AccountCurrentBalance'];
+        $feildList = ['AccountName','TransactionDescription','TransactionDate','TransactionAmount','TransactionPayableType','AccountCurrentBalance'];
         $organizerList = ['orderBy' => ['TransactionDate' => 'DESC']];
 
         if($accountID != ''){
@@ -263,11 +309,12 @@ class AccountController extends MainController
         $createTransactionData = [
                         'TransactionDescription' => $description,
                         'TransactionAmount' => $amount,
-                        'TransactionType' => $type,
+                        'TransactionPayableType' => $type,
                         'AccountSessionID' => $accountID,
                         'TransactionDate' => date_format(new DateTime(),'Y-m-d'),
                         'TransactionCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d')),
-                        'TransactionUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d'))
+                        'TransactionUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d')),
+                        'BudgetSessionID' => 'bdf37ae18f8955dd0a0d4c13c70b5013'
                         ];
         
         $newTransation = $this->insertDatatoDB('transaction', 

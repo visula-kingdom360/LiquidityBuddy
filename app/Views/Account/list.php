@@ -82,6 +82,16 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="form-floating">
+                                            <select class="form-select to-account-list" name="to-account-list" id="to-account-list">
+                                                <?php foreach($bugdetInfo as $key => $budget){ ?>
+                                                    <option class="<?= $budget['BudgetSessionID']?>" value="<?= $budget['BudgetSessionID']?>"><?= $budget['BudgetName'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <label for="from-account-list" class="form-label">Budget Handle:</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating">
                                             <select class="form-select current-account-list" name="current-account-list" id="current-account-list">
                                                 <?php foreach($accountInfo as $key => $account){ ?>
                                                     <option class="<?= $account['AccountSessionID']?>" value="<?= $account['AccountSessionID']?>" data-running-balance="<?= number_format($account['AccountCurrentBalance'],2)?>"><?= $account['AccountName'] ?></option>
@@ -157,10 +167,10 @@
                                     <tr class="t-row-transaction-action" account="<? $transaction['AccountSessionID']?>">
                                         <td><?= $transaction['TransactionDescription'] ?></td>
                                         <td><?= $transaction['TransactionDate'] ?></td>
-                                        <?php if($transaction['TransactionType'] == 'income') { ?>
+                                        <?php if($transaction['TransactionPayableType'] == 'income') { ?>
                                             <td><?= number_format($transaction['TransactionAmount'],2) ?></td>
                                             <td><?= number_format(0,2) ?></td>
-                                        <?php }elseif($transaction['TransactionType'] == 'expense'){ ?>
+                                        <?php }elseif($transaction['TransactionPayableType'] == 'expense'){ ?>
                                             <td><?= number_format(0,2) ?></td>
                                             <td><?= number_format($transaction['TransactionAmount'],2) ?></td>
                                         <?php } ?>

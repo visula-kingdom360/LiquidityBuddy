@@ -9,20 +9,21 @@ trait PaymentTraits{
        
     # 'FrontEndValues'[Not changed unless UI structures change] => 'BackEndFeilds'[Could change when table feild names or any data accessing method changes the data type]
 
-    # PaymentPlan Table Structure assigned
+    # Purchase Plan Table Structure assigned
     public function paymentplanStructure()
     {
         $this->table = 'paymentplan';
         
         $this->primaryKeys = [
-            'PaymentPlanID' => 'id',
+            'PaymentPlanID'         => 'id',
+            'PaymentPlanSessionID'  => 'sessionid'
         ];
         
         $this->allKeys = [
             'PaymentPlanID'                 => 'id',
             'PaymentPlanSessionID'          => 'sessionid',
-            'PaymentPlanLinkType'           => 'linktype',
-            'PaymentPlanLinkSessionID'      => 'linksessionid',
+            'PaymentPlanLink'               => 'paymentplanlink',
+            'PaymentPlanLinkSessionID'      => 'paymentplansessionid',
             'PaymentPlan'                   => 'paymentplan',
             'PaymentPlanPeriod'             => 'period',
             'PaymentPlanRate'               => 'rate',
@@ -32,35 +33,7 @@ trait PaymentTraits{
             'PaymentPlanUpdatedDateTime'    => 'updateddatetime'
         ];
         
-        // TODO: Update with with user information
         $this->foreignKeys = [
-        ];
-    }
-
-    # settlement Table Structure assigned
-    public function settlementStructure()
-    {
-        $this->table = 'settlement';
-        
-        $this->primaryKeys = [
-            'SettlementID'  => 'ID'
-        ];
-        
-        $this->allKeys = [
-            'SettlementID'                 => 'id',
-            'SettlementSessionID'          => 'sessionid',
-            'AccountSessionID'              => 'accountsessionid',
-            'PayableSessionID'              => 'payablesessionid',
-            'SettlementFinalAmount'        => 'paidamount',
-            'SettlementDate'               => 'date',
-            'SettlementCreatedDateTime'    => 'createddatetime',
-            'SettlementUpdatedDateTime'    => 'updateddatetime'
-        ];
-        
-        $this->foreignKeys = [
-            'AccountSessionID' => 'accountsessionid',
-            'PayableSessionID' => 'payablesessionid'
-
         ];
     }
 
@@ -70,22 +43,51 @@ trait PaymentTraits{
         $this->table = 'payable';
         
         $this->primaryKeys = [
-            'PayableID'  => 'ID'
+            'PayableID'         => 'id',
+            'PayableSessionID'  => 'sessionid'
         ];
         
         $this->allKeys = [
             'PayableID'                 => 'id',
             'PayableSessionID'          => 'sessionid',
             'PaymentPlanSessionID'      => 'paymentplansessionid',
-            'PayableAmountPayable'      => 'amountpayable',
-            'PayableDueDate'            => 'duedate',
+            'PayableDueDate'            => 'paiddate',
+            'PayablePaidDate'           => 'duedate',
+            'PayableDueAmount'          => 'dueamount',
+            'PayablePaidAmount'         => 'paidamount',
             'PayableCreatedDateTime'    => 'createddatetime',
             'PayableUpdatedDateTime'    => 'updateddatetime'
         ];
         
         $this->foreignKeys = [
-            'PaymentPlanSessionID' => 'paymentplansessionid'
+            'PaymentPlanSessionID' => 'paymentplansessionid',
         ];
     }
 
+    # Claim Table Structure assigned
+    public function claimStructure()
+    {
+        $this->table = 'claim';
+        
+        $this->primaryKeys = [
+            'ClaimID'  => 'id'
+        ];
+        
+        $this->allKeys = [
+            'ClaimID'               => 'id',
+            'StackholderSessionID'  => 'stackholdersessionid',
+            'PaymentPlanSessionID'  => 'paymentplansessionid',
+            'ClaimRate'             => 'rate',
+            'ClaimStartedDate'      => 'starteddate',
+            'ClaimEndDate'          => 'endate',
+            'ClaimAmount'           => 'amount',
+            'ClaimCreatedDateTime'  => 'createddatetime',
+            'ClaimUpdatedDateTime'  => 'updateddatetime'
+        ];
+        
+        $this->foreignKeys = [
+            'StackholderSessionID'  => 'stackholdersessionid',
+            'PaymentPlanSessionID'  => 'paymentplansessionid'
+        ];
+    }
 }
