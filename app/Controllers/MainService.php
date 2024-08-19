@@ -245,10 +245,6 @@ class MainService extends BlueprintService
             $condtionList = ['sqldecrypt' => "sessionid NOT IN ('".implode("','", $expectionShop)."')"];
         }
 
-        // if($shopID != '' && !in_array($shopID,$expectionShop)){
-        //     $condtionList['ShopSessionID'] = $shopID;
-        // }
-
         if($this->limit != 0){
             $organizerList['limit'] = $this->limit;
         }
@@ -260,11 +256,6 @@ class MainService extends BlueprintService
                         $feildList,
                         $organizerList
                     );
-
-                    
-        
-        // var_dump($response);
-        // die;
 
         return $response;
     }
@@ -340,7 +331,7 @@ class MainService extends BlueprintService
                             'TransactionAmount' => $amount,
                             'TransactionPayableType' => $type,
                             'AccountSessionID' => $accountID,
-                            'TransactionDate' => date_format(new DateTime(),'Y-m-d'),
+                            'TransactionDate' => date_format(new DateTime('now'),'Y-m-d'),
                             'TransactionCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
                             'TransactionUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
                             'BudgetSessionID' => $budgetID

@@ -61,6 +61,46 @@ class PurchaseService extends MainService
                 $newItem = $this->insertDatatoDB('item', 
                             $createItemData
                             );
+
+                if(isset($newItem['error_id'])){
+                    // return $newItem;
+                }
+            }
+        }
+
+        $purchaseInfo = $this->getDatafromDB(
+                        ['shopaccessorder'], 
+                        ['ShopSessionID' => $shopID,'UserSessionID' => $userID],
+                        ['ShopAccessOrderAccessCount']
+                    );
+
+        if(isset($purchaseInfo['error_id'])){
+            // return $purchaseInfo;
+
+            $createShopAccessData = [
+                        'ShopSessionID' => $shopID,
+                        'UserSessionID' => $userID,
+                        'ShopAccessOrderAccessCount' => 1
+                    ];
+
+            $newShopAccess = $this->insertDatatoDB('shopaccessorder', 
+                        $createShopAccessData
+                        );
+
+            if(isset($newShopAccess['error_id'])){
+                // return $newItem;
+            }
+        }else{
+            $shopAccessUpdated = $this->updateDBData(
+                    'shopaccessorder', 
+                    ['ShopSessionID' => $shopID, 'UserSessionID' => $userID], 
+                    [
+                        'ShopAccessOrderAccessCount' => ($purchaseInfo['ShopAccessOrderAccessCount'] + 1)
+                    ]
+                );
+
+            if(isset($shopAccessUpdated['error_id'])){
+                // return $shopAccessUpdated;
             }
         }
 
@@ -76,9 +116,9 @@ class PurchaseService extends MainService
                     ]
                 );
 
-        if(isset($userUpdated['error_id'])){
-            return $userUpdated;
-        }
+            if(isset($userUpdated['error_id'])){
+                return $userUpdated;
+            }
 
         return ['success' => true, 'data' => $purchaseInfo];
         }else{
