@@ -24,6 +24,7 @@ trait PaymentTraits{
             'PaymentPlanSessionID'          => 'sessionid',
             'PaymentPlanLink'               => 'paymentplanlink',
             'PaymentPlanLinkSessionID'      => 'paymentplansessionid',
+            'UserSessionID'                 => 'usersessionid',
             'PaymentPlan'                   => 'paymentplan',
             'PaymentPlanPeriod'             => 'period',
             'PaymentPlanRate'               => 'rate',
@@ -51,8 +52,8 @@ trait PaymentTraits{
             'PayableID'                 => 'id',
             'PayableSessionID'          => 'sessionid',
             'PaymentPlanSessionID'      => 'paymentplansessionid',
-            'PayableDueDate'            => 'paiddate',
-            'PayablePaidDate'           => 'duedate',
+            'PayableDueDate'            => 'duedate',
+            'PayablePaidDate'           => 'paiddate',
             'PayableDueAmount'          => 'dueamount',
             'PayablePaidAmount'         => 'paidamount',
             'PayableCreatedDateTime'    => 'createddatetime',
@@ -60,7 +61,7 @@ trait PaymentTraits{
         ];
         
         $this->foreignKeys = [
-            'PaymentPlanSessionID' => 'paymentplansessionid',
+            'PaymentPlanSessionID' => 'paymentplan',
         ];
     }
 

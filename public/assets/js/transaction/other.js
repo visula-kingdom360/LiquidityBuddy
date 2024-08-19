@@ -1,0 +1,71 @@
+$(document).ready(function(){
+    $(document).on('focusout','#amount',function() {
+        amountBreakDown();
+    });
+
+    $('#schedule-payment-checkbox').on('change', function(){
+        if ($(this).is(':checked')) {
+            $('#schedule-payment').removeClass('d-none');
+            amountBreakDown();
+        }else{
+            $('#schedule-payment').addClass('d-none');
+            $('#purchase #partialamount').val('0.00');
+        }
+    });
+
+    $('#int-rate').on('change', function(){
+        if ($(this).is(':checked')) {
+            $('#interest-rate').removeClass('d-none');
+        }else{
+            $('#interest-rate').addClass('d-none');
+        }
+    });
+
+    $(document).on('focusout','#scheduled-payment-period',function(){
+        // if($('#scheduled-payment-period').val() == 1){
+        //     $('#scheduled-payment-period').val(2);
+        // }
+        amountBreakDown();
+    });
+
+    // Instant Payment Removed
+    // $('#payment-plan-type').on('change',function(){
+    //     if($(this).find('option:selected').val() == 'I'){
+    //         $('#payment-plan-period').addClass('d-none');
+    //         // $('#scheduled-payment-period').val(1);
+    //     }else{
+    //         $('#payment-plan-period').removeClass('d-none');
+    //     }
+    // });
+
+    $('#claim-item-cost').on('change', function(){
+        if ($(this).is(':checked')) {
+            $('#claim-stackholder').removeClass('d-none');
+        }else{
+            $('#claim-stackholder').addClass('d-none');
+        }
+    });
+
+    function amountBreakDown()
+    {
+        var id = $('.active.select-transction-type').data('transaction-type');
+
+        if($(`#${id} #amount`).val() == ''){
+            $(`#${id} #amount`).val('0.00');
+        }
+
+        if($(`#scheduled-payment-period`).val() == 0 || $(`#scheduled-payment-period`).val() == ''){
+            $(`#scheduled-payment-period`).val(1);
+            console.log('Test');
+        }
+
+        partial_amount = ($(`#${id} #amount`).val() / $(`#scheduled-payment-period`).val());
+
+        console.log($(`#${id} #amount`).val());
+        console.log($(`#scheduled-payment-period`).val());
+        console.log(partial_amount);
+
+        $('#partialamount').val(partial_amount.toFixed(2));
+
+    }
+});

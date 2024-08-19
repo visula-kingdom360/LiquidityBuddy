@@ -8,16 +8,21 @@ $(document).ready(function(){
             currnet_running_balance_id = 'to-running-balance';
         }
 
-        $('#'+currnet_running_balance_id).val($(this).find('option:selected').data('running-balance'));
-        $('#'+account_list_id + ' .d-none').removeClass('d-none');
-        $('#'+account_list_id + ' .'+$(this).val()).addClass('d-none');
+        var id = $('.active.select-transction-type').data('transaction-type');
+
+        $(`#${id} #${currnet_running_balance_id}`).val($(this).find('option:selected').data('running-balance'));
+        $(`#${id} #${account_list_id} .d-none`).removeClass('d-none');
+        $(`#${account_list_id} .${$(this).val()}`).addClass('d-none');
+        // $('#'+currnet_running_balance_id).val($(this).find('option:selected').data('running-balance'));
+        // $('#'+account_list_id + ' .d-none').removeClass('d-none');
+        // $('#'+account_list_id + ' .'+$(this).val()).addClass('d-none');
     });
 
     $('.select-transction-type').on('click',function () {
         if($(this).hasClass('active')){
            return; 
         }
-        transid = $(this).attr('transaction-type');
+        transid = $(this).data('transaction-type');
         
         $('.transaction-type-list').each(function() {
             // Your code here, using `this` to refer to the current element
@@ -29,14 +34,37 @@ $(document).ready(function(){
         $('.active').removeClass('active');
         $(this).addClass('active');
         $('#'+transid).removeClass('d-none');
+
+        $('#common-error').val('');    
+        $('#common-error').addClass('d-none');
     });
 
-    $('#amount').on('input',function() {
-        $(this).val($(this).val().replace(/[^\d]/g, ''));
+
+    $(document).on('input','#amount',function() {
+         var amount = $(this).val().replace(/[^\d.]/g, '');
+
+        // Remove leading zeros
+        amount = amount.replace(/^0+(?!\.|$)/, '');
+
+        // Allow only one decimal point
+        if (amount.indexOf('.') !== -1) {
+            // Remove any additional decimal points
+            amount = amount.substring(0, amount.indexOf('.') + 1) + amount.substring(amount.indexOf('.') + 1).replace(/\./g, '');
+        }
+
+        $(this).val(amount);
+    }).on('focusout','#amount',function() {
+        var amount = 0;
+        amount = ($(this).val() != '') ? parseFloat($(this).val()): 0;
+
+        $('#common-error').val('');    
+        $('#common-error').addClass('d-none');
+
+        $(this).val(amount.toFixed(2));
     });
 
-    $('#transferred').on('click',function(){
-        runningBalance = Number($('#transaction-type').val() == 'expense') ? $('#current-running-balance').val().replace(',','').replace('.00','') : $('#to-running-balance').val().replace(',','').replace('.00','');
+    $('#transferred-btn').on('click',function(){
+        runningBalance = Number($('#internal #transaction-type').val() == 'expense') ? $('#internal #current-running-balance').val().replace(',','').replace('.00','') : $('#internal #to-running-balance').val().replace(',','').replace('.00','');
         
         if(runningBalance < Number($('#amount').val())){
             console.log('Transaction exceeded');
@@ -47,27 +75,13 @@ $(document).ready(function(){
             type: "POST",
             url: "js-request/account/transferred",
             data: {
-                amount:($('#amount').val() == '')?0:$('#amount').val(),
-                transaction_type:$('#transaction-type').val(),
-                from_account:$('#current-account-list').val(),
-                to_account:$('#to-account-list').val(),
+                amount:($('#internal #amount').val() == '')?0:$('#internal #amount').val(),
+                from_account:$('#internal #current-account-list').val(),
+                to_account:$('#internal #to-account-list').val(),
+                budget:$('#internal #budget-list').val(),
             },
             success: function (response) {
-                // console.log(response);
-                // var data = $.parseJSON(response);
-                
-                // if(data['category'] == 'Data_Issue'){
-                //     console.log(data['error_message']);
-                // }else{
-                //     var base_url = data['baseURL'];
-                //     var segment_list = data['screenMaps'];
 
-                //     segment_list.forEach((segments) => {
-                //         segmentList += '<a class=" btn btn-segment" href="'+base_url+segments['ScreenURL']+'">'+segments['ScreenTitle']+'</a>';
-                //     });
-
-                //     $('.merchent-body').html(segmentList);
-                // }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr)
@@ -77,18 +91,40 @@ $(document).ready(function(){
 
         });
 
-
-        // $('#amount').val();
-        // $('#current-transaction-type').val();
-        // $('#current-running-balance').val();
         $('#to-transaction-type').val();
         $('#to-running-balance').val();
     });
 
-    // $('#create-transaction').on('click',function(){
-    //     console.log($('#description').val());
-    //     console.log($('#amount').val());
-    //     console.log($('#transaction-type').val());
-    //     console.log($('#account-list').val());
-    // });
+    $('#payment-btn').on('click',function(){
+
+        if($('#external input[name="expense-type"]:checked').val() == 'travel'){
+        // }else{
+        }
+
+        data = {
+            amount:($('#external #amount').val() == '')?0:$('#external #amount').val(),
+            description:$('#external #description').val(),
+            current_account:$('#external #current-account-list').val(),
+            budget:$('#external #budget-list').val()
+        };
+        console.log(data);
+    
+        $.ajax({
+            type: "POST",
+            url: "js-request/payment/expense",
+            data: data,
+            success: function (response) {
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr)
+                console.log(ajaxOptions)
+                console.log(thrownError)
+            }
+
+        });
+
+        $('#to-transaction-type').val();
+        $('#to-running-balance').val();
+    });
 });

@@ -52,102 +52,23 @@
                                 </tbody>
                             <?php } ?>
                         </table>
-                        <div class="mb-3">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item"><a class="nav-link active select-transction-type" href="#Purchase" transaction-type="purchase">Purchases</a></li>
-                                <li class="nav-item"><a class="nav-link select-transction-type" href="#Internal" transaction-type="internal">Internal Transactions</a></li>
-                                <li class="nav-item"><a class="nav-link select-transction-type" href="#External" transaction-type="external">External Transactions</a></li>
-                                <li class="nav-item"><a class="nav-link select-transction-type" href="#Income" transaction-type="income">Incomes</a></li>
-                            </ul>
-                        </div>
-                        <div class="mb-3 transaction-type-list d-none" id="internal">
-                            <h3>Internal Transaction</h3>
-                            <div class="form">
-                                <div class="mb-3 d-flex row">
-                                    <!-- <div class="col-12">
-                                        <input type="text" class="form-control" placeholder="Enter the transaction information" name="description" id="description">
-                                    </div> -->
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" placeholder="Enter the amount" name="amount" id="amount">
-                                            <label for="amount">Enter an Amount</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <select class="form-select justify-content-center" name="transaction-type" id="transaction-type">
-                                                <option value="income">Income</option>
-                                                <option value="expense">Expense</option>
-                                            </select>
-                                            <label for="sel1" class="form-label">Income or Expense:</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <select class="form-select to-account-list" name="to-account-list" id="to-account-list">
-                                                <?php foreach($bugdetInfo as $key => $budget){ ?>
-                                                    <option class="<?= $budget['BudgetSessionID']?>" value="<?= $budget['BudgetSessionID']?>"><?= $budget['BudgetName'] ?></option>
-                                                <?php } ?>
-                                            </select>
-                                            <label for="from-account-list" class="form-label">Budget Handle:</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <select class="form-select current-account-list" name="current-account-list" id="current-account-list">
-                                                <?php foreach($accountInfo as $key => $account){ ?>
-                                                    <option class="<?= $account['AccountSessionID']?>" value="<?= $account['AccountSessionID']?>" data-running-balance="<?= number_format($account['AccountCurrentBalance'],2)?>"><?= $account['AccountName'] ?></option>
-                                                <?php } ?>
-                                            </select>
-                                            <label for="to-account-list" class="form-label">Current Account:</label>
-                                        </div>
-                                        <input type="text" class="form-control" name="current-running-balance" id="current-running-balance" value="<?= number_format($accountInfo[0]['AccountCurrentBalance'],2)?>" readonly>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-floating">
-                                            <select class="form-select to-account-list" name="to-account-list" id="to-account-list">
-                                                <?php foreach($accountInfo as $key => $account){ ?>
-                                                    <option class="<?= $account['AccountSessionID']?> <?php if($key == 0){echo 'd-none';} ?>" value="<?= $account['AccountSessionID']?>" data-running-balance="<?= number_format($account['AccountCurrentBalance'],2)?>" <?php if($key == 1){echo 'selected';} ?>><?= $account['AccountName'] ?></option>
-                                                <?php } ?>
-                                            </select>
-                                            <label for="from-account-list" class="form-label">Transfer to Account:</label>
-                                        </div>
-                                        <input type="text" class="form-control" name="to-running-balance" id="to-running-balance" value="<?= number_format($accountInfo[1]['AccountCurrentBalance'],2)?>" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3 justify-content-center">
-                                <a id="transferred" class="btn btn-primary">Transferred</a>
-                            </div>
-                        </div>
-                        <!-- <div class="mb-3">
-                            <h3>Create Transaction</h3>
-                            <div class="form">
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Enter the transaction information" name="description" id="description">
-                                </div>
-                                <div class="mb-3 d-flex row">
-                                    <div class="col-6">
-                                        <input type="text" class="form-control" placeholder="Enter the amount" name="amount" id="amount">
-                                        <select class="form-select justify-content-center" name="transaction-type" id="transaction-type">
-                                            <option value="income">Income</option>
-                                            <option value="expense">Expense</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-6">
-                                        <select class="form-select" name="account-list" id="account-list">
-                                            <?php foreach($accountInfo as $key => $account){ ?>
-                                                <option value="<?= $account['AccountSessionID']?>" data-running-balance="<?= number_format($account['AccountCurrentBalance'],2)?>"><?= $account['AccountName'] ?></option>
-                                            <?php } ?>
-                                        </select>
-                                        <input type="text" class="form-control" name="running-balance" id="running-balance" value="<?= number_format($accountInfo[0]['AccountCurrentBalance'],2)?>" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3 justify-content-center">
-                                <a id="create-transaction" class="btn btn-primary">Create Transaction</a>
-                            </div>
-                        </div> -->
                     </div>
                     <div class="col-6">
+                        <div class="mb-3">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item"><a class="nav-link active select-transction-type" href="#External" data-transaction-type="external">External Transactions</a></li>
+                                <li class="nav-item"><a class="nav-link select-transction-type" href="#Internal" data-transaction-type="internal">Internal Transactions</a></li>
+                                <li class="nav-item"><a class="nav-link select-transction-type" href="#Income" data-transaction-type="income">Incomes</a></li>
+                                <li class="nav-item"><a class="nav-link select-transction-type" href="#Purchase" data-transaction-type="purchase">Purchases</a></li>
+                            </ul>
+                        </div>
+                        <?= $external_trans_content ?>
+                        <?= $internal_trans_content ?>
+                        <?= $purchase_content ?>
+                        <p class="error d-none" id="common-error">* Error</p>
+                        <?= $other_trans_content ?>
+                    </div>
+                    <div class="col-12">
                         <div class="mb-3">
                             <h3>Transaction Details</h3>
                         </div>

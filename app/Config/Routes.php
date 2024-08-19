@@ -37,6 +37,8 @@ $routes->get('/account/addnew', 'AccountController::addAccount');
 $routes->get('/account/change', 'AccountController::changeAccount');
 $routes->get('/transaction/list', 'AccountController::transactionList');
 $routes->post('/account/js-request/account/transferred', 'AccountController::internalTransaction');
+$routes->post('/account/js-request/payment/expense', 'PurchaseController::expenseTransaction');
+$routes->post('/account/js-request/payment/purchase', 'PurchaseController::purchaseTransaction');
 
 /*
  * --------------------------------------------------------------------

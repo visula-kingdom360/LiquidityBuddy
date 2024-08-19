@@ -95,7 +95,7 @@ trait AdminTraits{
         
         $this->foreignKeys = [
             'StackholderSessionID' => 'stackholder',
-            'UserSessionID' => 'user',
+            'UserSessionID'        => 'user',
         ];
     }
 }

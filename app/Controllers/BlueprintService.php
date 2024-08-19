@@ -4,13 +4,14 @@ namespace App\Controllers;
 
 use App\Models\Database\DBAccess;
 
-class BlueprintController extends BaseController
+class BlueprintService extends BaseController
 {
+
     protected $table  = [];
     protected $primaryKeys = [];
     protected $allKeys = [];
     protected $foreignKeys = [];
-
+    
     use Traits\DB\AdminTraits;
     use Traits\DB\PaymentTraits;
     use Traits\DB\PurchaseTraits;
@@ -209,7 +210,8 @@ class BlueprintController extends BaseController
                         'error_id' => '0006',
                         'category' => 'Development_Issue',
                         'error_category' => 'Feild Conflict',
-                        'error_message'  => 'Insert Feild in the Strutural: '.$table.' the Feild: '.$value
+                        'error_message'  => 'Insert Feild in the Strutural: '.$table.' the Feild: '.$value,
+                        'feilds' => $frontend
                     ];
                 }
             }

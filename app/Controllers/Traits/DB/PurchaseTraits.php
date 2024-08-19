@@ -32,6 +32,28 @@ trait PurchaseTraits{
         ];
     }
 
+    # Shop Access Order Table Structure assigned
+    public function shopaccessorderStructure()
+    {
+        $this->table = 'shopaccessorder';
+        
+        $this->primaryKeys = [
+            'UserSessionID' => 'usersessionid',
+            'ShopSessionID' => 'shopsessionid'
+        ];
+        
+        $this->allKeys = [
+            'UserSessionID'                 => 'usersessionid',
+            'ShopSessionID'                 => 'shopsessionid',
+            'ShopAccessOrderAccessCount'    => 'accesscount'
+        ];
+        
+        // TODO: Update with with user information
+        $this->foreignKeys = [
+            'UserSessionID' => 'user',
+            'ShopSessionID' => 'shop'
+        ];
+    }
     # Item Table Structure assigned
     public function itemStructure()
     {
@@ -48,7 +70,7 @@ trait PurchaseTraits{
             'PurchaseSessionID'     => 'purchasesessionid',
             'ItemName'              => 'name',
             'ItemDescription'       => 'description',
-            'ItemDate'              => 'date',
+            // 'ItemDate'              => 'date',
             'ItemOriginalPrice'     => 'originalprice',
             'ItemlDiscountAmount'   => 'discountamount',
             'ItemFinalPrice'        => 'finalprice',
@@ -72,16 +94,18 @@ trait PurchaseTraits{
         ];
         
         $this->allKeys = [
-            'PurchaseID'                 => 'id',
-            'PurchaseSessionID'          => 'sessionid',
-            'ShopSessionID'              => 'shopsessionid',
-            'PurchaseDescription'        => 'description',
-            'PurchaseDate'               => 'date',
-            'PurchaseTotalAmount'        => 'totalamount',
-            'PurchaseTotalDiscount'      => 'totaldiscount',
-            'PurchaseFinalAmount'        => 'finalamount',
-            'PurchaseCreatedDateTime'    => 'createddatetime',
-            'PurchaseUpdatedDateTime'    => 'updateddatetime'
+            'PurchaseID'                => 'id',
+            'PurchaseSessionID'         => 'sessionid',
+            'ShopSessionID'             => 'shopsessionid',
+            'UserSessionID'             => 'usersessionid',
+            'PurchaseDescription'       => 'description',
+            'PurchaseDate'              => 'date',
+            'PurchaseTotalAmount'       => 'totalamount',
+            'PurchaseTotalDiscount'     => 'totaldiscount',
+            'PurchaseFinalAmount'       => 'finalamount',
+            'PurchaseStatus'            => 'status',
+            'PurchaseCreatedDateTime'   => 'createddatetime',
+            'PurchaseUpdatedDateTime'   => 'updateddatetime'
         ];
         
         $this->foreignKeys = [
