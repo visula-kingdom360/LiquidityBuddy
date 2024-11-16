@@ -1,4 +1,5 @@
 
+<script type="text/javascript" charset="utf8" src="<?= base_url('assets/js/transaction/external.js') ?>"></script>
 <div class="mb-3 transaction-type-list" id="external">
     <h3>External Transaction</h3>
     <div class="form">

@@ -330,7 +330,9 @@ class BlueprintService extends BaseController
             $response['restype'] = 'fail';
         }
             
-        return $response;
+        
+        echo json_encode($response['data']);
+        exit;
     }
 
 }

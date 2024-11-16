@@ -197,19 +197,39 @@ class AccountController extends AccountService
         $to_account = $request_data['to_account'];
         $budget = $request_data['budget'];
 
+        
+        if($amount <= 0){
+            $response = [
+                'data' => [
+                    'success'  => false,
+                    'response' => 'The transaction amount cannot be zero'
+                ]
+            ];
+
+            echo json_encode($response['data']);
+            exit;
+        }
+
         // Automated Description for branches to create a user friendly narration for both transaction
         // TODO:: link user default user
         $fromAccountName = $this->getAccountName($this->user_id, $from_account);
 
         if(isset($fromAccountName['error_id'])){
-            return $fromAccountName;
+            // $response = [
+            //     'data' => [
+            //         'success'  => false,
+            //         'response' => 'Failure with the account details, Please check the account or refresh and retry.'
+            //     ]
+            // ];
+
+            $this->errorHandleforAPIResponses($fromAccountName);
         }
 
         // TODO:: link user default user
         $toAccountName = $this->getAccountName($this->user_id, $to_account);
 
         if(isset($toAccountName['error_id'])){
-            return $toAccountName;
+            $this->errorHandleforAPIResponses($toAccountName);
         }
 
         $fromDescription = 'Transferred from '.$fromAccountName;
@@ -222,11 +242,20 @@ class AccountController extends AccountService
         $accBalAccount = $this->getAccountCurrentBalance($this->user_id, $needBalanceCheckAccID);
 
         if(isset($accBalAccount['error_id'])){
-            return $accBalAccount;
+            $this->errorHandleforAPIResponses($accBalAccount);
         }
 
         if($accBalAccount < $amount){
-            return $accBalAccount;
+            // return $accBalAccount;
+
+            $errorResponse = [
+                'error_id' => '0019', // LASTEST Error Code
+                'category' => 'Data_Issue',
+                'error_category' => 'Account Balance',
+                'error_message' => 'The amount entered is larger than the amount in account. Plesae check and rectify.',
+            ];
+
+            $this->errorHandleforAPIResponses($errorResponse);
         }
         // ---End Account Balance Validation handle functionality
 
@@ -234,7 +263,7 @@ class AccountController extends AccountService
         $fromTransactionChanges = $this->transactionInitProccess($this->user_id,$fromDescription, $amount, $transaction_type, $from_account, $budget);
 
         if(isset($fromTransactionChanges['error_id'])){
-            return $fromTransactionChanges;
+            $this->errorHandleforAPIResponses($fromTransactionChanges);
         }
 
         $type = /*($transaction_type == 'income') ? 'expense' :*/ 'income';
@@ -243,13 +272,14 @@ class AccountController extends AccountService
         $toTransactionChanges = $this->transactionInitProccess($this->user_id, $toDescription, $amount, $type, $to_account, $budget);
 
         if(isset($toTransactionChanges['error_id'])){
-            return $toTransactionChanges;
+            $this->errorHandleforAPIResponses($toTransactionChanges);
+            // return $toTransactionChanges;
         }
 
         $response = [
             'data' => [
                 'success'  => true,
-                'response' => 'Successfully created new chat',
+                'response' => 'Successfully tranferred to accounts',
                 'data' => [
                     'fromTransactionChanges' => $fromTransactionChanges,
                     'toTransactionChanges' => $toTransactionChanges

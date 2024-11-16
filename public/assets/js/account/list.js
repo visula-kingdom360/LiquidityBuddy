@@ -13,9 +13,6 @@ $(document).ready(function(){
         $(`#${id} #${currnet_running_balance_id}`).val($(this).find('option:selected').data('running-balance'));
         $(`#${id} #${account_list_id} .d-none`).removeClass('d-none');
         $(`#${account_list_id} .${$(this).val()}`).addClass('d-none');
-        // $('#'+currnet_running_balance_id).val($(this).find('option:selected').data('running-balance'));
-        // $('#'+account_list_id + ' .d-none').removeClass('d-none');
-        // $('#'+account_list_id + ' .'+$(this).val()).addClass('d-none');
     });
 
     $('.select-transction-type').on('click',function () {
@@ -23,6 +20,16 @@ $(document).ready(function(){
            return; 
         }
         transid = $(this).data('transaction-type');
+
+        if(transid == 'internal'){
+            $('#schedule-payment-section').addClass('d-none');
+            $('#schedule-payment').addClass('d-none');
+        }else{
+            $('#schedule-payment-section').removeClass('d-none');
+            if($('#schedule-payment-checkbox').is(':checked')){
+                $('#schedule-payment').removeClass('d-none');
+            }
+        }
         
         $('.transaction-type-list').each(function() {
             // Your code here, using `this` to refer to the current element
@@ -35,7 +42,7 @@ $(document).ready(function(){
         $(this).addClass('active');
         $('#'+transid).removeClass('d-none');
 
-        $('#common-error').val('');    
+        $('#common-error').text('');    
         $('#common-error').addClass('d-none');
     });
 
@@ -57,7 +64,7 @@ $(document).ready(function(){
         var amount = 0;
         amount = ($(this).val() != '') ? parseFloat($(this).val()): 0;
 
-        $('#common-error').val('');    
+        $('#common-error').text('');    
         $('#common-error').addClass('d-none');
 
         $(this).val(amount.toFixed(2));
@@ -81,40 +88,19 @@ $(document).ready(function(){
                 budget:$('#internal #budget-list').val(),
             },
             success: function (response) {
+                apiresponse = $.parseJSON(response);
+                if(apiresponse.success){
+                    console.log('No issues');
+                    console.log(apiresponse.data.fromTransactionChanges);
+                    // $('#current-running-balance').val(apiresponse.data.fromTransactionChanges);
+                    // $('#to-running-balance').val(apiresponse.data.toTransactionChanges);
 
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                console.log(xhr)
-                console.log(ajaxOptions)
-                console.log(thrownError)
-            }
-
-        });
-
-        $('#to-transaction-type').val();
-        $('#to-running-balance').val();
-    });
-
-    $('#payment-btn').on('click',function(){
-
-        if($('#external input[name="expense-type"]:checked').val() == 'travel'){
-        // }else{
-        }
-
-        data = {
-            amount:($('#external #amount').val() == '')?0:$('#external #amount').val(),
-            description:$('#external #description').val(),
-            current_account:$('#external #current-account-list').val(),
-            budget:$('#external #budget-list').val()
-        };
-        console.log(data);
-    
-        $.ajax({
-            type: "POST",
-            url: "js-request/payment/expense",
-            data: data,
-            success: function (response) {
-
+                }else{
+                    $('#common-error').removeClass('d-none');
+                    $('#common-error').text('* '+apiresponse.message);    
+                    console.log('Account issues');
+                    console.log(apiresponse.message);
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr)

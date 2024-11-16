@@ -21,25 +21,44 @@ class PurchaseController extends PurchaseService
         $transaction_type = 'expense';
         $current_account = $request_data['current_account'];
         $budget = $request_data['budget'];
+        $scheduled_info = ($request_data['scheduled_info'])?$request_data['scheduled_info']:'';
 
-        // Account Balance Validation handle functionality
-        // TODO:: link user default user
-        $accBalAccount = $this->getAccountCurrentBalance($this->user_id, $current_account);
+        // TODO:: need to add a condition to implement the first payment and handle the the fisrt payment with the scheudle.
+        // to implement the above need to allow scheduled info in to the transaction
+        if(($scheduled_info == '')){
+            // Account Balance Validation handle functionality
+            // TODO:: link user default user
+            $accBalAccount = $this->getAccountCurrentBalance($this->user_id, $current_account);
 
-        if(isset($accBalAccount['error_id'])){
-            return $accBalAccount;
+            if(isset($accBalAccount['error_id'])){
+                return $accBalAccount;
+            }
+
+            if($accBalAccount < $amount){
+                return $accBalAccount;
+            }
+            // ---End Account Balance Validation handle functionality
         }
 
-        if($accBalAccount < $amount){
-            return $accBalAccount;
+        // need
+        if(($scheduled_info != '')){
+            $purchasePlanResponse = $this->paymentPlanInitProccess('purchase', $purchaseResponse['data']['PurchaseSessionID'], $scheduled_info, $amount);
+        
+            if(isset($purchasePlanResponse['error_id'])){
+                return $purchasePlanResponse;
+            }
         }
-        // ---End Account Balance Validation handle functionality
 
-        // TODO:: link user default user
-        $toTransactionChanges = $this->transactionInitProccess($this->user_id, $description, $amount, $transaction_type, $current_account, $budget);
+        // TODO:: need to add a condition to implement the first payment and handle the the fisrt payment with the scheudle.
+        // to implement the above need to allow scheduled info in to the transaction
+        if(($scheduled_info == '')){
 
-        if(isset($toTransactionChanges['error_id'])){
-            return $toTransactionChanges;
+            // TODO:: link user default user
+            $transactionResponse = $this->transactionInitProccess($this->user_id, $description, $amount, $transaction_type, $current_account, $budget);
+
+            if(isset($transactionResponse['error_id'])){
+                return $transactionResponse;
+            }
         }
 
         $response = [
@@ -48,7 +67,7 @@ class PurchaseController extends PurchaseService
                 'response' => 'Successfully created new expense',
                 'data' => [
                     // 'fromTransactionChanges' => $fromTransactionChanges,
-                    'toTransactionChanges' => $toTransactionChanges
+                    'createdResponse' => isset($transactionResponse)?$transactionResponse:''
                     ]
                 // 'ChatList'  => $chatRequest
             ],
@@ -73,24 +92,28 @@ class PurchaseController extends PurchaseService
         $amount = $request_data['amount'];
         $description = ($request_data['description'])?$request_data['description']:'Payment Made';
         $item_list = ($request_data['item_list'])?$request_data['item_list']:'';
-        $scheduled_info = $request_data['scheduled_info'];
+        $scheduled_info = ($request_data['scheduled_info'])?$request_data['scheduled_info']:'';
         $current_account = $request_data['current_account'];
         $transaction_type = 'expense';
         $budget = $request_data['budget'];
         $shop = $request_data['shop'];
 
-        // Account Balance Validation handle functionality
-        // TODO:: link user default user
-        $accBalAccount = $this->getAccountCurrentBalance($this->user_id, $current_account);
+        // TODO:: need to add a condition to implement the first payment and handle the the fisrt payment with the scheudle.
+        // to implement the above need to allow scheduled info in to the transaction
+        if(($scheduled_info == '')){
+            // Account Balance Validation handle functionality
+            // TODO:: link user default user
+            $accBalAccount = $this->getAccountCurrentBalance($this->user_id, $current_account);
 
-        if(isset($accBalAccount['error_id'])){
-            return $accBalAccount;
-        }
+            if(isset($accBalAccount['error_id'])){
+                return $accBalAccount;
+            }
 
-        if($accBalAccount < $amount){
-            return $accBalAccount;
+            if($accBalAccount < $amount){
+                return $accBalAccount;
+            }
+            // ---End Account Balance Validation handle functionality
         }
-        // ---End Account Balance Validation handle functionality
 
         $purchaseResponse = $this->purchaseInitProcess($this->user_id, $description, $shop, $amount, $item_list);
         
@@ -104,12 +127,16 @@ class PurchaseController extends PurchaseService
             if(isset($purchasePlanResponse['error_id'])){
                 return $purchasePlanResponse;
             }
-        }else{
+        }
+        
+        // TODO:: need to add a condition to implement the first payment and handle the the fisrt payment with the scheudle.
+        // to implement the above need to allow scheduled info in to the transaction
+        if(($scheduled_info == '')){
             // TODO:: link user default user
-            $transactionChanges = $this->transactionInitProccess($this->user_id, $description, $amount, $transaction_type, $current_account, $budget);
+            $transactionResponse = $this->transactionInitProccess($this->user_id, $description, $amount, $transaction_type, $current_account, $budget);
 
-            if(isset($transactionChanges['error_id'])){
-                return $transactionChanges;
+            if(isset($transactionResponse['error_id'])){
+                return $transactionResponse;
             }
         }
 
@@ -118,7 +145,7 @@ class PurchaseController extends PurchaseService
                 'success'  => true,
                 'response' => 'Successfully created new purchase',
                 'data' => [
-                    'createdResponse' => ($transactionChanges) ? $transactionChanges : $purchasePlanResponse
+                    'createdResponse' => isset($transactionResponse) ? $transactionResponse : $purchasePlanResponse
                 ]
             ],
             'code' => 200

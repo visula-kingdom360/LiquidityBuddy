@@ -1,5 +1,5 @@
 <script type="text/javascript" charset="utf8" src="<?= base_url('assets/js/transaction/other.js') ?>"></script>
-<div class="col-12 mb-3">
+<div class="col-12 mb-3" id="schedule-payment-section">
     <div class="form-check">
         <input class="form-check-input" type="checkbox" id="schedule-payment-checkbox">
         <label class="form-check-label">Schedule this Payment</label>
@@ -63,13 +63,13 @@
         </div>
     </div>
 </div>
-<div class="col-12 mb-3">
+<div class="col-12 mb-3 d-none TODO::remove-later">
     <div class="form-check">
         <input class="form-check-input" type="checkbox" id="claim-item-cost" name="claim-item-cost" value="claim-item-cost">
         <label class="form-check-label">Claim Item cost</label>
     </div>
 </div>
-<div id="claim-stackholder" class="d-none d-flex row TODO::">
+<div id="claim-stackholder" class="d-none d-flex row  TODO::remove-later">
     <div class="col-6">
         <div class="form-floating">
             <select class="form-select stackholder-name" name="stackholder-name" id="stackholder-name">

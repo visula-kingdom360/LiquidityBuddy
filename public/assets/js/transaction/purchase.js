@@ -129,7 +129,6 @@ $(document).ready(function(){
     $('#purchase-btn').on('click',function(){
         var item_list = [];
         var item = [];
-        var scheduled_info = [];
         
         if($('#purchase #amount').val() == '' || $('#purchase #amount').val() <= 0){
             $('#common-error').text('* Amount should be larger than 0');
@@ -185,7 +184,7 @@ $(document).ready(function(){
         }
 
         var period = 1;
-        // var schedule_type = 'I';
+        var scheduled_info = [];
 
         if($('#schedule-payment-checkbox').is(':checked')){
             if($('#payment-plan-type').val() != 'I'){

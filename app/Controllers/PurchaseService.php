@@ -68,14 +68,14 @@ class PurchaseService extends MainService
             }
         }
 
-        $purchaseInfo = $this->getDatafromDB(
+        $shopInfo = $this->getDatafromDB(
                         ['shopaccessorder'], 
                         ['ShopSessionID' => $shopID,'UserSessionID' => $userID],
                         ['ShopAccessOrderAccessCount']
                     );
 
-        if(isset($purchaseInfo['error_id'])){
-            // return $purchaseInfo;
+        if(isset($shopInfo['error_id'])){
+            // return $shopInfo;
 
             $createShopAccessData = [
                         'ShopSessionID' => $shopID,
@@ -95,7 +95,7 @@ class PurchaseService extends MainService
                     'shopaccessorder', 
                     ['ShopSessionID' => $shopID, 'UserSessionID' => $userID], 
                     [
-                        'ShopAccessOrderAccessCount' => ($purchaseInfo['ShopAccessOrderAccessCount'] + 1)
+                        'ShopAccessOrderAccessCount' => ($shopInfo['ShopAccessOrderAccessCount'] + 1)
                     ]
                 );
 
