@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    // currentMenuActive('main-menu');
+
     $('#current-account-list, #to-account-list').on('change',function(){
         if($(this).hasClass('current-account-list')){
             account_list_id = 'to-account-list';

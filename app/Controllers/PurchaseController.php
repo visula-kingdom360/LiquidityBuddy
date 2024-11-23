@@ -2,11 +2,13 @@
 
 namespace App\Controllers;
 use DateTime;
+use App\Controllers\AccountService;
 
 class PurchaseController extends PurchaseService
 {
     public function expenseTransaction()
     {
+        $accountService = new AccountService();
         $request_data = $this->handlePOSTBodyDataList();
 
         // passing parameters --> (amount [required], transaction_type [required], from_account [required], to_account [required])
@@ -28,7 +30,7 @@ class PurchaseController extends PurchaseService
         if(($scheduled_info == '')){
             // Account Balance Validation handle functionality
             // TODO:: link user default user
-            $accBalAccount = $this->getAccountCurrentBalance($this->user_id, $current_account);
+            $accBalAccount = $accountService->getAccountCurrentBalance($this->user_id, $current_account);
 
             if(isset($accBalAccount['error_id'])){
                 return $accBalAccount;
@@ -54,7 +56,7 @@ class PurchaseController extends PurchaseService
         if(($scheduled_info == '')){
 
             // TODO:: link user default user
-            $transactionResponse = $this->transactionInitProccess($this->user_id, $description, $amount, $transaction_type, $current_account, $budget);
+            $transactionResponse = $accountService->transactionInitProccess($this->user_id, $description, $amount, $transaction_type, $current_account, $budget);
 
             if(isset($transactionResponse['error_id'])){
                 return $transactionResponse;
@@ -80,6 +82,8 @@ class PurchaseController extends PurchaseService
 
     public function purchaseTransaction()
     {
+        $accountService = new AccountService();
+
         $request_data = $this->handlePOSTBodyDataList();
 
         // passing parameters --> (amount [required], current_account [required], budget [required], shop [required])
@@ -103,7 +107,7 @@ class PurchaseController extends PurchaseService
         if(($scheduled_info == '')){
             // Account Balance Validation handle functionality
             // TODO:: link user default user
-            $accBalAccount = $this->getAccountCurrentBalance($this->user_id, $current_account);
+            $accBalAccount = $accountService->getAccountCurrentBalance($this->user_id, $current_account);
 
             if(isset($accBalAccount['error_id'])){
                 return $accBalAccount;
@@ -133,7 +137,7 @@ class PurchaseController extends PurchaseService
         // to implement the above need to allow scheduled info in to the transaction
         if(($scheduled_info == '')){
             // TODO:: link user default user
-            $transactionResponse = $this->transactionInitProccess($this->user_id, $description, $amount, $transaction_type, $current_account, $budget);
+            $transactionResponse = $accountService->transactionInitProccess($this->user_id, $description, $amount, $transaction_type, $current_account, $budget);
 
             if(isset($transactionResponse['error_id'])){
                 return $transactionResponse;

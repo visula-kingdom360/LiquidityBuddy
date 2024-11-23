@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 class AccountController extends AccountService
 {
+
     // Account Page initation function
     public function accountList()
     {
         $data = [
-            'StoredText'=>[
+            'StoredText' => [
                 'Header' => 'Main Menu',
                 'ScreenTitle' => 'User Login',
                 'ErrorStatus' => 'Error Status: ',
             ]
         ];
+        $data['Head'] = $this->commonHead();
+        $data['CurrentID'] = 'main-menu';
 
         // TODO:: link user default user
         // $this->limit = 5;
@@ -290,5 +293,21 @@ class AccountController extends AccountService
 
         echo json_encode($response['data']);
         exit;
+    }
+
+    public function addAccount(){
+        $data = [];
+
+        $data = [
+            'StoredText' => [
+                'Header' => 'Add New Account',
+                'ScreenTitle' => 'User Login',
+                'ErrorStatus' => 'Error Status: ',
+            ]
+        ];
+        $data['Head'] = $this->commonHead();
+        $data['CurrentID'] = 'add-new-account';
+
+        return view('Account/creation', $data);
     }
 }

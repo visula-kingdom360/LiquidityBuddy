@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Controllers;
-
-use DateTime;
+use App\Controllers\AccountService;
 
 class MainService extends BlueprintService
 {
+
     // TODO: remove the user id
     protected $user_id = '01b9ff2b173400203b74b4cbec306d6f';
     protected $limit = 0;
@@ -18,6 +18,58 @@ class MainService extends BlueprintService
             'A' => 'Anually'
             // 'C' => 'Continously'
         ];
+
+    public function commonHead()
+    {
+        $accountService = new AccountService();
+        $accountDetails = $accountService->activeAccountListAccess($this->user_id);
+
+        $head = [
+            'Title' => 'Liquidity Buddy',
+            'Link' => '/account/list',
+            'MainList' => [
+                'Home' => [
+                    'Title' => 'Home',
+                    'ID' => 'main-menu',
+                    'Link' => '/account/list',
+                ],
+                'AddAccount' => [
+                    'Title' => 'Add New Account',
+                    'ID' => 'add-new-account',
+                    'Link' => '/account/add',
+                ],
+                'AccountList' => [
+                    'Title' => 'Account List',
+                    'ID' => 'account-list',
+                    'Link' => '',
+                    'SubMenu' => $accountDetails,
+                    'AccountMap' => '/account/info/'
+                ],
+            ],
+            'Profile' => [
+                'Title' => 'Profile',
+                'Link' => '',
+                'SubMenu' => [
+                    'UserName' => [
+                        'Title' => 'User Name',
+                        'Link' => '',
+                    ],
+                    'MoreDetails' => [
+                        'Title' => 'More Details',
+                        'Link' => '/profile/info',
+                    ],
+                    'SignOut' => [
+                        'Title' => 'Sign Out',
+                        'Link' => '/account/signout',
+                    ]
+                ]
+            ]
+        ];
+
+        return $head;
+
+
+    }
 
     public function encryptLogic($password, $encrypt = true)
     {
@@ -259,115 +311,4 @@ class MainService extends BlueprintService
 
         return $response;
     }
-
-    // Active Account List Access of the User ID
-    protected function activeAccountListAccess($userID, $accountID = '')
-    {
-        $condtionList = ['UserSessionID' => $userID, 'AccountStatus' => 'A'];
-        $feildList = ['AccountSessionID','AccountName','AccountCurrentBalance'];
-        $organizerList = [];
-
-        if($accountID != ''){
-            $condtionList['AccountSessionID'] = $accountID;
-        }
-
-        if($this->limit != 0){
-            $organizerList['limit'] = $this->limit;
-        }
-
-        // TODO:: User Session ID need to be handled from user login
-        $response = $this->getDatafromDB(
-                        ['account'], 
-                        $condtionList,
-                        $feildList,
-                        $organizerList
-                    );
-
-        return $response;
-    }
-
-    // Active Transaction List Access of the User ID
-    protected function activeTransactionListAccess($userID, $accountID = '')
-    {
-        $condtionList = ['UserSessionID' => $userID, 'AccountStatus' => 'A', 'TransactionStatus' => 'A'];
-        $feildList = ['AccountName','TransactionDescription','TransactionDate','TransactionAmount','TransactionPayableType','AccountCurrentBalance'];
-        $organizerList = ['orderBy' => ['TransactionCreatedDateTime' => 'DESC', 'TransactionID' => 'DESC']];
-
-        if($accountID != ''){
-            $condtionList['AccountSessionID'] = $accountID;
-        }
-
-        if($this->limit != 0){
-            $organizerList['limit'] = $this->limit;
-        }
-
-        // TODO:: User Session ID need to be handled from user login
-        $response = $this->getDatafromDB(
-                        ['account','transaction'], 
-                        $condtionList,
-                        $feildList,
-                        $organizerList
-                    );
-
-        return $response;
-    }
-
-    protected function getAccountCurrentBalance($userID, $accountID)
-    {
-        $getAccountDetails = $this->activeAccountListAccess($userID, $accountID);
-
-        if(isset($getAccountDetails['error_id']))
-        {
-            return $getAccountDetails;
-        }
-
-        return $getAccountDetails['AccountCurrentBalance'];
-    }
-
-    protected function transactionInitProccess($userID, $description, $amount, $type, $accountID, $budgetID)
-    {
-        $createTransactionData = [
-                            'TransactionDescription' => $description,
-                            'TransactionAmount' => $amount,
-                            'TransactionPayableType' => $type,
-                            'AccountSessionID' => $accountID,
-                            'TransactionDate' => date_format(new DateTime('now'),'Y-m-d'),
-                            'TransactionCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
-                            'TransactionUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
-                            'BudgetSessionID' => $budgetID
-                        ];
-        
-        $newTransation = $this->insertDatatoDB('transaction', 
-                    $createTransactionData
-                    );
-
-
-        if(isset($newTransation['error_id'])){
-            return $newTransation;
-        }
-
-        // TODO:: link user default user
-        $currentAccountBalance =  $this->getAccountCurrentBalance($userID, $accountID);
-
-        if(isset($currentAccountBalance['error_id'])){
-            return $currentAccountBalance;
-        }
-
-        // TODO:: error handle
-        if($type == 'expense' && $currentAccountBalance < $amount)
-        {
-            return;
-        }
-
-        $currentAccountBalance = ($type == 'expense') ? ($currentAccountBalance - $amount) : ($currentAccountBalance + $amount);
-
-        $userUpdated = $this->updateDBData('account', ['UserSessionID' => $userID, 'AccountSessionID' => $accountID], ['AccountCurrentBalance' => $currentAccountBalance]);
-
-        if(isset($userUpdated['error_id'])){
-            return $userUpdated;
-        }
-
-        return ['createTransactionData' => $createTransactionData, 'currentAccountBalance' => $currentAccountBalance];
-    }
-    // ... (Inside your controller)
 }
