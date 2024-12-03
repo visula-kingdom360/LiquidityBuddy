@@ -9,19 +9,44 @@ trait TransactionTraits{
        
     # 'FrontEndValues'[Not changed unless UI structures change] => 'BackEndFeilds'[Could change when table feild names or any data accessing method changes the data type]
 
+    # Account Group Table Structure assigned
+    public function accountgroupStructure()
+    {
+        $this->table = 'accountgroup';
+        
+        $this->primaryKeys = [
+            'AccountGroupID'        => 'id',
+            'AccountGroupSessionID' => 'sessionid'
+        ];
+        
+        $this->allKeys = [
+            'AccountID'                 => 'id',
+            'AccountGroupSessionID'     => 'sessionid',
+            'AccountGroupName'          => 'name',
+            'AccountGroupStatus'        => 'status',
+            'UserSessionID'             => 'usersessionid'
+        ];
+        
+        // TODO: Update with with user information
+        $this->foreignKeys = [
+            'UserSessionID' => 'usersessionid'
+        ];
+    }
+
     # Account Table Structure assigned
     public function accountStructure()
     {
         $this->table = 'account';
         
         $this->primaryKeys = [
-            'AccountID'  => 'id',
-            'AccountSessionID'          => 'sessionid'
+            'AccountID'         => 'id',
+            'AccountSessionID'  => 'sessionid'
         ];
         
         $this->allKeys = [
             'AccountID'                 => 'id',
             'UserSessionID'             => 'usersessionid',
+            'AccountGroupSessionID'     => 'accountgroupid',
             'AccountSessionID'          => 'sessionid',
             'AccountName'               => 'name',
             'AccountCurrentBalance'     => 'currentbalance',
@@ -32,7 +57,8 @@ trait TransactionTraits{
         
         // TODO: Update with with user information
         $this->foreignKeys = [
-            'UserSessionID' => 'user',
+            'UserSessionID'         => 'user',
+            'AccountGroupSessionID' => 'accountgroup',
         ];
     }
 
@@ -43,7 +69,7 @@ trait TransactionTraits{
         
         $this->primaryKeys = [
             'TransactionID'         => 'id',
-            'TransactionSessionID'          => 'sessionid'
+            'TransactionSessionID'  => 'sessionid'
         ];
         
         $this->allKeys = [

@@ -33,7 +33,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <?php foreach($value['SubMenu'] as $sub_menu_key => $account){ ?>
-                                        <li><a class="<?php if($CurrentID == $value['ID']) { echo 'active'; } else { echo ''; } ?> dropdown-item" href="#"><?= $account['AccountName'] ?></a></li>
+                                        <li><a class="<?php if($CurrentID == $value['ID']) { echo 'active'; } else { echo ''; } ?> dropdown-item" href="<?= base_url('account/info/'.$account['AccountSessionID']) ?>"><?= $account['AccountName'] ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>

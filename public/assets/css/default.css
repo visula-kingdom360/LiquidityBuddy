@@ -67,6 +67,11 @@
     color: #fff;
 }
 
+.error-message {
+    color: #f00; /* Red color */
+    font-size: var(--text-size-2);
+}
+
 .bg-default{
     background-color: var(--color-pink);
 }

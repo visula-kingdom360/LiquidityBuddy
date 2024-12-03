@@ -8,13 +8,6 @@
                     <input type="text" class="form-control" placeholder="Enter the amount" name="amount" id="amount">
                     <label for="amount">Enter an Amount</label>
                 </div>
-                <!-- <div class="form-floating">
-                    <select class="form-select justify-content-center" name="transaction-type" id="transaction-type">
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                    </select>
-                    <label for="sel1" class="form-label">Income or Expense:</label>
-                </div> -->
             </div>
             <div class="col-6 mb-3">
                 <div class="form-floating">

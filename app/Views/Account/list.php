@@ -8,7 +8,7 @@
 <?= $this->endSection() ?>
 <?= $this->section("content") ?>
     <div class="container">
-        <div class="d-flex justify-content-center">
+        <div class="justify-content-center">
             <div class="row">
                 <?php
                     if(session()->getFlashdata('status'))
@@ -24,7 +24,7 @@
                 ?>
             </div>
             <div class="row">
-                <div class="col-md-6 col-12">
+                <div class="col-md-5 col-12">
                     <table class="table table-striped mb-3">
                         <thead>
                         <tr>
@@ -36,13 +36,13 @@
                             <tbody>
                                 <tr class="t-row-acount-action <?php if($key > 4){echo 'd-none';}?>" account="<?= $account['AccountSessionID']?>">
                                     <td><?= $account['AccountName'] ?></td>
-                                    <td><?= number_format($account['AccountCurrentBalance'],2) ?></td>
+                                    <td class="text-end"><?= number_format($account['AccountCurrentBalance'],2) ?></td>
                                 </tr>
                             </tbody>
                         <?php } ?>
                     </table>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-7 col-12">
                     <div class="mb-3">
                         <ul class="nav nav-tabs">
                             <li class="nav-item"><a class="nav-link active select-transction-type" href="#External" data-transaction-type="external">External Transactions</a></li>
@@ -95,5 +95,3 @@
         </div>
     </div>
 <?= $this->endSection() ?>
-    <!-- </body>
-</html> -->

@@ -22,7 +22,7 @@ class MainService extends BlueprintService
     public function commonHead()
     {
         $accountService = new AccountService();
-        $accountDetails = $accountService->activeAccountListAccess($this->user_id);
+        $accountDetails = $accountService->activeAccountListAccessModule($this->user_id);
 
         $head = [
             'Title' => 'Liquidity Buddy',

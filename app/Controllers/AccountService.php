@@ -5,12 +5,30 @@ use DateTime;
 
 class AccountService extends MainService
 {
+    public function getAccountSessionID($ID)
+    {
+
+        $condtionList = ['AccountID' => $ID, 'AccountStatus' => 'A'];
+        $feildList = ['AccountSessionID'];
+
+        // TODO:: User Session ID need to be handled from user login
+        $response = $this->getDatafromDB(
+                        ['account'], 
+                        $condtionList,
+                        $feildList
+                    );
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
+    }
+
     public function getAccountName($userID, $accountID)
     {
-        $getAccountDetails = $this->activeAccountListAccess($userID, $accountID);
-
-        // var_dump($getAccountDetails['AccountName']);
-        // die;
+        $getAccountDetails = $this->activeAccountListAccessModule($userID, $accountID);
 
         if(isset($getAccountDetails['error_id']))
         {
@@ -21,7 +39,33 @@ class AccountService extends MainService
     }
 
     // Active Account List Access of the User ID
-    public function activeAccountListAccess($userID, $accountID = '')
+    public function activeAccountGroupsListAccessModule($userID, $accountgroupID = '')
+    {
+        $condtionList = ['UserSessionID' => $userID, 'AccountGroupStatus' => 'A'];
+        $feildList = ['AccountGroupSessionID','AccountGroupName'];
+        $organizerList = [];
+
+        if($accountgroupID != ''){
+            $condtionList['AccountGroupSessionID'] = $accountgroupID;
+        }
+
+        if($this->limit != 0){
+            $organizerList['limit'] = $this->limit;
+        }
+
+        // TODO:: User Session ID need to be handled from user login
+        $response = $this->getDatafromDB(
+                        ['accountgroup'], 
+                        $condtionList,
+                        $feildList,
+                        $organizerList
+                    );
+
+        return $response;
+    }
+
+    // Active Account List Access of the User ID
+    public function activeAccountListAccessModule($userID, $accountID = '')
     {
         $condtionList = ['UserSessionID' => $userID, 'AccountStatus' => 'A'];
         $feildList = ['AccountSessionID','AccountName','AccountCurrentBalance'];
@@ -42,6 +86,69 @@ class AccountService extends MainService
                         $feildList,
                         $organizerList
                     );
+
+        return $response;
+    }
+
+    public function getAccountCurrentBalance($userID, $accountID)
+    {
+        $getAccountDetails = $this->activeAccountListAccessModule($userID, $accountID);
+
+        if(isset($getAccountDetails['error_id']))
+        {
+            return $getAccountDetails;
+        }
+
+        return $getAccountDetails['AccountCurrentBalance'];
+    }
+
+    public function accountInitProccess($userID, $accountName, $groupID, $amount)
+    {
+        $data = [
+            'UserSessionID' => $userID,
+            'AccountName' => $accountName,
+            'AccountGroupSessionID' => $groupID,
+            'AccountCurrentBalance' => 0
+        ];
+
+        // TODO:: Account Creation Process
+        $response = $this->insertDatatoDB('account', $data);
+
+        if(isset($response['error_id'])){
+            return $response;
+        }
+        
+        $response = $this->getAccountSessionID($response['id']);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        $accountID = $response['AccountSessionID'];
+        
+        $response = $this->getDefaultBudgetID($userID);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        $budgetID = $response['BudgetSessionID'];
+
+        $response = $this->transactionInitProccess($userID, $accountName, $amount, 'income', $accountID, $budgetID);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        $response = $this->budgetUpdateProccess($userID, $budgetID, $amount);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
 
         return $response;
     }
@@ -72,16 +179,75 @@ class AccountService extends MainService
         return $response;
     }
 
-    public function getAccountCurrentBalance($userID, $accountID)
+    public function getBudgetDetails($userID, $budgetID = '')
     {
-        $getAccountDetails = $this->activeAccountListAccess($userID, $accountID);
+        $condtionList = ['UserSessionID' => $userID, 'BudgetStatus' => 'A'];
+        $feildList = ['BudgetName','BudgetCreatedDateTime','BudgetUpdatedDateTime','BudgetAmount'];
+        $organizerList = ['orderBy' => ['BudgetCreatedDateTime' => 'DESC', 'BudgetID' => 'DESC']];
 
-        if(isset($getAccountDetails['error_id']))
-        {
-            return $getAccountDetails;
+        if($budgetID != ''){
+            $condtionList['BudgetSessionID'] = $budgetID;
         }
 
-        return $getAccountDetails['AccountCurrentBalance'];
+        if($this->limit != 0){
+            $organizerList['limit'] = $this->limit;
+        }
+
+        // TODO:: User Session ID need to be handled from user login
+        $response = $this->getDatafromDB(
+                        ['budget'], 
+                        $condtionList,
+                        $feildList,
+                        $organizerList
+                    );
+        
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
+    }
+
+    public function getDefaultBudgetID($userID)
+    {
+
+        $condtionList = ['UserSessionID' => $userID, 'BudgetName' => 'Default'];
+        $feildList = ['BudgetSessionID'];
+        $organizerList = ['orderBy' => ['BudgetCreatedDateTime' => 'DESC', 'BudgetID' => 'DESC']];
+
+        $response = $this->getDatafromDB(
+                        ['budget'], 
+                        $condtionList,
+                        $feildList,
+                        $organizerList
+                    );
+        
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+            
+        return $response;
+    }
+
+    public function budgetUpdateProccess($userID, $budgetID, $amount)
+    {
+        $response = $this->getBudgetDetails($userID, $budgetID);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        $response = $this->updateDBData('budget', ['UserSessionID' => $userID, 'BudgetSessionID' => $budgetID], ['BudgetAmount' => ($amount + $response['BudgetAmount'])]);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
     }
 
     public function transactionInitProccess($userID, $description, $amount, $type, $accountID, $budgetID)
@@ -101,10 +267,10 @@ class AccountService extends MainService
                     $createTransactionData
                     );
 
-
         if(isset($newTransation['error_id'])){
             return $newTransation;
         }
+
 
         // TODO:: link user default user
         $currentAccountBalance =  $this->getAccountCurrentBalance($userID, $accountID);
