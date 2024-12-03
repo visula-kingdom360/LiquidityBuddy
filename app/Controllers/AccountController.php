@@ -20,7 +20,7 @@ class AccountController extends AccountService
 
         // TODO:: link user default user
         // $this->limit = 5;
-        $accountDetails = $this->activeAccountListAccess($this->user_id);
+        $accountDetails = $this->activeAccountListAccessModule($this->user_id);
         // $this->limit = 0;
 
         // TODO:: Error Handling Method
@@ -308,6 +308,77 @@ class AccountController extends AccountService
         $data['Head'] = $this->commonHead();
         $data['CurrentID'] = 'add-new-account';
 
+        // TODO:: link user default user
+        // $this->limit = 5;
+        $accountGroupDetails = $this->activeAccountGroupsListAccessModule($this->user_id);
+        // $this->limit = 0;
+
+        // TODO:: link user default user
+        // $this->limit = 0;
+        $accountDetails = $this->activeAccountListAccessModule($this->user_id);
+        // $this->limit = 0;
+
+        // TODO:: Error Handling Method
+        if(isset($accountDetails['error_id'])){
+
+            // TODO:: Change the route the accout create URL
+            return $this->errorHandleLogAndPageRedirection($accountDetails, '/account/list');
+            // return redirect()->to(base_url('/account/list'))->with('msg', $accountDetails['error_message']);
+        }
+
+        if(!isset($accountDetails[0])){
+            $accounts[] = $accountDetails;
+        }else{
+            $accounts = $accountDetails;
+        }
+        $data['accountInfo'] = [
+            'page-limit' => 5,
+            'count' => count($accounts),
+            'page-count' => ceil(count($accounts) / 5),
+            'accounts' => $accounts
+            ];
+
+        
+
+        if(!isset($accountGroupDetails[0])){
+            $accountGroupsInfo[] = $accountGroupDetails;
+        }else{
+            $accountGroupDetails = $accountGroupDetails;
+        }
+        $data['accountGroupDetails'] = $accountGroupDetails;
+
         return view('Account/creation', $data);
+    }
+
+    public function createAccount(){
+
+        $accountName = $this->request->getPost('accountName');
+        $groupID = $this->request->getPost('groupID');
+        $amount = $this->request->getPost('amount');
+
+        // TODO:: link user default user
+        $accountCreation = $this->accountInitProccess($this->user_id, $accountName, $groupID, $amount);
+
+        if(isset($accountCreation['error_id'])){            
+            $response = $this->errorHandleforAPIResponses($accountCreation);
+            echo $response;
+            exit;
+            // return $accountCreation;
+        }
+
+        $response = [
+            'data' => [
+                'success'  => true,
+                'response' => 'Successfully created account',
+                'data' => [
+                    'accountCreation' => $accountCreation
+                    ]
+            ],
+            'code' => 200
+        ];
+
+        echo json_encode($response['data']);
+        exit;
+
     }
 }
