@@ -328,6 +328,14 @@ class AccountController extends AccountService
         $accountGroupDetails = $this->activeAccountGroupsListAccessModule($this->user_id);
         // $this->limit = 0;
 
+
+        if(!isset($accountGroupDetails[0])){
+            $accountGroupsInfo[] = $accountGroupDetails;
+        }else{
+            $accountGroupDetails = $accountGroupDetails;
+        }
+        $data['accountGroupDetails'] = $accountGroupDetails;
+
         // TODO:: link user default user
         // $this->limit = 0;
         $accountDetails = $this->activeAccountListAccessModule($this->user_id);
@@ -346,21 +354,16 @@ class AccountController extends AccountService
         }else{
             $accounts = $accountDetails;
         }
-        $data['accountInfo'] = [
-            'page-limit' => 5,
-            'count' => count($accounts),
-            'page-count' => ceil(count($accounts) / 5),
-            'accounts' => $accounts
-            ];
-
         
+        $data['accountInfo'] = [
+            'page_limit' => 5,
+            'count' => count($accounts),
+            'page_count' => ceil(count($accounts) / 5),
+            'accounts' => $accounts,
+            'allow_all_accounts' => true
+        ];
 
-        if(!isset($accountGroupDetails[0])){
-            $accountGroupsInfo[] = $accountGroupDetails;
-        }else{
-            $accountGroupDetails = $accountGroupDetails;
-        }
-        $data['accountGroupDetails'] = $accountGroupDetails;
+        $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
 
         return view('Account/creation', $data);
     }
@@ -425,12 +428,18 @@ class AccountController extends AccountService
             }
             return $this->errorHandleLogAndPageRedirection($response, '/account/list');
         }
+
+        if(!isset($response[0])){
+            $transaction[] = $response;
+        }else{
+            $transaction = $response;
+        }
         
         $data['transactionInfo'] = [
             'page_limit' => 10,
-            'count' => count($response),
-            'page_count' => ceil(count($response) / 10),
-            'transactions' => $response,
+            'count' => count($transaction),
+            'page_count' => ceil(count($transaction) / 10),
+            'transactions' => $transaction,
             'allow_all_accounts' => true
         ];
 

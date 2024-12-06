@@ -1,4 +1,3 @@
-<script type="text/javascript" charset="utf8" src="<?= base_url('assets/js/common_modules/pagination.js') ?>"></script>
 <table class="table table-striped mb-3">
     <thead>
     <tr>
