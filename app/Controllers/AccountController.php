@@ -449,4 +449,143 @@ class AccountController extends AccountService
 
         return view('Account/page', $data);
     }
+
+    public function addBudget(){
+        $data = [];
+        $data['StoredText'] = [
+            'Header' => 'Create Budget',
+            'ScreenTitle' => 'Create Budget',
+            'ErrorStatus' => 'Error Status: ',
+        ];
+
+        $data['Head'] = $this->commonHead();
+        $data['CurrentID'] = 'create-new-budget';
+
+        $this->limit = 10;
+        $budgets = $this->budgetList($this->user_id);
+        $this->limit = 0;
+
+        // TODO:: Error Handling Method
+        if(isset($budgets['error_id'])){
+            // TODO:: Change the route the accout create URL
+            return $this->errorHandleLogAndPageRedirection($budgets, '/account/list');
+        }
+
+        if(!isset($budgets[0])){
+            $budgets[] = $budgets;
+        }
+
+        $data['budgetInfo'] = [
+            'page_limit' => 10,
+            'count' => count($budgets),
+            'page_count' => ceil(count($budgets) / 10),
+            'budgets' => $budgets,
+            'payment_plan' => $this->periodic,
+        ];
+
+        $data['budget_details_container'] = view('Account/commonModule/budget_details_module', $data['budgetInfo']);
+
+        return view('Account/create_budget', $data);
+    }
+
+    public function createBudget(){
+        $budgetName = $this->request->getPost('budgetName');
+        $budgetPlan = $this->request->getPost('budgetPlan');
+        $budgetAmount = $this->request->getPost('budgetAmount');
+
+        // TODO:: link user default user
+        $budgetCreation = $this->budgetInitProccess($this->user_id, $budgetName, $budgetPlan, $budgetAmount);
+
+        // TODO:: Error Handling Method
+        if(isset($budgetCreation['error_id'])){
+            return $this->errorHandleforAPIResponses($budgetCreation);
+        }
+
+        $response = [
+            'data' => [
+                'success'  => true,
+                'response' => 'Successfully created budget',
+                'data' => [
+                    'budgetCreation' => $budgetCreation
+                    ]
+            ],
+            'code' => 200
+        ];
+
+        echo json_encode($response['data']);
+        exit;
+    }
+
+    public function updateBudget(){
+        $request_data = $this->handlePOSTBodyDataList();
+
+        $requiredParameters = $this->handleRequiredParameters($request_data, ['budget_id','budget_name','budget_plan','budget_amount']);
+
+        if(isset($requiredParameters['error_id'])){
+            return $requiredParameters;
+        }
+
+        $budgetID = $request_data['budget_id'];
+        $budgetName = $request_data['budget_name'];
+        $budgetPlan = $request_data['budget_plan'];
+        $budgetAmount = $request_data['budget_amount'];
+
+        
+
+        // TODO:: link user default user
+        $budgetUpdate = $this->budgetUpdateProccess($this->user_id, $budgetID, $budgetName ,$budgetPlan, $budgetAmount);
+
+        // TODO:: Error Handling Method
+        if(isset($budgetUpdate['error_id'])){
+            return $this->errorHandleforAPIResponses($budgetUpdate);
+        }
+
+        $response = [
+            'data' => [
+                'success'  => true,
+                'response' => 'Successfully updated budget',
+                'data' => [
+                    'budgetUpdate' => $budgetUpdate
+                    ]
+            ],
+            'code' => 200
+        ];
+
+        echo json_encode($response['data']);
+        exit;
+    }
+
+    public function deleteBudget(){
+        $request_data = $this->handlePOSTBodyDataList();
+
+        $requiredParameters = $this->handleRequiredParameters($request_data, ['budget_id']);
+
+        if(isset($requiredParameters['error_id'])){
+            return $requiredParameters;
+        }
+
+        $budgetID = $request_data['budget_id'];
+
+        // TODO:: link user default user
+        $budgetDelete = $this->budgetDeleteProccess($this->user_id, $budgetID);
+
+        // TODO:: Error Handling Method
+        if(isset($budgetDelete['error_id'])){
+            return $this->errorHandleforAPIResponses($budgetDelete);
+        }
+
+        $response = [
+            'data' => [
+                'success'  => true,
+                'response' => 'Successfully deleted budget',
+                'data' => [
+                    'budgetDelete' => $budgetDelete
+                    ]
+            ],
+            'code' => 200
+        ];
+
+        echo json_encode($response['data']);
+        exit;
+    }
 }

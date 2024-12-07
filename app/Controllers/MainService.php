@@ -50,6 +50,11 @@ class MainService extends BlueprintService
                     'ID' => 'transaction-proccesss',
                     'Link' => '/transaction/add',
                 ],
+                'Budget' => [
+                    'Title' => 'Budget',
+                    'ID' => 'budget-proccesss',
+                    'Link' => '/budget/add',
+                ],
             ],
             'Profile' => [
                 'Title' => 'Profile',

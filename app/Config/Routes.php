@@ -37,9 +37,14 @@ $routes->get('', 'Home::index');
 $routes->get('/account/list', 'AccountController::accountList');
 $routes->get('/account/add', 'AccountController::addAccount');
 $routes->get('/account/change', 'AccountController::changeAccount');
+$routes->get('/budget/add', 'AccountController::addBudget');
 $routes->get('/transaction/add', 'TransactionController::createTransaction');
 $routes->get('/account/info/(:any)', 'AccountController::accountPage/$1');
-$routes->post('/account/js-request/account/create', 'AccountController::createAccount');
+// $routes->get('/account/remove-budget/(:any)', 'AccountController::deleteBudget/$1');
+$routes->post('/js-request/account/create', 'AccountController::createAccount');
+$routes->post('/js-request/budget/create', 'AccountController::createBudget');
+$routes->post('/js-request/budget/update', 'AccountController::updateBudget');
+$routes->post('/js-request/budget/delete', 'AccountController::deleteBudget');
 
 // Transaction information
 $routes->get('/transaction/list', 'AccountController::transactionList');

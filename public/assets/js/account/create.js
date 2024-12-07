@@ -30,7 +30,7 @@ $(document).ready(function(){
         }
         $.ajax({
             type: "POST",
-            url: "js-request/account/create",
+            url: base_url + "/js-request/account/create",
             data: {
                 groupID:$('#account-group-list').val(),
                 accountName:$('#account-name').val(),
