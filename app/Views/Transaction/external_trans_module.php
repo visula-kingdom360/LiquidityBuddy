@@ -40,13 +40,13 @@
             <div class="col-6">
                 <div class="form-floating">
                     <select class="form-select current-account-list" name="current-account-list" id="current-account-list">
-                        <?php foreach($accountInfo as $key => $account){ ?>
+                        <?php foreach($accountInfo['accounts'] as $key => $account){ ?>
                             <option class="<?= $account['AccountSessionID']?> <?php if($key == 1){echo 'd-none';} ?>" value="<?= $account['AccountSessionID']?>" data-running-balance="<?= number_format($account['AccountCurrentBalance'],2)?>"><?= $account['AccountName'] ?></option>
                         <?php } ?>
                     </select>
                     <label for="to-account-list" class="form-label">Current Account:</label>
                 </div>
-                <input type="text" class="form-control" name="current-running-balance" id="current-running-balance" value="<?= number_format($accountInfo[0]['AccountCurrentBalance'],2)?>" readonly>
+                <input type="text" class="form-control" name="current-running-balance" id="current-running-balance" value="<?= number_format($accountInfo['accounts'][0]['AccountCurrentBalance'],2)?>" readonly>
             </div>
         </div>
     </div>

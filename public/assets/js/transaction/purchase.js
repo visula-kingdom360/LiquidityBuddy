@@ -213,7 +213,7 @@ $(document).ready(function(){
     
         $.ajax({
             type: "POST",
-            url: "js-request/payment/purchase",
+            url: base_url + "/js-request/payment/purchase",
             data: data,
             success: function (response) {
 

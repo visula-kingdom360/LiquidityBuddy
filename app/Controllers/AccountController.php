@@ -38,7 +38,7 @@ class AccountController extends AccountService
         }
 
         // TODO:: link user default user
-        $this->limit = 10;
+        $this->limit = 20;
         $transactionDetails = $this->activeTransactionListAccess($this->user_id);
         $this->limit = 0;
 
@@ -139,14 +139,27 @@ class AccountController extends AccountService
             $stackholders = $stackholderDetails;
         }
 
-        // var_dump($stackholders);
-        // die;
-        
-        $data['accountInfo'] = $accounts;
+        // $data['accountInfo'] = $accounts;
         $data['budgetInfo'] = $budgets;
         $data['stackholderInfo'] = $stackholders;
         $data['shopInfo'] = $shops;
-        $data['transactionInfo'] = $transactions;
+        // $data['transactionInfo']['$transactions'] = $transactions;
+
+        $data['accountInfo'] = [
+            'page_limit' => 5,
+            'count' => count($accounts),
+            'page_count' => ceil(count($accounts) / 5),
+            'accounts' => $accounts,
+            'allow_all_accounts' => true
+        ];
+
+        $data['transactionInfo'] = [
+            'page_limit' => 10,
+            'count' => count($transactions),
+            'page_count' => ceil(count($transactions) / 10),
+            'transactions' => $transactions,
+            'allow_all_accounts' => true
+        ];
 
         $data['paymentPlan'] = $this->periodic;
 
@@ -154,6 +167,9 @@ class AccountController extends AccountService
         $data['internal_trans_content'] = view('Transaction/internal_trans_module', $data);
         $data['other_trans_content'] = view('Transaction/other_trans_module', $data);
         $data['purchase_content'] = view('Transaction/purchase_module', $data);
+        $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
+        $data['transaction_proccess_container'] = view('Transaction/transaction_proccess_module', $data);
+        $data['transaction_details_container'] = view('Transaction/transaction_details_module', $data['transactionInfo']);
         return view('Account/list', $data);
     }
 
@@ -313,6 +329,14 @@ class AccountController extends AccountService
         $accountGroupDetails = $this->activeAccountGroupsListAccessModule($this->user_id);
         // $this->limit = 0;
 
+
+        if(!isset($accountGroupDetails[0])){
+            $accountGroupsInfo[] = $accountGroupDetails;
+        }else{
+            $accountGroupDetails = $accountGroupDetails;
+        }
+        $data['accountGroupDetails'] = $accountGroupDetails;
+
         // TODO:: link user default user
         // $this->limit = 0;
         $accountDetails = $this->activeAccountListAccessModule($this->user_id);
@@ -331,21 +355,16 @@ class AccountController extends AccountService
         }else{
             $accounts = $accountDetails;
         }
-        $data['accountInfo'] = [
-            'page-limit' => 5,
-            'count' => count($accounts),
-            'page-count' => ceil(count($accounts) / 5),
-            'accounts' => $accounts
-            ];
-
         
+        $data['accountInfo'] = [
+            'page_limit' => 5,
+            'count' => count($accounts),
+            'page_count' => ceil(count($accounts) / 5),
+            'accounts' => $accounts,
+            'allow_all_accounts' => true
+        ];
 
-        if(!isset($accountGroupDetails[0])){
-            $accountGroupsInfo[] = $accountGroupDetails;
-        }else{
-            $accountGroupDetails = $accountGroupDetails;
-        }
-        $data['accountGroupDetails'] = $accountGroupDetails;
+        $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
 
         return view('Account/creation', $data);
     }
@@ -380,5 +399,54 @@ class AccountController extends AccountService
         echo json_encode($response['data']);
         exit;
 
+    }
+
+    public function accountPage($account_id){
+        $data = [];
+
+        $data = [
+            'StoredText' => [
+                'Header' => 'Account Page',
+                'ScreenTitle' => 'Account List',
+                'ErrorStatus' => 'Error Status: ',
+            ]
+        ];
+
+        $data['Head'] = $this->commonHead();
+        $data['CurrentID'] = 'account-list';
+
+        // TODO:: link user default user
+        // $this->limit = 10;
+        $response = $this->activeTransactionListAccess($this->user_id, $account_id);
+        // $this->limit = 0;
+
+        // TODO:: Error Handling Method
+        if(isset($response['error_id'])){
+            // TODO:: Change the route the accout create URL
+            if ($response['error_id'] == '0004') {
+                # code...
+                return redirect()->to(base_url('/account/list'))->with('msg', 'No transaction for the selected account');
+            }
+            return $this->errorHandleLogAndPageRedirection($response, '/account/list');
+        }
+
+        if(!isset($response[0])){
+            $transaction[] = $response;
+        }else{
+            $transaction = $response;
+        }
+        
+        $data['transactionInfo'] = [
+            'page_limit' => 10,
+            'count' => count($transaction),
+            'page_count' => ceil(count($transaction) / 10),
+            'transactions' => $transaction,
+            'allow_all_accounts' => true
+        ];
+
+        $data['transaction_details_container'] = view('Transaction/transaction_details_module', $data['transactionInfo']);
+
+
+        return view('Account/page', $data);
     }
 }

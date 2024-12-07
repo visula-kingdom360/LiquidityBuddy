@@ -41,34 +41,4 @@ $(document).ready(function(){
             }
         });
     });
-
-    // pagination no click
-    $('.page-list').on('click',function(){
-        $('.page-list').parent().removeClass('active');
-        $(this).parent().addClass('active');
-        
-        if($(this).parent().hasClass('first')){
-            $('.previous-page').parent().addClass('disabled').attr('disabled',true);
-            $('.next-page').parent().removeClass('disabled').attr('disabled',false);
-        }else if($(this).parent().hasClass('last')){
-            $('.previous-page').parent().removeClass('disabled').attr('disabled',false);
-            $('.next-page').parent().addClass('disabled').attr('disabled',true);
-        }else{
-            $('.previous-page').parent().removeClass('disabled').attr('disabled',false);
-            $('.next-page').parent().removeClass('disabled').attr('disabled',false);
-        }
-        $('.t-row-acount-action').addClass('d-none');
-        $('.t-row-acount-action[data-page-no="'+$(this).attr('id')+'"]').removeClass('d-none');
-
-    });
-
-    // pagination click previous
-    $('.previous-page').on('click',function(){
-        $('.page-item.active').prev().find('.page-list').click();
-    });
-
-    // pagination click next
-    $('.next-page').on('click',function(){
-        $('.page-item.active').next().find('.page-list').click();
-    });
 });

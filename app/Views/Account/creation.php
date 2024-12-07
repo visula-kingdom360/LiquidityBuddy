@@ -2,7 +2,9 @@
 <?= $this->section("title") ?> <?= $StoredText['ScreenTitle'] ?> <?= $this->endSection() ?>
 <?= $this->section("header") ?> <?= $StoredText['Header'] ?> <?= $this->endSection() ?>
 <?= $this->section("scripts") ?> 
-    <script type="text/javascript" charset="utf8" src="<?= base_url('assets/js/account/create.js') ?>"></script>
+<script type="text/javascript" charset="utf8" src="<?= base_url('assets/js/account/create.js') ?>"></script>
+<script type="text/javascript" charset="utf8" src="<?= base_url('assets/js/common_modules/pagination.js') ?>"></script>
+
 <?= $this->endSection() ?>
 <?= $this->section("styles") ?>
 <?= $this->endSection() ?>
@@ -25,34 +27,7 @@
             </div>
             <div class="row">
                 <div class="col-md-5 col-12">
-                    <table class="table table-striped mb-3">
-                        <thead>
-                        <tr>
-                            <th>Account Name</th>
-                            <th>Running Balance</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($accountInfo['accounts'] as $key => $account){ 
-                                $currentPage = ceil(($key + 1) / $accountInfo['page-limit']);
-                                ?>
-                            
-                                <tr class="t-row-acount-action <?php if(($key + 1) > $accountInfo['page-limit']){echo 'd-none';}?>" data-page-no="account-page-no-<?= $currentPage?>" account="<?= $account['AccountSessionID']?>">
-                                    <td><?= $account['AccountName'] ?></td>
-                                    <td class="text-end"><?= number_format($account['AccountCurrentBalance'],2) ?></td>
-                                </tr>
-                            <?php } ?>                        
-                        </tbody>
-                    </table>
-                    <?php if($accountInfo['page-count'] > 1){ ?>
-                        <ul class="pagination">
-                            <li class="page-item disabled" disabled=true><a class="page-link previous-page" href="#">Previous</a></li>
-                                <?php for ($page=1; $page < ($accountInfo['page-count'] + 1); $page++) {  ?>
-                                    <li class="page-item <?php if($page == 1){echo 'active first';}elseif($page == ($accountInfo['page-count'])){echo 'last';}?>"><a class="page-link page-list" href="#" id="account-page-no-<?= $page ?>"><?= $page ?></a></li>
-                                <?php } ?>
-                            <li class="page-item"><a class="page-link next-page" href="#">Next</a></li>
-                        </ul>
-                    <?php } ?>
+                    <?= $account_list_content ?>
                 </div>
                 <div class="col-md-7 col-12">
                     <div class="mb-3">
