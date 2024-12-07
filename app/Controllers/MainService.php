@@ -22,7 +22,7 @@ class MainService extends BlueprintService
     public function commonHead()
     {
         $accountService = new AccountService();
-        $accountDetails = $accountService->activeAccountListAccess($this->user_id);
+        $accountDetails = $accountService->activeAccountListAccessModule($this->user_id);
 
         $head = [
             'Title' => 'Liquidity Buddy',
@@ -43,7 +43,12 @@ class MainService extends BlueprintService
                     'ID' => 'account-list',
                     'Link' => '',
                     'SubMenu' => $accountDetails,
-                    'AccountMap' => '/account/info/'
+                    'AccountMap' => '/account/info/' // this is not the whole url, it is just a base url for the account info page
+                ],
+                'Transactions' => [
+                    'Title' => 'Transactions',
+                    'ID' => 'transaction-proccesss',
+                    'Link' => '/transaction/add',
                 ],
             ],
             'Profile' => [

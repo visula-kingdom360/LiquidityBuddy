@@ -9,6 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url('assets/css/default.css') ?>">
     <?= $this->renderSection("styles") ?>
+    <script>
+        var base_url = "<?= base_url() ?>";
+    </script>
 
     <!-- Bootstrap 5 JS Bundle -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -33,7 +36,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <?php foreach($value['SubMenu'] as $sub_menu_key => $account){ ?>
-                                        <li><a class="<?php if($CurrentID == $value['ID']) { echo 'active'; } else { echo ''; } ?> dropdown-item" href="#"><?= $account['AccountName'] ?></a></li>
+                                        <li><a class="<?php if($CurrentID == $value['ID']) { echo 'active'; } else { echo ''; } ?> dropdown-item" href="<?= base_url('account/info/'.$account['AccountSessionID']) ?>"><?= $account['AccountName'] ?></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>

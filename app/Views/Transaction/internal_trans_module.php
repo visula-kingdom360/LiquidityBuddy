@@ -8,13 +8,6 @@
                     <input type="text" class="form-control" placeholder="Enter the amount" name="amount" id="amount">
                     <label for="amount">Enter an Amount</label>
                 </div>
-                <!-- <div class="form-floating">
-                    <select class="form-select justify-content-center" name="transaction-type" id="transaction-type">
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                    </select>
-                    <label for="sel1" class="form-label">Income or Expense:</label>
-                </div> -->
             </div>
             <div class="col-6 mb-3">
                 <div class="form-floating">
@@ -29,24 +22,24 @@
             <div class="col-6">
                 <div class="form-floating">
                     <select class="form-select current-account-list" name="current-account-list" id="current-account-list">
-                        <?php foreach($accountInfo as $key => $account){ ?>
+                        <?php foreach($accountInfo['accounts'] as $key => $account){ ?>
                             <option class="<?= $account['AccountSessionID']?> <?php if($key == 1){echo 'd-none';} ?>" value="<?= $account['AccountSessionID']?>" data-running-balance="<?= number_format($account['AccountCurrentBalance'],2)?>"><?= $account['AccountName'] ?></option>
                         <?php } ?>
                     </select>
                     <label for="to-account-list" class="form-label">Current Account:</label>
                 </div>
-                <input type="text" class="form-control" name="current-running-balance" id="current-running-balance" value="<?= number_format($accountInfo[0]['AccountCurrentBalance'],2)?>" readonly>
+                <input type="text" class="form-control" name="current-running-balance" id="current-running-balance" value="<?= number_format($accountInfo['accounts'][0]['AccountCurrentBalance'],2)?>" readonly>
             </div>
             <div class="col-6">
                 <div class="form-floating">
                     <select class="form-select to-account-list" name="to-account-list" id="to-account-list">
-                        <?php foreach($accountInfo as $key => $account){ ?>
+                        <?php foreach($accountInfo['accounts'] as $key => $account){ ?>
                             <option class="<?= $account['AccountSessionID']?> <?php if($key == 0){echo 'd-none';} ?>" value="<?= $account['AccountSessionID']?>" data-running-balance="<?= number_format($account['AccountCurrentBalance'],2)?>" <?php if($key == 1){echo 'selected';} ?>><?= $account['AccountName'] ?></option>
                         <?php } ?>
                     </select>
                     <label for="from-account-list" class="form-label">Transfer to Account:</label>
                 </div>
-                <input type="text" class="form-control" name="to-running-balance" id="to-running-balance" value="<?= number_format($accountInfo[1]['AccountCurrentBalance'],2)?>" readonly>
+                <input type="text" class="form-control" name="to-running-balance" id="to-running-balance" value="<?= number_format($accountInfo['accounts'][1]['AccountCurrentBalance'],2)?>" readonly>
             </div>
         </div>
     </div>

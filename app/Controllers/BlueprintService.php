@@ -300,7 +300,6 @@ class BlueprintService extends BaseController
 
     public function errorHandleLogAndPageRedirection($errorDataList, $redirect = '')
     {
-        error_log($errorDataList);
         if($redirect != ''){
             return redirect()->to(base_url($redirect))->with('msg', $errorDataList['error_message']);
         }

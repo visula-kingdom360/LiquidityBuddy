@@ -32,7 +32,7 @@ $(document).ready(function(){
     
         $.ajax({
             type: "POST",
-            url: "js-request/payment/expense",
+            url: base_url + "/js-request/payment/expense",
             data: data,
             success: function (response) {
 
