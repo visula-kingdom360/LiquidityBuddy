@@ -168,6 +168,7 @@ class AccountController extends AccountService
         $data['other_trans_content'] = view('Transaction/other_trans_module', $data);
         $data['purchase_content'] = view('Transaction/purchase_module', $data);
         $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
+        $data['transaction_proccess_container'] = view('Transaction/transaction_proccess_module', $data);
         $data['transaction_details_container'] = view('Transaction/transaction_details_module', $data['transactionInfo']);
         return view('Account/list', $data);
     }

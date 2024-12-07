@@ -28,19 +28,7 @@
                     <?= $account_list_content ?>
                 </div>
                 <div class="col-md-7 col-12">
-                    <div class="mb-3">
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item"><a class="nav-link active select-transction-type" href="#External" data-transaction-type="external">External Transactions</a></li>
-                            <li class="nav-item"><a class="nav-link select-transction-type" href="#Internal" data-transaction-type="internal">Internal Transactions</a></li>
-                            <li class="nav-item"><a class="nav-link select-transction-type" href="#Income" data-transaction-type="income">Incomes</a></li>
-                            <li class="nav-item"><a class="nav-link select-transction-type" href="#Purchase" data-transaction-type="purchase">Purchases</a></li>
-                        </ul>
-                    </div>
-                    <?= $external_trans_content ?>
-                    <?= $internal_trans_content ?>
-                    <?= $purchase_content ?>
-                    <p class="error d-none" id="common-error">* Error</p>
-                    <?= $other_trans_content ?>
+                    <?= $transaction_proccess_container ?>
                 </div>
                 <?= $transaction_details_container ?>
             </div>
