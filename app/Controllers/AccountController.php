@@ -150,7 +150,8 @@ class AccountController extends AccountService
             'count' => count($accounts),
             'page_count' => ceil(count($accounts) / 5),
             'accounts' => $accounts,
-            'allow_all_accounts' => true
+            'allow_all_accounts' => true,
+            'edit_mode' => false
         ];
 
         $data['transactionInfo'] = [
@@ -268,7 +269,7 @@ class AccountController extends AccountService
             // return $accBalAccount;
 
             $errorResponse = [
-                'error_id' => '0019', // LASTEST Error Code
+                'error_id' => '0019',
                 'category' => 'Data_Issue',
                 'error_category' => 'Account Balance',
                 'error_message' => 'The amount entered is larger than the amount in account. Plesae check and rectify.',
@@ -361,7 +362,8 @@ class AccountController extends AccountService
             'count' => count($accounts),
             'page_count' => ceil(count($accounts) / 5),
             'accounts' => $accounts,
-            'allow_all_accounts' => true
+            'allow_all_accounts' => true,
+            'edit_mode' => true
         ];
 
         $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
@@ -450,6 +452,82 @@ class AccountController extends AccountService
         return view('Account/page', $data);
     }
 
+    public function updateAccount(){
+        $request_data = $this->handlePOSTBodyDataList();
+
+        // passing parameters --> (account_id [required], accountName [required], group_id [required], amount [required])
+        $requiredParameters = $this->handleRequiredParameters($request_data, ['account_id', 'account_name', 'account_group']);
+
+        if(isset($requiredParameters['error_id']))
+        {
+            return $requiredParameters;
+        }
+
+        $accountID = $request_data['account_id'];
+        $accountName = $request_data['account_name'];
+        $groupID = $request_data['account_group'];
+
+        // TODO:: link user default user
+        $accountUpdate = $this->accountUpdateProccess($this->user_id, $accountID, $accountName, $groupID);
+
+        if(isset($accountUpdate['error_id'])){            
+            $response = $this->errorHandleforAPIResponses($accountUpdate);
+            echo $response;
+            exit;
+            // return $accountUpdate;
+        }
+
+        $response = [
+            'data' => [
+                'success'  => true,
+                'response' => 'Successfully updated account',
+                'data' => [
+                    'accountUpdate' => $accountUpdate
+                ]
+            ]
+        ];
+
+        echo json_encode($response['data']);
+        exit;
+    }
+
+    public function deleteAccount(){
+        $request_data = $this->handlePOSTBodyDataList();
+
+        // passing parameters --> (account_id [required])
+        $requiredParameters = $this->handleRequiredParameters($request_data, ['account_id']);
+
+        if(isset($requiredParameters['error_id']))
+        {
+            return $requiredParameters;
+        }
+
+        $accountID = $request_data['account_id'];
+
+        // TODO:: link user default user
+        $accountDelete = $this->accountDeleteProccess($this->user_id, $accountID);
+
+        if(isset($accountDelete['error_id'])){            
+            $response = $this->errorHandleforAPIResponses($accountDelete);
+            echo $response;
+            exit;
+            // return $accountDelete;
+        }
+
+        $response = [
+            'data' => [
+                'success'  => true,
+                'response' => 'Successfully deleted account',
+                'data' => [
+                    'accountDelete' => $accountDelete
+                ]
+            ]
+        ];
+
+        echo json_encode($response['data']);
+        exit;
+    }
+
     public function addBudget(){
         $data = [];
         $data['StoredText'] = [
@@ -481,6 +559,7 @@ class AccountController extends AccountService
             'page_count' => ceil(count($budgets) / 10),
             'budgets' => $budgets,
             'payment_plan' => $this->periodic,
+            'edit_mode' => true
         ];
 
         $data['budget_details_container'] = view('Account/commonModule/budget_details_module', $data['budgetInfo']);

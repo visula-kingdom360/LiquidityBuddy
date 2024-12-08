@@ -20,16 +20,11 @@ if (!window.__budget_initialized__) {
         });
 
         $(document).on('click', '#create-budget-btn', function () {
-                console.log('Create budget');
                 if($('#budget-name').val() == ''){
                     $('.error-message').text('* Name is required');
                     return;
                 }
 
-                // if($('#budget-amount').val() == '' || $('#budget-amount').val() == '0.00'){
-                //     $('.error-message').text('* Amount is required');
-                //     return;
-                // }
                 $.ajax({
                     type: "POST",
                     url: base_url + "/js-request/budget/create",
@@ -47,8 +42,7 @@ if (!window.__budget_initialized__) {
         $(document).on('click', '.update-budget-btn', function () {
             session_id = $(this).data('budget-id');
             $('#update-budget-btn').data('session-id',session_id);
-            console.log(session_id);
-            console.log($('#'+session_id+' .budget-name').html());
+
             $('#budget-name').val($('#'+session_id+' .budget-name').html());
             $('#budget-amount').val($('#'+session_id+' .budget-amount').html().replace('.00','').replace(/[^0-9]/g, ''));
             $('#budget-plan').val($('#'+session_id+' .budget-period').data('budget-period'));
@@ -67,13 +61,7 @@ if (!window.__budget_initialized__) {
                 return;
             }
 
-            // if($('#budget-amount').val() == '' || $('#budget-amount').val() == '0.00'){
-            //     $('.error-message').text('* Amount is required');
-            //     return;
-            // }
-
             session_id = $(this).data('session-id');
-            console.log(session_id);
 
             $.ajax({
                 type: "POST",

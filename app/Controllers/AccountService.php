@@ -68,7 +68,7 @@ class AccountService extends MainService
     public function activeAccountListAccessModule($userID, $accountID = '')
     {
         $condtionList = ['UserSessionID' => $userID, 'AccountStatus' => 'A'];
-        $feildList = ['AccountSessionID','AccountName','AccountCurrentBalance'];
+        $feildList = ['AccountSessionID','AccountName','AccountGroupSessionID','AccountGroupName','AccountCurrentBalance'];
         $organizerList = [];
 
         if($accountID != ''){
@@ -81,7 +81,7 @@ class AccountService extends MainService
 
         // TODO:: User Session ID need to be handled from user login
         $response = $this->getDatafromDB(
-                        ['account'], 
+                        ['account', 'accountgroup'], 
                         $condtionList,
                         $feildList,
                         $organizerList
@@ -296,6 +296,70 @@ class AccountService extends MainService
         }
 
         return $newBudget;
+    }
+
+    public function accountUpdateProccess($userID, $accountID, $name = '', $groupID = '')
+    {
+        $response = $this->activeAccountListAccessModule($userID, $accountID);
+        $updateList = [];
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        if($name != '' && $name != $response['AccountName'])
+        {
+            $updateList['AccountName'] = $name;
+        }
+
+        if($groupID != '' && $groupID != $response['AccountGroupSessionID'])
+        {
+            $updateList['AccountGroupSessionID'] = $groupID;
+        }
+
+        if(count($updateList) == 0)
+        {
+            return $response;
+        }
+
+        $response = $this->updateDBData('account', ['UserSessionID' => $userID, 'AccountSessionID' => $accountID], $updateList);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
+    }
+
+    public function accountDeleteProccess($userID, $accountID)
+    {
+        $response = $this->activeAccountListAccessModule($userID, $accountID);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        if($response['AccountCurrentBalance'] != 0){
+            return $error = [
+                    'error_id' => '0020', // LATEST Error Code
+                    'category' => 'Data_Issue',
+                    'error_category' => 'Account Balance',
+                    'error_message'  => 'Cannot Delete Account. Please remove transactions the account balance first.',
+                    'data' => $response
+                ];
+        }
+
+        $response = $this->updateDBData('account', ['UserSessionID' => $userID, 'AccountSessionID' => $accountID], ['AccountStatus' => "D"]);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
     }
 
     public function budgetPriceChange($userID, $budgetID, $amount)

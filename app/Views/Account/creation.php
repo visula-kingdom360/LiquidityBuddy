@@ -26,17 +26,16 @@
                 ?>
             </div>
             <div class="row">
-                <div class="col-md-5 col-12">
+                <div class="col-md-6 col-12">
                     <?= $account_list_content ?>
                 </div>
-                <div class="col-md-7 col-12">
+                <div class="col-md-6 col-12">
                     <div class="mb-3">
-                        <!-- <h3>New Account Creation</h3> -->
                         <div class="form">
                             <div class="mb-3 d-flex row">
                                 <div class="col-6 mb-3">
                                     <div class="form-floating">
-                                        <select class="form-select account-group-list" name="account-group-list" id="account-group-list">
+                                        <select class="form-select account-group-list" name="account-group-list" id="account-group-list" data-default-value="<?= $accountGroupDetails[0]['AccountGroupSessionID'] ?>">
                                             <?php foreach($accountGroupDetails as $key => $accountGroup){ ?>
                                                 <option class="<?= $accountGroup['AccountGroupSessionID']?>" value="<?= $accountGroup['AccountGroupSessionID']?>"><?= $accountGroup['AccountGroupName'] ?></option>
                                             <?php } ?>
@@ -64,6 +63,8 @@
                         </div>
                         <div class="mb-3 justify-content-center ">
                             <a id="create-account-btn" class="btn btn-primary">Create Account</a>
+                            <a id="update-account-btn" class="btn btn-primary d-none">Update Account</a>
+                            <a id="cancel-account-btn" class="btn btn-secondary">Cancelled Account</a>
                         </div>
                     </div>
                 </div>

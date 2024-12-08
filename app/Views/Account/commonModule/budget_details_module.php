@@ -14,8 +14,10 @@
                 <td class="budget-name"><?= $budget['BudgetName'] ?></td>
                 <td class="text-end budget-amount"><?= number_format($budget['BudgetAmount'],2) ?></td>
                 <td class="text-center budget-period" data-budget-period="<?= $budget['BudgetPeriodic'] ?>"><?= $payment_plan[$budget['BudgetPeriodic']] ?></td>
-                <td class="text-center"><a data-budget-id="<?= $budget['BudgetSessionID'] ?>" class="btn btn-primary update-budget-btn">Update</a></td>
-                <td class="text-center"><a data-budget-id="<?= $budget['BudgetSessionID'] ?>"  class="btn btn-danger delete-budget-btn">Remove</a></td>
+                <?php if($edit_mode){ ?>
+                    <td class="text-center"><a data-budget-id="<?= $budget['BudgetSessionID'] ?>" class="btn btn-primary update-budget-btn">Update</a></td>
+                    <td class="text-center"><a data-budget-id="<?= $budget['BudgetSessionID'] ?>"  class="btn btn-danger delete-budget-btn">Remove</a></td>
+                <?php } ?>
             </tr>
         <?php } ?>
     </tbody>
