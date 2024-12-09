@@ -54,10 +54,15 @@ class ReportService extends MainService
 
         foreach ($purchaseHistory as $key => $purchase) {
             # code...
+            $purchaseHistory[$key]['PurchaseDateTime'] = date('Y-m-d h:i:s',$purchase['PurchaseDateTime']);
+            $purchaseHistory[$key]['PurchaseTotalAmount'] = ($purchase['PurchaseTotalAmount']) ? $purchase['PurchaseTotalAmount'] : 0;
+            $purchaseHistory[$key]['PurchaseTotalDiscount'] = ($purchase['PurchaseTotalDiscount']) ? $purchase['PurchaseTotalDiscount'] : 0;
+            $purchaseHistory[$key]['PurchaseFinalAmount'] = ($purchase['PurchaseFinalAmount']) ? $purchase['PurchaseFinalAmount'] : 0;;
+            
 
             $itemInfo = $this->getDatafromDB(
                         ['item'], 
-                         ['PurchaseSessionID' => $purchase['PurchaseSessionID']],
+                        ['PurchaseSessionID' => $purchase['PurchaseSessionID']],
                         []
                     );
 

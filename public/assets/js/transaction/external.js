@@ -2,7 +2,6 @@ $(document).ready(function(){
     $('#payment-btn').on('click',function(){
 
         if($('#external input[name="expense-type"]:checked').val() == 'travel'){
-        // }else{
         }
 
         var period = 1;
@@ -12,7 +11,6 @@ $(document).ready(function(){
             if($('#payment-plan-type').val() != 'I'){
                 period = $('#scheduled-payment-period').val();
             }
-            // schedule_type = $('#payment-plan-type').val();
 
             scheduled_info = {
                 start_date : ($('#payment-plan-start-date').val()) ? $('#payment-plan-start-date').val() : today,
@@ -35,7 +33,9 @@ $(document).ready(function(){
             url: base_url + "/js-request/payment/expense",
             data: data,
             success: function (response) {
-
+                if(response.success){
+                    window.location.reload();
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr)

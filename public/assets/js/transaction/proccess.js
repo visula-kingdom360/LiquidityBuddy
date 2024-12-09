@@ -92,13 +92,11 @@ if (!window.__process_initialized__) {
                 budget:$('#internal #budget-list').val(),
             },
             success: function (response) {
-                apiresponse = $.parseJSON(response);
-                if(apiresponse.success){
+                response = $.parseJSON(response);
+                if(response.success){
                     console.log('No issues');
-                    console.log(apiresponse.data.fromTransactionChanges);
-                    // $('#current-running-balance').val(apiresponse.data.fromTransactionChanges);
-                    // $('#to-running-balance').val(apiresponse.data.toTransactionChanges);
-
+                    console.log(response.data.fromTransactionChanges);
+                    window.location.reload();
                 }else{
                     $('#common-error').removeClass('d-none');
                     $('#common-error').text('* '+apiresponse.message);    

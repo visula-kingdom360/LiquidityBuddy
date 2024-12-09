@@ -136,13 +136,6 @@ $(document).ready(function(){
             return;
         }
 
-        // if($('#schedule-payment-checkbox').is(':checked') && $('#scheduled-payment-period').val()){
-        //     // if($('#payment-plan-type').val() != 'I'){
-        //     //     period = $('#scheduled-payment-period').val();
-        //     // }
-
-        // }
-
         var name = '';
         var units = 0;
         var unit_price = 0;
@@ -216,7 +209,12 @@ $(document).ready(function(){
             url: base_url + "/js-request/payment/purchase",
             data: data,
             success: function (response) {
-
+                console.log(response);
+                if(response.success == false){
+                    return;
+                }
+                
+                window.location.reload();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr)
