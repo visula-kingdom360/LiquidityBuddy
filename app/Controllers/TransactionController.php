@@ -39,24 +39,6 @@ class TransactionController extends AccountService
             $accounts = $accountDetails;
         }
 
-        // // TODO:: link user default user
-        // $this->limit = 20;
-        // $transactionDetails = $this->activeTransactionListAccess($this->user_id);
-        // $this->limit = 0;
-
-        // // TODO:: Error Handling Method
-        // if(isset($transactionDetails['error_id'])){
-
-        //     // TODO:: Change the route the accout create URL
-        //     return $this->errorHandleLogAndPageRedirection($transactionDetails, '/account/list');
-        //     // return redirect()->to(base_url('/account/list'))->with('msg', $accountDetails['error_message']);
-        // }
-
-        // if(!isset($transactionDetails[0])){
-        //     $transactions[] = $transactionDetails;
-        // }else{
-        //     $transactions = $transactionDetails;
-        // }
 
         // TODO:: link user default user
         // $this->limit = 5;
@@ -152,7 +134,8 @@ class TransactionController extends AccountService
             'count' => count($accounts),
             'page_count' => ceil(count($accounts) / 5),
             'accounts' => $accounts,
-            'allow_all_accounts' => true
+            'allow_all_accounts' => true,
+            'edit_mode' => true
         ];
 
         $data['paymentPlan'] = $this->periodic;
@@ -161,7 +144,7 @@ class TransactionController extends AccountService
         $data['internal_trans_content'] = view('Transaction/internal_trans_module', $data);
         $data['other_trans_content'] = view('Transaction/other_trans_module', $data);
         $data['purchase_content'] = view('Transaction/purchase_module', $data);
-        $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
+        // $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
         $data['transaction_proccess_container'] = view('Transaction/transaction_proccess_module', $data);
         return view('Transaction/create', $data);
     }

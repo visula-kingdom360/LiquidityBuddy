@@ -67,7 +67,13 @@
     color: #fff;
 }
 
-.error-message {
+.font-income {
+    background-color: #0c9f0c;
+    color: #0c9f0c;
+    font-size: var(--text-size-2);
+}
+
+.font-expense, .error-message {
     color: #f00; /* Red color */
     font-size: var(--text-size-2);
 }

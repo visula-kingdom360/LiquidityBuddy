@@ -68,7 +68,7 @@ class AccountService extends MainService
     public function activeAccountListAccessModule($userID, $accountID = '')
     {
         $condtionList = ['UserSessionID' => $userID, 'AccountStatus' => 'A'];
-        $feildList = ['AccountSessionID','AccountName','AccountCurrentBalance'];
+        $feildList = ['AccountSessionID','AccountName','AccountGroupSessionID','AccountGroupName','AccountCurrentBalance'];
         $organizerList = [];
 
         if($accountID != ''){
@@ -81,7 +81,7 @@ class AccountService extends MainService
 
         // TODO:: User Session ID need to be handled from user login
         $response = $this->getDatafromDB(
-                        ['account'], 
+                        ['account', 'accountgroup'], 
                         $condtionList,
                         $feildList,
                         $organizerList
@@ -143,7 +143,7 @@ class AccountService extends MainService
             return $response;
         }
 
-        $response = $this->budgetUpdateProccess($userID, $budgetID, $amount);
+        $response = $this->budgetPriceChange($userID, $budgetID, $amount);
 
         if(isset($response['error_id']))
         {
@@ -182,7 +182,7 @@ class AccountService extends MainService
     public function getBudgetDetails($userID, $budgetID = '')
     {
         $condtionList = ['UserSessionID' => $userID, 'BudgetStatus' => 'A'];
-        $feildList = ['BudgetName','BudgetCreatedDateTime','BudgetUpdatedDateTime','BudgetAmount'];
+        $feildList = ['BudgetName','BudgetCreatedDateTime','BudgetUpdatedDateTime','BudgetPeriodic','BudgetAmount'];
         $organizerList = ['orderBy' => ['BudgetCreatedDateTime' => 'DESC', 'BudgetID' => 'DESC']];
 
         if($budgetID != ''){
@@ -228,25 +228,6 @@ class AccountService extends MainService
             return $response;
         }
             
-        return $response;
-    }
-
-    public function budgetUpdateProccess($userID, $budgetID, $amount)
-    {
-        $response = $this->getBudgetDetails($userID, $budgetID);
-
-        if(isset($response['error_id']))
-        {
-            return $response;
-        }
-
-        $response = $this->updateDBData('budget', ['UserSessionID' => $userID, 'BudgetSessionID' => $budgetID], ['BudgetAmount' => ($amount + $response['BudgetAmount'])]);
-
-        if(isset($response['error_id']))
-        {
-            return $response;
-        }
-
         return $response;
     }
 
@@ -296,4 +277,166 @@ class AccountService extends MainService
         return ['createTransactionData' => $createTransactionData, 'currentAccountBalance' => $currentAccountBalance];
     }
     // ... (Inside your controller)
+
+    public function budgetInitProccess($userID, $budgetName, $budgetPlan, $budgetAmount)
+    {
+        $data = [
+            'UserSessionID' => $userID,
+            'BudgetName' => $budgetName,
+            'BudgetPeriodic' => $budgetPlan,
+            'BudgetAmount' => $budgetAmount,
+            'BudgetCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
+            'BudgetUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s'))
+        ];
+
+        $newBudget = $this->insertDatatoDB('budget', $data);
+
+        if(isset($newBudget['error_id'])){
+            return $newBudget;
+        }
+
+        return $newBudget;
+    }
+
+    public function accountUpdateProccess($userID, $accountID, $name = '', $groupID = '')
+    {
+        $response = $this->activeAccountListAccessModule($userID, $accountID);
+        $updateList = [];
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        if($name != '' && $name != $response['AccountName'])
+        {
+            $updateList['AccountName'] = $name;
+        }
+
+        if($groupID != '' && $groupID != $response['AccountGroupSessionID'])
+        {
+            $updateList['AccountGroupSessionID'] = $groupID;
+        }
+
+        if(count($updateList) == 0)
+        {
+            return $response;
+        }
+
+        $response = $this->updateDBData('account', ['UserSessionID' => $userID, 'AccountSessionID' => $accountID], $updateList);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
+    }
+
+    public function accountDeleteProccess($userID, $accountID)
+    {
+        $response = $this->activeAccountListAccessModule($userID, $accountID);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        if($response['AccountCurrentBalance'] != 0){
+            return $error = [
+                    'error_id' => '0020', // LATEST Error Code
+                    'category' => 'Data_Issue',
+                    'error_category' => 'Account Balance',
+                    'error_message'  => 'Cannot Delete Account. Please remove transactions the account balance first.',
+                    'data' => $response
+                ];
+        }
+
+        $response = $this->updateDBData('account', ['UserSessionID' => $userID, 'AccountSessionID' => $accountID], ['AccountStatus' => "D"]);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
+    }
+
+    public function budgetPriceChange($userID, $budgetID, $amount)
+    {
+        $response = $this->getBudgetDetails($userID, $budgetID);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        $response = $this->updateDBData('budget', ['UserSessionID' => $userID, 'BudgetSessionID' => $budgetID], ['BudgetAmount' => $response['BudgetAmount'] + $amount]);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
+    }
+
+    public function budgetUpdateProccess($userID, $budgetID, $name = '', $plan = 'M', $amount = 0)
+    {
+        $response = $this->getBudgetDetails($userID, $budgetID);
+        $updateList = [];
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        if($name != '' && $name != $response['BudgetName'])
+        {
+            $updateList['BudgetName'] = $name;
+        }
+
+        if($plan != '' && $plan != $response['BudgetPeriodic'])
+        {
+            $updateList['BudgetPeriodic'] = $plan;
+        }
+
+        if($amount != 0 && $amount != $response['BudgetAmount'])
+        {
+            $updateList['BudgetAmount'] = $amount;
+        }
+
+        if(!isset($updateList) || $updateList == [])
+        {
+            return ['success' => false, 'response' => 'No update required'];
+        }
+
+        $response = $this->updateDBData('budget', ['UserSessionID' => $userID, 'BudgetSessionID' => $budgetID], $updateList);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
+    }
+
+    public function budgetDeleteProccess($userID, $budgetID)
+    {
+        $response = $this->getBudgetDetails($userID, $budgetID);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        $response = $this->updateDBData('budget', ['UserSessionID' => $userID, 'BudgetSessionID' => $budgetID], ['BudgetStatus' => 'D']);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
+    }
 }

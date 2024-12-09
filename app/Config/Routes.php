@@ -37,15 +37,34 @@ $routes->get('', 'Home::index');
 $routes->get('/account/list', 'AccountController::accountList');
 $routes->get('/account/add', 'AccountController::addAccount');
 $routes->get('/account/change', 'AccountController::changeAccount');
-$routes->get('/transaction/add', 'TransactionController::createTransaction');
+$routes->get('/budget/add', 'AccountController::addBudget');
 $routes->get('/account/info/(:any)', 'AccountController::accountPage/$1');
-$routes->post('/account/js-request/account/create', 'AccountController::createAccount');
+
+// JS requests: Account
+$routes->post('/js-request/account/create', 'AccountController::createAccount');
+$routes->post('/js-request/account/update', 'AccountController::updateAccount');
+$routes->post('/js-request/account/delete', 'AccountController::deleteAccount');
+$routes->post('/js-request/budget/create', 'AccountController::createBudget');
+$routes->post('/js-request/budget/update', 'AccountController::updateBudget');
+$routes->post('/js-request/budget/delete', 'AccountController::deleteBudget');
 
 // Transaction information
 $routes->get('/transaction/list', 'AccountController::transactionList');
+$routes->get('/transaction/add', 'TransactionController::createTransaction');
+
+// JS requests: Transaction
 $routes->post('/js-request/account/transferred', 'AccountController::internalTransaction');
 $routes->post('/js-request/payment/expense', 'PurchaseController::expenseTransaction');
 $routes->post('/js-request/payment/purchase', 'PurchaseController::purchaseTransaction');
+
+// Reports
+$routes->get('/report/transactions/(:any)', 'ReportController::transactionReport/$1');
+
+// JS requests: Report
+$routes->post('/js-request/transaction/income-expense', 'ReportController::reportIncomeExpense');
+$routes->post('/js-request/transaction/purchase', 'ReportController::reportPurchaseReport');
+
+
 
 /*
  * --------------------------------------------------------------------
