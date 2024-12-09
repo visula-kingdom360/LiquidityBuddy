@@ -110,8 +110,7 @@ class BlueprintService extends BaseController
                 if($localKey == 'sqldecrypt'){
                     $sqlCondtions .= $conditionValue;
                 }else if(isset($allFeilds[$localKey])){
-                $sqlCondtions .= "$allFeilds[$localKey] = '".$conditionValue."' AND ";
-                // $conditionMap[$allFeilds[$localKey]] = $conditionValue;
+                    $sqlCondtions .= "$allFeilds[$localKey] = '".$conditionValue."' AND ";
                 }else{
                     // TODO:: error when data was not mapped
                     return $error = [

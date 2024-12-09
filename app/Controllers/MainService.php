@@ -24,6 +24,16 @@ class MainService extends BlueprintService
         $accountService = new AccountService();
         $accountDetails = $accountService->activeAccountListAccessModule($this->user_id);
 
+        foreach ($accountDetails as $key => $value) {
+            # code...
+
+            // var_dump($value);
+            // die;
+            $subMenu[$key]['Title'] = $value['AccountName'];
+            $subMenu[$key]['ID'] = $value['AccountSessionID'];
+            $subMenu[$key]['Link'] = '/account/info/'.$value['AccountSessionID'];
+        }
+
         $head = [
             'Title' => 'Liquidity Buddy',
             'Link' => '/account/list',
@@ -42,7 +52,7 @@ class MainService extends BlueprintService
                     'Title' => 'Account List',
                     'ID' => 'account-list',
                     'Link' => '',
-                    'SubMenu' => $accountDetails,
+                    'SubMenu' => $subMenu,
                     'AccountMap' => '/account/info/' // this is not the whole url, it is just a base url for the account info page
                 ],
                 'Transactions' => [
@@ -54,6 +64,39 @@ class MainService extends BlueprintService
                     'Title' => 'Budget',
                     'ID' => 'budget-proccesss',
                     'Link' => '/budget/add',
+                ],
+                'Reports' => [
+                    'Title' => 'Reports',
+                    'ID' => 'report-list',
+                    'Link' => '',
+                    'SubMenu' => [
+                        [
+                            'ID' => 'income-report',
+                            'Title' => 'Income Report',
+                            'Link' => '/report/transactions/income'
+                        ],
+                        [
+                            'ID' => 'expense-report',
+                            'Title' => 'Expense Report',
+                            'Link' => '/report/transactions/expense'
+                        ],
+                        [
+                            'ID' => 'budget-report',
+                            'Title' => 'Budget Report',
+                            'Link' => '/report/transactions/budget'
+                        ],
+                        [
+                            'ID' => 'purchcase-report',
+                            'Title' => 'Purchase Report',
+                            'Link' => '/report/transactions/purchase'
+                        ],
+                        [
+                            'ID' => 'external-report',
+                            'Title' => 'External Report',
+                            'Link' => '/account/list'
+                        ]
+                    ],
+                    'AccountMap' => '/account/info/' // this is not the whole url, it is just a base url for the account info page
                 ],
             ],
             'Profile' => [

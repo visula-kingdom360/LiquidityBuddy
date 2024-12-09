@@ -79,6 +79,7 @@ trait TransactionTraits{
             'BudgetSessionID'               => 'budgetsessionid',
             'TransactionDescription'        => 'description',
             'TransactionDate'               => 'date',
+            'TransactionDateTime'           => 'datetime',
             'TransactionAmount'             => 'amount',
             'TransactionPayableType'        => 'paymenttype',
             'TransactionCreatedDateTime'    => 'createddatetime',

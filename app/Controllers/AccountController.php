@@ -371,11 +371,21 @@ class AccountController extends AccountService
         return view('Account/creation', $data);
     }
 
-    public function createAccount(){
+    public function createAccount()
+    {
 
-        $accountName = $this->request->getPost('accountName');
-        $groupID = $this->request->getPost('groupID');
-        $amount = $this->request->getPost('amount');
+        $request_data = $this->handlePOSTBodyDataList();
+
+        // passing parameters --> (amount [required], transaction_type [required], from_account [required], to_account [required])
+        $requiredParameters = $this->handleRequiredParameters($request_data, ['accountName', 'groupID', 'amount']);
+
+        if(isset($requiredParameters['error_id'])){
+            return $requiredParameters;
+        }
+
+        $accountName = $request_data['accountName'];
+        $groupID = $request_data['groupID'];
+        $amount = $request_data['amount'];
 
         // TODO:: link user default user
         $accountCreation = $this->accountInitProccess($this->user_id, $accountName, $groupID, $amount);
