@@ -12,7 +12,7 @@ class PurchaseController extends PurchaseService
         $request_data = $this->handlePOSTBodyDataList();
 
         // passing parameters --> (amount [required], transaction_type [required], from_account [required], to_account [required])
-        $requiredParameters = $this->handleRequiredParameters($request_data, ['amount', 'current_account','budget']);
+        $requiredParameters = $this->handleRequiredParameters($request_data, ['amount', 'current_account','budget','external_pay_type','external_data_list']);
 
         if(isset($requiredParameters['error_id'])){
             return $requiredParameters;
@@ -24,8 +24,18 @@ class PurchaseController extends PurchaseService
         $current_account = $request_data['current_account'];
         $budget = $request_data['budget'];
         $scheduled_info = ($request_data['scheduled_info'])?$request_data['scheduled_info']:'';
+        $make_initial_payment = (isset($scheduled_info['make_initial_payment']) && $scheduled_info['make_initial_payment'])?$scheduled_info['make_initial_payment']:1;
+        $external_pay_type = ($request_data['external_pay_type'])?$request_data['external_pay_type']:'O';
+        $external_data_list = ($request_data['external_data_list'])?$request_data['external_data_list']:'';
 
-        // TODO:: need to add a condition to implement the first payment and handle the the fisrt payment with the scheudle.
+
+        $transactionResponse = $this->externalPaymentInitProccess($this->user_id, $amount, $external_pay_type, $external_data_list);
+
+        if(isset($transactionResponse['error_id'])){
+            return $transactionResponse;
+        }
+
+        // DONE:: need to add a condition to implement the first payment and handle the the fisrt payment with the schedule.
         // to implement the above need to allow scheduled info in to the transaction
         if(($scheduled_info == '')){
             // Account Balance Validation handle functionality
@@ -42,18 +52,21 @@ class PurchaseController extends PurchaseService
             // ---End Account Balance Validation handle functionality
         }
 
+        $expenseSessionId = $transactionResponse['data']['ExpenseSessionID'];
         // need
         if(($scheduled_info != '')){
-            $purchasePlanResponse = $this->paymentPlanInitProccess('purchase', $purchaseResponse['data']['PurchaseSessionID'], $scheduled_info, $amount);
+            $purchasePlanResponse = $this->paymentPlanInitProccess($this->user_id,'expense', $expenseSessionId, $scheduled_info, $amount);
         
             if(isset($purchasePlanResponse['error_id'])){
                 return $purchasePlanResponse;
             }
+
+            $amount = $purchasePlanResponse['data']['PaidAmount'];
         }
 
-        // TODO:: need to add a condition to implement the first payment and handle the the fisrt payment with the scheudle.
+        // DONE:: need to add a condition to implement the first payment and handle the the fisrt payment with the scheudle.
         // to implement the above need to allow scheduled info in to the transaction
-        if(($scheduled_info == '')){
+        if($make_initial_payment){
 
             // TODO:: link user default user
             $transactionResponse = $accountService->transactionInitProccess($this->user_id, $description, $amount, $transaction_type, $current_account, $budget);
@@ -68,10 +81,8 @@ class PurchaseController extends PurchaseService
                 'success'  => true,
                 'response' => 'Successfully created new expense',
                 'data' => [
-                    // 'fromTransactionChanges' => $fromTransactionChanges,
                     'createdResponse' => isset($transactionResponse)?$transactionResponse:''
                     ]
-                // 'ChatList'  => $chatRequest
             ],
             'code' => 200
         ];
@@ -97,6 +108,7 @@ class PurchaseController extends PurchaseService
         $description = ($request_data['description'])?$request_data['description']:'Payment Made';
         $item_list = ($request_data['item_list'])?$request_data['item_list']:'';
         $scheduled_info = ($request_data['scheduled_info'])?$request_data['scheduled_info']:'';
+        $make_initial_payment = ($scheduled_info['make_initial_payment'])?$scheduled_info['make_initial_payment']:'';
         $current_account = $request_data['current_account'];
         $transaction_type = 'expense';
         $budget = $request_data['budget'];
@@ -104,7 +116,7 @@ class PurchaseController extends PurchaseService
 
         // TODO:: need to add a condition to implement the first payment and handle the the fisrt payment with the scheudle.
         // to implement the above need to allow scheduled info in to the transaction
-        if(($scheduled_info == '')){
+        if($scheduled_info == ''){
             // Account Balance Validation handle functionality
             // TODO:: link user default user
             $accBalAccount = $accountService->getAccountCurrentBalance($this->user_id, $current_account);
@@ -126,16 +138,18 @@ class PurchaseController extends PurchaseService
         }
 
         if(($scheduled_info != '')){
-            $purchasePlanResponse = $this->paymentPlanInitProccess('purchase', $purchaseResponse['data']['PurchaseSessionID'], $scheduled_info, $amount);
-        
+            $purchasePlanResponse = $this->paymentPlanInitProccess($this->user_id,'purchase', $purchaseResponse['data']['PurchaseSessionID'], $scheduled_info, $amount);
+
             if(isset($purchasePlanResponse['error_id'])){
                 return $purchasePlanResponse;
             }
+
+            $amount = $purchasePlanResponse['data']['PaidAmount'];
         }
         
         // TODO:: need to add a condition to implement the first payment and handle the the fisrt payment with the scheudle.
         // to implement the above need to allow scheduled info in to the transaction
-        if(($scheduled_info == '')){
+        if(($make_initial_payment)){
             // TODO:: link user default user
             $transactionResponse = $accountService->transactionInitProccess($this->user_id, $description, $amount, $transaction_type, $current_account, $budget);
 

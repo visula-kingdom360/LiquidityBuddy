@@ -239,6 +239,7 @@ class AccountService extends MainService
                             'TransactionPayableType' => $type,
                             'AccountSessionID' => $accountID,
                             'TransactionDate' => date_format(new DateTime('now'),'Y-m-d'),
+                            'TransactionDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
                             'TransactionCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
                             'TransactionUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
                             'BudgetSessionID' => $budgetID
