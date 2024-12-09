@@ -165,8 +165,10 @@
             if(isset($requiredParameters['error_id'])){
                 return $requiredParameters;
             }
+            $date_from = strtotime($request_data['date_from']);
+            $date_to = strtotime(date('Y-m-d', strtotime($request_data['date_to'] . ' +1 day')));
 
-            $response = $this->purchaseReportProccess($this->user_id, $request_data['date_from'], $request_data['date_to']);
+            $response = $this->purchaseReportProccess($this->user_id, $date_from, $date_to);
 
             if(isset($response['error_id'])){
                  echo json_encode([

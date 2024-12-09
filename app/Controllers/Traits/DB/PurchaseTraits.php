@@ -66,7 +66,7 @@ trait PurchaseTraits{
         
         $this->allKeys = [
             'ItemID'                => 'id',
-            'ItemSessionID'         => 'sessionid',
+            // 'ItemSessionID'         => 'sessionid',
             'PurchaseSessionID'     => 'purchasesessionid',
             'ItemName'              => 'name',
             'ItemDescription'       => 'description',
@@ -100,6 +100,7 @@ trait PurchaseTraits{
             'UserSessionID'             => 'usersessionid',
             'PurchaseDescription'       => 'description',
             'PurchaseDate'              => 'date',
+            'PurchaseDateTime'          => 'datetime',
             'PurchaseTotalAmount'       => 'totalamount',
             'PurchaseTotalDiscount'     => 'totaldiscount',
             'PurchaseFinalAmount'       => 'finalamount',

@@ -22,21 +22,8 @@ $(document).ready(function(){
     });
 
     $(document).on('focusout','#scheduled-payment-period',function(){
-        // if($('#scheduled-payment-period').val() == 1){
-        //     $('#scheduled-payment-period').val(2);
-        // }
         amountBreakDown();
     });
-
-    // Instant Payment Removed
-    // $('#payment-plan-type').on('change',function(){
-    //     if($(this).find('option:selected').val() == 'I'){
-    //         $('#payment-plan-period').addClass('d-none');
-    //         // $('#scheduled-payment-period').val(1);
-    //     }else{
-    //         $('#payment-plan-period').removeClass('d-none');
-    //     }
-    // });
 
     $('#claim-item-cost').on('change', function(){
         if ($(this).is(':checked')) {

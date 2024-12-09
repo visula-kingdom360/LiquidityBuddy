@@ -12,10 +12,10 @@ if (!window.__page_initialized__) {
 
             type = $('#report-container').data('transaction-module-type');
 
-            if(type == 'income' || type == 'expense' || type == 'budget'){
-                sub_url = '/js-request/transaction/income-expense';
-            }else if(type == 'purchase'){
+            if(type == 'purchase'){
                 sub_url = '/js-request/transaction/purchase';
+            }else{
+                sub_url = '/js-request/transaction/income-expense';
             }
 
 
@@ -39,8 +39,12 @@ if (!window.__page_initialized__) {
                     if(data['success'] == false){
                         $('#report-container-data').html("<p class='error'>"+data['data']['error_message']+"</p>");
                     }else{
-                        $('#report-container-summary').html(data['data']['transaction_summary_container']);
-                        $('#report-container-data').html(data['data']['transaction_details_container']);
+                        if(type == 'purchase'){
+                            $('#report-container-data').html(data['data']['purchase_container']);
+                        }else{
+                            $('#report-container-summary').html(data['data']['transaction_summary_container']);
+                            $('#report-container-data').html(data['data']['transaction_details_container']);
+                        }
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
