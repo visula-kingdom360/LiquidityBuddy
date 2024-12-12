@@ -24,6 +24,12 @@
                     <label for="description">Description</label>
                 </div>
             </div>
+            <div class="col-12 mb-3" id="travel-mode-input">
+                <div class="form-floating">
+                    <input type="text" class="form-control" placeholder="Travel Mode" name="travel-mode" id="travel-mode">
+                    <label for="travel-mode">Travel Mode</label>
+                </div>
+            </div>
             <div class="col-6 mb-3" id="from-location-input">
                 <div class="form-floating">
                     <input type="text" class="form-control" placeholder="Enter from Location" name="from-location" id="from-location">
@@ -34,12 +40,6 @@
                 <div class="form-floating">
                     <input type="text" class="form-control" placeholder="Enter to Location" name="to-location" id="to-location">
                     <label for="to-location">Enter to Location</label>
-                </div>
-            </div>
-            <div class="col-6 mb-3" id="travel-mode-input">
-                <div class="form-floating">
-                    <input type="text" class="form-control" placeholder="Travel Mode" name="travel-mode" id="travel-mode">
-                    <label for="travel-mode">Travel Mode</label>
                 </div>
             </div>
             <div class="col-6">

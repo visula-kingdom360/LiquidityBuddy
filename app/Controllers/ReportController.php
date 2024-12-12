@@ -5,6 +5,13 @@
     {
         public function transactionReport($transactonType = null)
         {
+            $is_login = session()->get('is_login');
+
+            if(!isset($is_login) || !$is_login){
+                return redirect()->to(base_url('/login'));
+                die;
+            }
+            
             $data = [];
 
             $data = [
@@ -22,7 +29,7 @@
 
             if($transactonType == 'income' || $transactonType == 'expense'){
                 // $this->limit = 5;
-                $accountDetails = $accountService->activeAccountListAccessModule($this->user_id);
+                $accountDetails = $accountService->activeAccountListAccessModule($this->userAccess());
                 // $this->limit = 0;
 
                 // TODO:: Error Handling Method
@@ -45,21 +52,24 @@
             if($transactonType == 'budget'){
                 // TODO:: link user default user
                 // $this->limit = 5;
-                $budgetDetails = $this->budgetList($this->user_id);
+                $budgetDetails = $this->budgetList($this->userAccess());
                 // $this->limit = 0;
 
                 // TODO:: Error Handling Method
                 if(isset($budgetDetails['error_id'])){
-
-                    // TODO:: Change the route the accout create URL
-                    return $this->errorHandleLogAndPageRedirection($budgetDetails, '/account/list');
-                    // return redirect()->to(base_url('/account/list'))->with('msg', $accountDetails['error_message']);
-                }
-
-                if(!isset($budgetDetails[0])){
-                    $budgets[] = $budgetDetails;
+                    if($budgetDetails['error_id'] != '0004'){
+                        // TODO:: Change the route the accout create URL
+                        return $this->errorHandleLogAndPageRedirection($budgetDetails, '/account/list');
+                    }else{
+                        $data['budget_details_container'] = '';
+                        $budgets = [];
+                    }
                 }else{
-                    $budgets = $budgetDetails;
+                    if(!isset($budgetDetails[0])){
+                        $budgets[] = $budgetDetails;
+                    }else{
+                        $budgets = $budgetDetails;
+                    }
                 }
 
                 $data['budgetList'] = $budgets;
@@ -90,7 +100,7 @@
             $date_to = strtotime(date('Y-m-d', strtotime($request_data['date_to'] . ' +1 day')));
 
             // TODO:: link user default user
-            $response = $this->reportProccess($this->user_id, $account_id, $budget_id, $date_from, $date_to, $transacton_type);
+            $response = $this->reportProccess($this->userAccess(), $account_id, $budget_id, $date_from, $date_to, $transacton_type);
 
             if(isset($response['error_id'])){
                  echo json_encode([
@@ -168,7 +178,7 @@
             $date_from = strtotime($request_data['date_from']);
             $date_to = strtotime(date('Y-m-d', strtotime($request_data['date_to'] . ' +1 day')));
 
-            $response = $this->purchaseReportProccess($this->user_id, $date_from, $date_to);
+            $response = $this->purchaseReportProccess($this->userAccess(), $date_from, $date_to);
 
             if(isset($response['error_id'])){
                  echo json_encode([

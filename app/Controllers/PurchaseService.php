@@ -225,9 +225,9 @@ class PurchaseService extends MainService
             return ['success' => true, 'data' => ['ExpenseSessionID' => $newPayable['id']]];
         }elseif($external_pay_type == 'C') {
             # code...
-        
+            return ['success' => true, 'data' => ['ExpenseSessionID' => random_string('alnum', 16)]];
         }elseif($external_pay_type == 'O') {
-
+            return ['success' => true, 'data' => ['ExpenseSessionID' => random_string('alnum', 16)]];
         }
     }
 

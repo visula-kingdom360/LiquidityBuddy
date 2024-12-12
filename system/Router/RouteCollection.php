@@ -581,7 +581,7 @@ class RouteCollection implements RouteCollectionInterface
      * Example:
      *     // Creates route: admin/users
      *     $route->group('admin', function() {
-     *            $route->resource('users');
+     *            $route->resource('user');
      *     });
      *
      * @param string         $name      The name to group/prefix the routes with.

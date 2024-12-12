@@ -20,6 +20,7 @@ $(document).ready(function(){
 
         external_pay_type = '';
         description = $('#external #description').val();
+        external_data_list = [];
 
         if($('#external input[name="expense-type"]:checked').val() == 'travel'){
             external_pay_type = 'T';
@@ -70,9 +71,10 @@ $(document).ready(function(){
             url: base_url + "/js-request/payment/expense",
             data: data,
             success: function (response) {
-                if(response.success){
-                    window.location.reload();
+                if(response.success == false){
+                    return;
                 }
+                window.location.reload();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr)
