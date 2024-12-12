@@ -74,6 +74,7 @@ $(document).ready(function(){
                 if(response.success == false){
                     return;
                 }
+                console.log(response);
                 window.location.reload();
             },
             error: function (xhr, ajaxOptions, thrownError) {

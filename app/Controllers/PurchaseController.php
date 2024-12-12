@@ -12,7 +12,7 @@ class PurchaseController extends PurchaseService
         $request_data = $this->handlePOSTBodyDataList();
 
         // passing parameters --> (amount [required], transaction_type [required], from_account [required], to_account [required])
-        $requiredParameters = $this->handleRequiredParameters($request_data, ['amount', 'current_account','budget','external_pay_type','external_data_list']);
+        $requiredParameters = $this->handleRequiredParameters($request_data, ['amount', 'current_account','budget','external_pay_type']);
 
         if(isset($requiredParameters['error_id'])){
             return $requiredParameters;
@@ -26,7 +26,7 @@ class PurchaseController extends PurchaseService
         $scheduled_info = ($request_data['scheduled_info'])?$request_data['scheduled_info']:'';
         $make_initial_payment = (isset($scheduled_info['make_initial_payment']) && $scheduled_info['make_initial_payment'])?$scheduled_info['make_initial_payment']:1;
         $external_pay_type = ($request_data['external_pay_type'])?$request_data['external_pay_type']:'O';
-        $external_data_list = ($request_data['external_data_list'])?$request_data['external_data_list']:'';
+        $external_data_list = (isset($request_data['external_data_list']) && $request_data['external_data_list'])?$request_data['external_data_list']:'';
 
         $transactionResponse = $this->externalPaymentInitProccess($this->userAccess(), $amount, $external_pay_type, $external_data_list);
 
