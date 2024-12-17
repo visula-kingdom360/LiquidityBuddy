@@ -188,7 +188,8 @@ $(document).ready(function(){
             scheduled_info = {
                 start_date : ($('#payment-plan-start-date').val()) ? $('#payment-plan-start-date').val() : today,
                 period:period,
-                schedule_type:($('#payment-plan-type').val())?$('#payment-plan-type').val():'I'
+                schedule_type:($('#payment-plan-type').val())?$('#payment-plan-type').val():'I',
+                make_initial_payment:($('#init-payment').is(':checked'))?1:0
             }
 
         }
@@ -213,7 +214,6 @@ $(document).ready(function(){
                 if(response.success == false){
                     return;
                 }
-                
                 window.location.reload();
             },
             error: function (xhr, ajaxOptions, thrownError) {

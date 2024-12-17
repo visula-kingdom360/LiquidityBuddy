@@ -21,6 +21,16 @@ $(document).ready(function(){
         }
     });
 
+    $('#init-payment').on('change', function(){
+        if ($(this).is(':checked')) {
+            var today = new Date().toISOString().slice(0, 10);
+            $('#payment-plan-start-date').val(today);
+            $('#payment-plan-start-date').addClass('disabled').attr('disabled',true);
+        }else{
+            $('#payment-plan-start-date').removeClass('disabled').attr('disabled',false);
+        }
+    });
+
     $(document).on('focusout','#scheduled-payment-period',function(){
         amountBreakDown();
     });

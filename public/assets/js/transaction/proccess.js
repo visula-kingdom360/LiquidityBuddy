@@ -93,7 +93,7 @@ if (!window.__process_initialized__) {
             },
             success: function (response) {
                 response = $.parseJSON(response);
-                if(response.success){
+                if(response.success == true){
                     console.log('No issues');
                     console.log(response.data.fromTransactionChanges);
                     window.location.reload();

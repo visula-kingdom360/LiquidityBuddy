@@ -239,6 +239,7 @@ class AccountService extends MainService
                             'TransactionPayableType' => $type,
                             'AccountSessionID' => $accountID,
                             'TransactionDate' => date_format(new DateTime('now'),'Y-m-d'),
+                            'TransactionDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
                             'TransactionCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
                             'TransactionUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
                             'BudgetSessionID' => $budgetID
@@ -431,6 +432,51 @@ class AccountService extends MainService
         }
 
         $response = $this->updateDBData('budget', ['UserSessionID' => $userID, 'BudgetSessionID' => $budgetID], ['BudgetStatus' => 'D']);
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        return $response;
+    }
+
+    public function accountGroupCreateProccess($userID, $accountGroupName)
+    {
+        $data = [
+            'UserSessionID' => $userID,
+            'AccountGroupName' => $accountGroupName,
+        ];
+
+        $newAccountGroup = $this->insertDatatoDB('accountgroup', $data);
+
+        if(isset($newAccountGroup['error_id']))
+        {
+            return $newAccountGroup;
+        }
+
+        return $newAccountGroup;
+    }
+
+    public function accountGroupUpdateProccess($userID, $accountGroupID, $accountGroupName)
+    {
+        $data = [
+            'AccountGroupName' => $accountGroupName,
+        ];
+
+        $updateAccountGroup = $this->updateDBData('accountgroup', ['UserSessionID' => $userID, 'AccountGroupSessionID' => $accountGroupID], $data);
+
+        if(isset($updateAccountGroup['error_id']))
+        {
+            return $updateAccountGroup;
+        }
+
+        return $updateAccountGroup;
+    }
+
+    public function accountGroupDeleteProccess($userID, $accountGroupID)
+    {
+        $response = $this->updateDBData('accountgroup', ['UserSessionID' => $userID, 'AccountGroupSessionID' => $accountGroupID], ['AccountGroupStatus' => 'D']);
 
         if(isset($response['error_id']))
         {

@@ -29,7 +29,7 @@ trait TransactionTraits{
         
         // TODO: Update with with user information
         $this->foreignKeys = [
-            'UserSessionID' => 'usersessionid'
+            'UserSessionID' => 'user'
         ];
     }
 

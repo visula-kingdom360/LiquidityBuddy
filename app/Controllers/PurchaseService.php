@@ -6,6 +6,9 @@ use DateTime;
 
 class PurchaseService extends MainService
 {
+    public function __construct() {
+        helper('text'); // Load the text helper containing random_string()
+    }
 
     protected function purchaseInitProcess($userID, $description, $shopID, $amount, $itemList)
     {
@@ -14,6 +17,7 @@ class PurchaseService extends MainService
             'PurchaseDescription' => $description,
             'PurchaseDate' => date_format(new DateTime(),'Y-m-d'),
             'UserSessionID' => $userID,
+            'PurchaseDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
             'PurchaseCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
             'PurchaseUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
         ];
@@ -66,6 +70,9 @@ class PurchaseService extends MainService
                     // return $newItem;
                 }
             }
+        }else{
+            $TotalAmt = $amount;
+            $finalAmt = $amount;
         }
 
         $shopInfo = $this->getDatafromDB(
@@ -126,9 +133,10 @@ class PurchaseService extends MainService
         }
     }
 
-    protected function paymentPlanInitProccess($link, $linkID, $scheduled_info, $amount)
+    protected function paymentPlanInitProccess($userID, $link, $linkID, $scheduled_info, $amount)
     {
         $schdule_type = ($scheduled_info['schedule_type']) ? $scheduled_info['schedule_type'] : 'I';
+        $make_initial_payment = ($scheduled_info['make_initial_payment'])?$scheduled_info['make_initial_payment']:'';
         $period = ($scheduled_info['period']) ? $scheduled_info['period'] : 2;
         $rate = 0;
         $start_date = ($scheduled_info['start_date']) ? $scheduled_info['start_date'] : date_format(new DateTime(),'Y-m-d');
@@ -143,7 +151,8 @@ class PurchaseService extends MainService
             'PaymentPlanStartDate' => $start_date,
             'PaymentPlanEndDate' => date('Y-m-d', strtotime($start_date . ' + ' . ($this->getDaysofPeriodType($schdule_type) * $period) . ' days')),
             'PaymentPlanCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
-            'PaymentPlanUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s'))
+            'PaymentPlanUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
+            'UserSessionID' => $userID
         ];
 
         $newPaymentPlan = $this->insertDatatoDB('paymentplan', 
@@ -175,7 +184,7 @@ class PurchaseService extends MainService
                 'PaymentPlanSessionID' => $purchaseInfo['PaymentPlanSessionID'],
                 'PayableDueDate' => $next_date,
                 'PayableDueAmount' => ($amount / $period),
-                'PayablePaidAmount' => 0,
+                'PayablePaidAmount' => $no ? 0 : ($make_initial_payment ? $amount / $period : 0),
                 'PayableCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
                 'PayableUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s'))
             ];
@@ -187,6 +196,43 @@ class PurchaseService extends MainService
             if(isset($newPayable['error_id'])){
                 return $newPayable;
             }
+
+            $purchaseInfo['PaidAmount'] = $amount / $period;
+        }
+
+        return ['success' => true, 'data' => $purchaseInfo];
+    }
+
+    public function externalPaymentInitProccess($userID, $amount, $external_pay_type, $external_data_list)
+    {
+        if($external_pay_type == 'T'){
+            $createPayable = [
+                'UserSessionID' => $userID,
+                'TravelDate' => date_format(new DateTime(),'Y-m-d'),
+                'TravelCost' => $amount,
+                'TravelTransportType' => $external_data_list['travel_mode'],
+                'TravelFromLocation' => $external_data_list['from_location'],
+                'TravelToLocation' => $external_data_list['to_location'],
+                'TravelCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
+                'TravelUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s'))
+            ];
+
+            $newPayable = $this->insertDatatoDB('travel', 
+                        $createPayable
+                        );
+
+            if(isset($newPayable['error_id'])){
+                return $newPayable;
+            }
+
+            return ['success' => true, 'data' => ['ExpenseSessionID' => $newPayable['id']]];
+        }elseif($external_pay_type == 'C') {
+            # code...
+            return ['success' => true, 'data' => ['ExpenseSessionID' => random_string('alpha', 16)]];
+        }elseif($external_pay_type == 'O') {
+            return ['success' => true, 'data' => ['ExpenseSessionID' => random_string('alpha', 16)]];
         }
     }
+
+    
 }

@@ -3,7 +3,7 @@
         'name' => 'codeigniter4/codeigniter4',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '9fd8998457384f61a14c666ca1d94e3e56f86ce7',
+        'reference' => '0cb8c7c1dbfe9690905ccdf3423c8d1bea6aac57',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'codeigniter4/codeigniter4' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '9fd8998457384f61a14c666ca1d94e3e56f86ce7',
+            'reference' => '0cb8c7c1dbfe9690905ccdf3423c8d1bea6aac57',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -99,6 +99,15 @@
             'install_path' => __DIR__ . '/../fakerphp/faker',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'firebase/php-jwt' => array(
+            'pretty_version' => 'v6.10.2',
+            'version' => '6.10.2.0',
+            'reference' => '30c19ed0f3264cb660ea496895cfb6ef7ee3653b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../firebase/php-jwt',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'friendsofphp/php-cs-fixer' => array(
             'pretty_version' => 'v3.2.1',

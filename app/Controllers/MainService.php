@@ -7,7 +7,9 @@ class MainService extends BlueprintService
 {
 
     // TODO: remove the user id
-    protected $user_id = '01b9ff2b173400203b74b4cbec306d6f';
+    protected $user_id = '63974bc49c63510dd159e9d4585aa3f8';
+    protected $init_trigger_url = "/account/group";
+
     protected $limit = 0;
 
     protected $periodic = [
@@ -19,19 +21,51 @@ class MainService extends BlueprintService
             // 'C' => 'Continously'
         ];
 
+    public function userAccess()
+    {
+        $is_login = session()->get('is_login');
+
+        if(!isset($is_login) || !$is_login){
+            return redirect()->to(base_url('/login'));
+            die;
+        }
+
+        return session()->get('user_id');
+    }
+
+
     public function commonHead()
     {
+        $this->user_id = session()->get('user_id');
+
         $accountService = new AccountService();
-        $accountDetails = $accountService->activeAccountListAccessModule($this->user_id);
+        $response = $accountService->activeAccountListAccessModule($this->userAccess());
+        $subMenu = [];
 
-        foreach ($accountDetails as $key => $value) {
-            # code...
+        if(isset($response['error_id']))
+        {
+            if($response['error_id'] == '0004')
+            {
+                $subMenu = [];
+            }else{
+                return redirect()->to(base_url('/account/list'))->with('msg', $response['error_message']);
+            }
+        }else{
 
-            // var_dump($value);
-            // die;
-            $subMenu[$key]['Title'] = $value['AccountName'];
-            $subMenu[$key]['ID'] = $value['AccountSessionID'];
-            $subMenu[$key]['Link'] = '/account/info/'.$value['AccountSessionID'];
+            if(!isset($response[0])){
+                $accountDetails[] = $response;
+            }else{
+                $accountDetails = $response;
+            }
+
+            foreach ($accountDetails as $key => $value) {
+                # code...
+
+                $subMenu[$key]['Title'] = $value['AccountName'];
+                $subMenu[$key]['ID'] = $value['AccountSessionID'];
+                $subMenu[$key]['Link'] = '/account/info/'.$value['AccountSessionID'];
+            }
+
         }
 
         $head = [
@@ -90,13 +124,18 @@ class MainService extends BlueprintService
                             'Title' => 'Purchase Report',
                             'Link' => '/report/transactions/purchase'
                         ],
-                        [
-                            'ID' => 'external-report',
-                            'Title' => 'External Report',
-                            'Link' => '/account/list'
-                        ]
+                        // [
+                        //     'ID' => 'external-report',
+                        //     'Title' => 'External Report',
+                        //     'Link' => '/account/list'
+                        // ]
                     ],
                     'AccountMap' => '/account/info/' // this is not the whole url, it is just a base url for the account info page
+                ],
+                'AccountGroup' => [
+                    'Title' => 'Account Group',
+                    'ID' => 'account-group',
+                    'Link' => '/account/group',
                 ],
             ],
             'Profile' => [
@@ -113,7 +152,7 @@ class MainService extends BlueprintService
                     ],
                     'SignOut' => [
                         'Title' => 'Sign Out',
-                        'Link' => '/account/signout',
+                        'Link' => '/user/logout',
                     ]
                 ]
             ]
@@ -340,7 +379,7 @@ class MainService extends BlueprintService
     }
 
     // Active User Shop List Access of the User ID
-    protected function otherShopList($expectionShop)
+    protected function otherShopList($expectionShop = [])
     {
         $condtionList = [];
         $feildList = ['ShopSessionID','ShopName','ShopDescription'];
