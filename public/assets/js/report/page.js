@@ -54,5 +54,85 @@ if (!window.__page_initialized__) {
                 }
             });
         });
+
+        $('#report-export').on('click', function () {
+            let csvData = [];
+        
+            // Function to extract table data
+            function extractTableCSV(table, tableTitle) {
+                let data = [];
+        
+                //Table Title
+                if (tableTitle) {
+                    data.push(`"${tableTitle}"`); // Add title row
+                    data.push(""); // Empty row for spacing
+                }
+        
+                //Table Headers
+                let headers = [];
+                table.find('thead th').each(function () {
+                    headers.push(`"${$(this).text().trim()}"`); // Wrap headers in quotes
+                });
+                data.push(headers.join(",")); // Add headers row
+        
+                //Table Body Data
+                table.find('tbody tr').each(function () {
+                    let row = [];
+                    $(this).find('td').each(function () {
+                        row.push(`"${$(this).text().trim()}"`); // Extract text and wrap in quotes
+                    });
+                    data.push(row.join(",")); // Add row data
+                });
+        
+                //Table Footer Data (Optional)
+                let footer = [];
+                table.find('tfoot tr').each(function () {
+                    $(this).find('th').each(function () {
+                        footer.push(`"${$(this).text().trim()}"`);
+                    });
+                    data.push(footer.join(","));
+                });
+        
+                data.push(""); // Add empty line after the table
+                return data;
+            }
+        
+            if (type === 'purchase') {
+                var content = document.getElementById('report-container-data').innerHTML;
+
+                // Create a new window for printing
+                var printWindow = window.open('', '', 'height=600,width=800');
+
+                // Add the content to the new window
+                printWindow.document.write('<html><head><title>Purchase Report</title></head><body>');
+                printWindow.document.write(content);
+                printWindow.document.write('</body></html>');
+
+                // Print the content of the new window
+                printWindow.document.close(); // Close the document to apply changes
+                printWindow.print(); // Open the print dialog
+            }else{
+                // Add Summary Table Data
+                let summaryTitle = "Summary Table";
+                let summaryTable = $('#transaction-summary-table'); // Target summary table
+                csvData = csvData.concat(extractTableCSV(summaryTable, summaryTitle));
+            
+                // Add Transaction Table Data
+                let transactionTitle = "Transaction Table";
+                let transactionTable = $('#transaction-table'); // Target transaction table
+                csvData = csvData.concat(extractTableCSV(transactionTable, transactionTitle));
+            
+                // Combine all rows into CSV content
+                let csvContent = csvData.join("\n");
+            
+                // Export CSV File
+                let blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+                let link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "report.csv";
+                link.click();
+            }            
+        });
+        
     });
 }

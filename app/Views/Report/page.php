@@ -3,6 +3,11 @@
 <?= $this->section("header") ?> <?= $StoredText['Header'] ?> <?= $this->endSection() ?>
 <?= $this->section("scripts") ?> 
     <script type="text/javascript" charset="utf8" src="<?= base_url('assets/js/report/page.js') ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <?= $this->endSection() ?>
 <?= $this->section("styles") ?>
 <?= $this->endSection() ?>
@@ -49,8 +54,9 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-end mb-3">
+        <div class="d-flex justify-content-center mb-3">
             <a id="report-generate" class="btn btn-primary">Generate Report</a>
+            <button id="report-export" class="btn btn-secondary ms-2">Export Report</button>
         </div>
         <div class="col-12 mb-5" id="report-container-summary">
         </div>
