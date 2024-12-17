@@ -5,10 +5,13 @@
         <li class="nav-item"><a class="nav-link select-transction-type" href="#Internal" data-transaction-type="internal">Internal Transactions</a></li>
         <li class="nav-item"><a class="nav-link select-transction-type" href="#Income" data-transaction-type="income">Incomes</a></li>
         <li class="nav-item"><a class="nav-link select-transction-type" href="#Purchase" data-transaction-type="purchase">Purchases</a></li>
+        <li class="nav-item"><a class="nav-link select-transction-type" href="#Dued" data-transaction-type="dued">Dued</a></li>
     </ul>
 </div>
 <?= $external_trans_content ?>
 <?= $internal_trans_content ?>
 <?= $purchase_content ?>
+<?= $income_trans_content ?>
+<?= $dued_trans_content ?>
 <p class="error d-none" id="common-error">* Error</p>
 <?= $other_trans_content ?>

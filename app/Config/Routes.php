@@ -32,20 +32,60 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('', 'Home::index');
+$routes->get('/login', 'Home::index');
+$routes->post('/user/login-validation', 'Home::loginValidation');
+$routes->get('/user/signup-page', 'Home::signup');
+$routes->post('/user/signup-validation', 'Home::signupValidation');
+$routes->get('/user/password-reset', 'Home::passwordRest');
+// $routes->get('', 'Home::index');
+
+// Google login
+// $routes->get('google-login', 'GoogleLoginController::login');
+// $routes->get('google-callback', 'GoogleLoginController::callback');
+$routes->get('/user/logout', 'GoogleLoginController::logout');
 
 // Account informations
 $routes->get('/account/list', 'AccountController::accountList');
 $routes->get('/account/add', 'AccountController::addAccount');
 $routes->get('/account/change', 'AccountController::changeAccount');
-$routes->get('/transaction/add', 'TransactionController::createTransaction');
+$routes->get('/budget/add', 'AccountController::addBudget');
 $routes->get('/account/info/(:any)', 'AccountController::accountPage/$1');
-$routes->post('/account/js-request/account/create', 'AccountController::createAccount');
+
+$routes->get('/account/group', 'AccountController::accountGroupPage');
+
+// JS requests: Account
+$routes->post('/js-request/account/create', 'AccountController::createAccount');
+$routes->post('/js-request/account/update', 'AccountController::updateAccount');
+$routes->post('/js-request/account/delete', 'AccountController::deleteAccount');
+
+// JS requests: Budget
+$routes->post('/js-request/budget/create', 'AccountController::createBudget');
+$routes->post('/js-request/budget/update', 'AccountController::updateBudget');
+$routes->post('/js-request/budget/delete', 'AccountController::deleteBudget');
+
+// JS requests: Account group
+$routes->post('/js-request/account-group/create', 'AccountController::createAccountGroup');
+$routes->post('/js-request/account-group/update', 'AccountController::updateAccountGroup');
+$routes->post('/js-request/account-group/delete', 'AccountController::deleteAccountGroup');
 
 // Transaction information
 $routes->get('/transaction/list', 'AccountController::transactionList');
+$routes->get('/transaction/add', 'TransactionController::createTransaction');
+
+// JS requests: Transaction
 $routes->post('/js-request/account/transferred', 'AccountController::internalTransaction');
 $routes->post('/js-request/payment/expense', 'PurchaseController::expenseTransaction');
+$routes->post('/js-request/payment/income', 'PurchaseController::incomeTransaction');
 $routes->post('/js-request/payment/purchase', 'PurchaseController::purchaseTransaction');
+
+// Reports
+$routes->get('/report/transactions/(:any)', 'ReportController::transactionReport/$1');
+
+// JS requests: Report
+$routes->post('/js-request/transaction/income-expense', 'ReportController::reportIncomeExpense');
+$routes->post('/js-request/transaction/purchase', 'ReportController::reportPurchaseReport');
+
+
 
 /*
  * --------------------------------------------------------------------

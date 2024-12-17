@@ -21,22 +21,19 @@ $(document).ready(function(){
         }
     });
 
-    $(document).on('focusout','#scheduled-payment-period',function(){
-        // if($('#scheduled-payment-period').val() == 1){
-        //     $('#scheduled-payment-period').val(2);
-        // }
-        amountBreakDown();
+    $('#init-payment').on('change', function(){
+        if ($(this).is(':checked')) {
+            var today = new Date().toISOString().slice(0, 10);
+            $('#payment-plan-start-date').val(today);
+            $('#payment-plan-start-date').addClass('disabled').attr('disabled',true);
+        }else{
+            $('#payment-plan-start-date').removeClass('disabled').attr('disabled',false);
+        }
     });
 
-    // Instant Payment Removed
-    // $('#payment-plan-type').on('change',function(){
-    //     if($(this).find('option:selected').val() == 'I'){
-    //         $('#payment-plan-period').addClass('d-none');
-    //         // $('#scheduled-payment-period').val(1);
-    //     }else{
-    //         $('#payment-plan-period').removeClass('d-none');
-    //     }
-    // });
+    $(document).on('focusout','#scheduled-payment-period',function(){
+        amountBreakDown();
+    });
 
     $('#claim-item-cost').on('change', function(){
         if ($(this).is(':checked')) {

@@ -33,7 +33,13 @@
     <div class="col-3">
         <div class="form-floating mb-3 mt-3">
             <input type="date" class="form-control" id="payment-plan-start-date" placeholder="Starting Date">
-            <label for="email">Starting Date</label>
+            <label for="payment-plan-start-date">Starting Date</label>
+        </div>
+    </div>
+    <div class="col-12 mb-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="init-payment" name="init-payment" value="make-init-payment">
+            <label class="form-check-label">Make the initate payment</label>
         </div>
     </div>
     <div class="col-12 mb-3">

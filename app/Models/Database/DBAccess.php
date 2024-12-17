@@ -50,10 +50,13 @@
             if(isset($data['limit']) && $data['limit'] > 0){
                 $query = $blueprint->limit($data['limit']);
             }
+            // if(in_array('item', $data['tables'])){
+            //     return $data;
+            //     die;
+            // }
 
             $return = $query->get()->getResult();
-
-            // var_dump($query);
+            
             if(empty($return)){
                 return $error = [
                     'error_id' => '0004',

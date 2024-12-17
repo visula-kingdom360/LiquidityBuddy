@@ -66,7 +66,7 @@ trait PurchaseTraits{
         
         $this->allKeys = [
             'ItemID'                => 'id',
-            'ItemSessionID'         => 'sessionid',
+            // 'ItemSessionID'         => 'sessionid',
             'PurchaseSessionID'     => 'purchasesessionid',
             'ItemName'              => 'name',
             'ItemDescription'       => 'description',
@@ -100,6 +100,7 @@ trait PurchaseTraits{
             'UserSessionID'             => 'usersessionid',
             'PurchaseDescription'       => 'description',
             'PurchaseDate'              => 'date',
+            'PurchaseDateTime'          => 'datetime',
             'PurchaseTotalAmount'       => 'totalamount',
             'PurchaseTotalDiscount'     => 'totaldiscount',
             'PurchaseFinalAmount'       => 'finalamount',
@@ -152,18 +153,19 @@ trait PurchaseTraits{
         
         $this->allKeys = [
             'TravelID'              => 'id',
-            // 'TravelSessionID'         => 'sessionid',
             'TravelTransportType'   => 'transporttype',
             'TravelCost'            => 'cost',
             'TravelDate'            => 'date',
             'TravelFromLocation'    => 'fromlocation',
             'TravelToLocation'      => 'tolocation',
             'TravelCreatedDateTime' => 'createddatetime',
-            'TravelUpdatedDateTime' => 'updateddatetime'
+            'TravelUpdatedDateTime' => 'updateddatetime',
+            'UserSessionID'         => 'usersessionid'
         ];
         
         // TODO: Update with with user information
         $this->foreignKeys = [
+            'UserSessionID' => 'user'
         ];
     }
 

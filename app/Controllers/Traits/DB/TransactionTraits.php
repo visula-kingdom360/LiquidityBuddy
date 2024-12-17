@@ -29,7 +29,7 @@ trait TransactionTraits{
         
         // TODO: Update with with user information
         $this->foreignKeys = [
-            'UserSessionID' => 'usersessionid'
+            'UserSessionID' => 'user'
         ];
     }
 
@@ -79,6 +79,7 @@ trait TransactionTraits{
             'BudgetSessionID'               => 'budgetsessionid',
             'TransactionDescription'        => 'description',
             'TransactionDate'               => 'date',
+            'TransactionDateTime'           => 'datetime',
             'TransactionAmount'             => 'amount',
             'TransactionPayableType'        => 'paymenttype',
             'TransactionCreatedDateTime'    => 'createddatetime',

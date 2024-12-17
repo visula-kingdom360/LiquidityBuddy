@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Database\DBAccess;
+use Firebase\JWT\JWT;
 
 class BlueprintService extends BaseController
 {
@@ -110,8 +111,7 @@ class BlueprintService extends BaseController
                 if($localKey == 'sqldecrypt'){
                     $sqlCondtions .= $conditionValue;
                 }else if(isset($allFeilds[$localKey])){
-                $sqlCondtions .= "$allFeilds[$localKey] = '".$conditionValue."' AND ";
-                // $conditionMap[$allFeilds[$localKey]] = $conditionValue;
+                    $sqlCondtions .= "$allFeilds[$localKey] = '".$conditionValue."' AND ";
                 }else{
                     // TODO:: error when data was not mapped
                     return $error = [
@@ -332,6 +332,34 @@ class BlueprintService extends BaseController
         
         echo json_encode($response['data']);
         exit;
+    }
+
+    private function getSecretKey(){
+        return bin2hex('343sdsdfsdsdsRSDsGVfsdXC56ssd343DDGHGNFG6sdfs37HVB4333sdffe34dFd');
+    }
+
+    public function generateJWT($data)
+    {
+        $secretKey = $this->getSecretKey();
+        $payload = [
+            'iss' => base_url(),
+            'aud' => base_url(),
+            'iat' => time(),
+            'nbf' => time(),
+            'exp' => time() + 60, 
+            'data' => $data
+        ];
+
+        $jwt = JWT::encode($payload, $secretKey, 'HS256');
+        return $jwt;
+    }
+
+    public function decodeJWT($jwt){
+        $secretKey = $this->getSecretKey();
+        
+        $decoded = JWT::decode($jwt, new \Firebase\JWT\Key($secretKey, 'HS256'));
+
+        return $decoded;
     }
 
 }

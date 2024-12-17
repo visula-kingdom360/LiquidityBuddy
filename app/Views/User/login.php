@@ -8,46 +8,56 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <link rel="stylesheet" href="<?= base_url('assets/css/default.css') ?>">
-        <!-- <script type="text/javascript" charset="utf8" src="<?= base_url('assets/js/default.js') ?>"></script> -->
+        <link rel="stylesheet" href="<?= base_url('assets/css/login.css') ?>">
         <script type="text/javascript" charset="utf8" src="<?= base_url('assets/js/login.js') ?>"></script>
         <title><?= $StoredText['ScreenTitle'] ?></title>
     </head>
     <body>
-        <div class="container">
-            <div class="d-flex justify-content-center">
-                <div class="row">
-                    <?php
-                        if(session()->getFlashdata('status'))
-                        {
-                    ?>
-                        <div class="alert alert-danger alert-dismissible fade show">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            <strong class="me-auto"><?= $StoredText['ErrorStatus'] ?></strong>
-                            <p><?= session()->getFlashdata('status') ?></p>
-                        </div>
-                    <?php
-                        }
-                    ?>
-                    <div class="m-3">
-                        <h1 class="head-type-1"><?= $StoredText['Header'] ?></h1>
+        <div class="container mx-md-auto my-150">
+            <div class="row d-flex justify-content-center">
+                <?php
+                    if(session()->getFlashdata('status'))
+                    {
+                ?>
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong class="me-auto"><?= $StoredText['ErrorStatus'] ?></strong>
+                        <p><?= session()->getFlashdata('status') ?></p>
                     </div>
-                    <form action="<?= base_url('login-validation') ?>" method="post">
-                        <div class="mb-3">
-                            <div class="text-type-1"><?= $StoredText['UsernameLabel'] ?></div>
-                            <div>
-                                <input type="text" id="username" name="username" class='form-control' placeholder="<?= $StoredText['UsernamePlaceholder'] ?>" required>
+                <?php
+                    }
+                ?>
+                <div class="col-12 login-width mx-md-5">
+                    <div class="head-type-3 text-center mb-4">
+                        <?= $StoredText['Header'] ?>
+                    </div>
+                    <form action="<?= base_url('/user/login-validation') ?>" method="post">
+                        <div class="mb-4">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="email" placeholder="<?= $StoredText['EmailPlaceholder'] ?>" name="email" required>
+                                <label class="text-type-1" for="email"><?= $StoredText['EmailLabel'] ?></label>
                             </div>
-                            <div class="text-type-1"><?= $StoredText['PasswordLabel'] ?></div>
-                            <div>
-                                <input type="password" id="password" name="password" class='form-control' placeholder="<?= $StoredText['PasswordPlaceholder'] ?>" required>
+
+                            <div class="form-floating mb-2">
+                                <input type="password" class="form-control" id="password" placeholder="<?= $StoredText['PasswordPlaceholder'] ?>" name="password" minlength="8" required>
+                                <label class="text-type-1" for="password"><?= $StoredText['PasswordLabel'] ?></label>
                             </div>
                         </div>
-                        <div>
-                            <button class="btn btn-success text-type-2 px-5" id="login-request" type="submit"><?= $StoredText['LoginButton'] ?></button>
-                            <button class="btn btn-danger text-type-2 px-5" type="reset"><?= $StoredText['RestButton'] ?></button>
+                        <!-- <div class="text-center mb-4">
+                            OR
                         </div>
                         <div>
-                            <p><?= $StoredText['SignupPara'] ?> <a href="<?= $StoredText['SignupLink'] ?>"><?= $StoredText['SignupAnchor'] ?></a></p>
+                            <a class="btn info w-100 mb-3 py-3 text-type-1" href="<?php echo base_url('google-login'); ?>">
+                                <img class="image-25" src="<?= base_url($StoredText['GoogleIcon']) ?>" alt="">
+                                Sign in with Google
+                            </a>
+                        </div> -->
+                        <div>
+                            <button class="btn btn-primary py-3 w-100 mb-3 text-type-1" id="login-request" type="submit"><?= $StoredText['LoginButton'] ?></button>
+                        </div>
+                        <div>
+                            <p class="text-center text-type-1"><?= $StoredText['PassworResetPara'] ?> <a href="<?= $StoredText['PassworResetLink'] ?>"><?= $StoredText['PassworResetAnchor'] ?></a></p>
+                            <p class="text-center text-type-1"><?= $StoredText['SignupPara'] ?> <a href="<?= base_url($StoredText['SignupLink']) ?>"><?= $StoredText['SignupAnchor'] ?></a></p>
                         </div>
                     </form>
                 </div>

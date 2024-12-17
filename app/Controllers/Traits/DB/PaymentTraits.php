@@ -30,8 +30,11 @@ trait PaymentTraits{
             'PaymentPlanRate'               => 'rate',
             'PaymentPlanStartDate'          => 'startdate',
             'PaymentPlanEndDate'            => 'enddate',
+            'PaymentPlanStartDateTime'      => 'startdatetime',
+            'PaymentPlanEndDateTime'        => 'enddatetime',
             'PaymentPlanCreatedDateTime'    => 'createddatetime',
-            'PaymentPlanUpdatedDateTime'    => 'updateddatetime'
+            'PaymentPlanUpdatedDateTime'    => 'updateddatetime',
+            'PaymentPlanStatus'             => 'status'
         ];
         
         $this->foreignKeys = [
@@ -53,6 +56,7 @@ trait PaymentTraits{
             'PayableSessionID'          => 'sessionid',
             'PaymentPlanSessionID'      => 'paymentplansessionid',
             'PayableDueDate'            => 'duedate',
+            'PayableDueDateTime'        => 'duedatetime',
             'PayablePaidDate'           => 'paiddate',
             'PayableDueAmount'          => 'dueamount',
             'PayablePaidAmount'         => 'paidamount',

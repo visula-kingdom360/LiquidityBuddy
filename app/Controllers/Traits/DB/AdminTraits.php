@@ -19,16 +19,46 @@ trait AdminTraits{
         ];
         
         $this->allKeys = [
-            'UserID'        => 'id',
-            'UserSessionID' => 'sessionid',
-            'UserContactNo' => 'contactno',
-            'Username'      => 'username',
-            'Password'      => 'password',
-            'UserEmail'     => 'email',
-            'UserStatus'    => 'status'
+            'UserID'         => 'id',
+            'UserSessionID'  => 'sessionid',
+            'UserFirstName'  => 'first_name',
+            'UserLastName'   => 'last_name',
+            'UserContactNo'  => 'contactno',
+            'Username'       => 'username',
+            'UserPassword'       => 'password',
+            'UserEmail'      => 'email',
+            'UserStatus'     => 'status',
+            'UserCreatedAt'  => 'created_at',
+            'UserUpdatedAt'  => 'updated_at',
+            'ProfilePic'     => 'profile_pic',
+            'GoogleID'       => 'google_id'
         ];
         
         $this->foreignKeys = [
+        ];
+    }
+
+    # User History Table Structure assigned
+    public function user_historyStructure()
+    {
+        $this->table = 'user_history';
+        
+        $this->primaryKeys = [
+            'UserHistoryID' => 'id'
+        ];
+        
+        $this->allKeys = [
+            'UserHistoryID'                 => 'id',
+            'UserHistorySessionID'          => 'loginsessionid',
+            'UserSessionID'                 => 'userid',
+            'UserHistoryStartedDateTime'    => 'starteddatetime',
+            'UserHistoryEndedDateTime'      => 'endeddatetime',
+            'UserHistoryStatus'             => 'status',
+            'UserHistoryJWTToken'           => 'jwttoken'
+        ];
+        
+        $this->foreignKeys = [
+            'UserSessionID' => 'user'
         ];
     }
 

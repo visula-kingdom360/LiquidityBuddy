@@ -136,13 +136,6 @@ $(document).ready(function(){
             return;
         }
 
-        // if($('#schedule-payment-checkbox').is(':checked') && $('#scheduled-payment-period').val()){
-        //     // if($('#payment-plan-type').val() != 'I'){
-        //     //     period = $('#scheduled-payment-period').val();
-        //     // }
-
-        // }
-
         var name = '';
         var units = 0;
         var unit_price = 0;
@@ -195,7 +188,8 @@ $(document).ready(function(){
             scheduled_info = {
                 start_date : ($('#payment-plan-start-date').val()) ? $('#payment-plan-start-date').val() : today,
                 period:period,
-                schedule_type:($('#payment-plan-type').val())?$('#payment-plan-type').val():'I'
+                schedule_type:($('#payment-plan-type').val())?$('#payment-plan-type').val():'I',
+                make_initial_payment:($('#init-payment').is(':checked'))?1:0
             }
 
         }
@@ -216,7 +210,11 @@ $(document).ready(function(){
             url: base_url + "/js-request/payment/purchase",
             data: data,
             success: function (response) {
-
+                console.log(response);
+                if(response.success == false){
+                    return;
+                }
+                window.location.reload();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr)

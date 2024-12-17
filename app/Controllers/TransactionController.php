@@ -8,6 +8,13 @@ class TransactionController extends AccountService
     // Account Page initiation function
     public function createTransaction()
     {
+        $is_login = session()->get('is_login');
+
+        if(!isset($is_login) || !$is_login){
+            return redirect()->to(base_url('/login'));
+            die;
+        }
+        
         $data = [];
 
         $data = [
@@ -22,7 +29,7 @@ class TransactionController extends AccountService
         $data['CurrentID'] = 'transaction-page';
 
         // $this->limit = 5;
-        $accountDetails = $this->activeAccountListAccessModule($this->user_id);
+        $accountDetails = $this->activeAccountListAccessModule($this->userAccess());
         // $this->limit = 0;
 
         // TODO:: Error Handling Method
@@ -39,28 +46,10 @@ class TransactionController extends AccountService
             $accounts = $accountDetails;
         }
 
-        // // TODO:: link user default user
-        // $this->limit = 20;
-        // $transactionDetails = $this->activeTransactionListAccess($this->user_id);
-        // $this->limit = 0;
-
-        // // TODO:: Error Handling Method
-        // if(isset($transactionDetails['error_id'])){
-
-        //     // TODO:: Change the route the accout create URL
-        //     return $this->errorHandleLogAndPageRedirection($transactionDetails, '/account/list');
-        //     // return redirect()->to(base_url('/account/list'))->with('msg', $accountDetails['error_message']);
-        // }
-
-        // if(!isset($transactionDetails[0])){
-        //     $transactions[] = $transactionDetails;
-        // }else{
-        //     $transactions = $transactionDetails;
-        // }
 
         // TODO:: link user default user
         // $this->limit = 5;
-        $budgetDetails = $this->budgetList($this->user_id);
+        $budgetDetails = $this->budgetList($this->userAccess());
         // $this->limit = 0;
 
         // TODO:: Error Handling Method
@@ -79,7 +68,8 @@ class TransactionController extends AccountService
 
         // TODO:: link user default user
         $this->limit = 5;
-        $shopDetails = $this->userShopList($this->user_id);
+        $shopDetails = $this->userShopList($this->userAccess());
+        $shops = [];
         // $this->limit = 0;
 
         // TODO:: Error Handling Method
@@ -94,36 +84,36 @@ class TransactionController extends AccountService
             }else{
                 $shops = $shopDetails;
             }
-        }
 
-        if(count($shops) < $this->limit){
-            $shopIds = array_column($shops, 'ShopSessionID');
-            // TODO:: link user default user
-            $this->limit = ($this->limit - count($shops));
-            // var_dump($shopIds);
-            // die;
-            $otherShopDetails = $this->otherShopList($shopIds);
-            
-            $this->limit = 0;
+            if(count($shops) < $this->limit){
+                $shopIds = array_column($shops, 'ShopSessionID');
+                // TODO:: link user default user
+                $this->limit = ($this->limit - count($shops));
+                // var_dump($shopIds);
+                // die;
+                $otherShopDetails = $this->otherShopList($shopIds);
+                
+                $this->limit = 0;
 
-            // TODO:: Error Handling Method
-            if(!isset($otherShopDetails['error_id'])){
+                // TODO:: Error Handling Method
+                if(!isset($otherShopDetails['error_id'])){
 
-                // TODO:: Change the route the accout create URL
-                // return $this->errorHandleLogAndPageRedirection($shopDetails, '/account/list');
-                // return redirect()->to(base_url('/account/list'))->with('msg', $accountDetails['error_message']);
+                    // TODO:: Change the route the accout create URL
+                    // return $this->errorHandleLogAndPageRedirection($shopDetails, '/account/list');
+                    // return redirect()->to(base_url('/account/list'))->with('msg', $accountDetails['error_message']);
 
-                if(!isset($otherShopDetails[0])){
-                    $shops[] = $otherShopDetails;
-                }else{
-                    $shops = array_merge($shops, $otherShopDetails);
+                    if(!isset($otherShopDetails[0])){
+                        $shops[] = $otherShopDetails;
+                    }else{
+                        $shops = array_merge($shops, $otherShopDetails);
+                    }
                 }
             }
         }
 
         // TODO:: link user default user
         $this->limit = 10;
-        $stackholderDetails = $this->stackholderList($this->user_id);
+        $stackholderDetails = $this->stackholderList($this->userAccess());
         $this->limit = 0;
 
         // TODO:: Error Handling Method
@@ -152,16 +142,23 @@ class TransactionController extends AccountService
             'count' => count($accounts),
             'page_count' => ceil(count($accounts) / 5),
             'accounts' => $accounts,
-            'allow_all_accounts' => true
+            'allow_all_accounts' => true,
+            'edit_mode' => true
         ];
 
         $data['paymentPlan'] = $this->periodic;
 
         $data['external_trans_content'] = view('Transaction/external_trans_module', $data);
-        $data['internal_trans_content'] = view('Transaction/internal_trans_module', $data);
+        if(isset($accounts[1])){
+            $data['internal_trans_content'] = view('Transaction/internal_trans_module', $data);
+        }else{
+            $data['internal_trans_content'] = "<div clasa='transaction-type-list' id='internal'><h3> Need more than one account to make internal transaction </h3></div>";
+        }
+        $data['income_trans_content'] = view('Transaction/income_trans_module', $data);
+        $data['dued_trans_content'] = view('Transaction/dued_trans_module', $data);
         $data['other_trans_content'] = view('Transaction/other_trans_module', $data);
         $data['purchase_content'] = view('Transaction/purchase_module', $data);
-        $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
+        // $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
         $data['transaction_proccess_container'] = view('Transaction/transaction_proccess_module', $data);
         return view('Transaction/create', $data);
     }

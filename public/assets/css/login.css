@@ -1,0 +1,17 @@
+.login-width {
+    width: 50%;
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+/* Blue */
+.info {
+  border-color: #2196F3;
+  color: dodgerblue;
+}
+
+.my-150 {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
