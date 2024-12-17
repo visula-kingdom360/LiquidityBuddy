@@ -2,7 +2,7 @@
 <div class="mb-3 w-100 bg-shadow p-3">
     <h3 class="text-center font-color-3">Transaction Details</h3>
 </div>
-<table class="table table-striped mb-3">
+<table class="table table-striped mb-3" id="transaction-table">
     <thead>
     <tr>
         <th class="text-center">Description</th>
