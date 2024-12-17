@@ -137,7 +137,8 @@ class PurchaseService extends MainService
     {
         $schdule_type = ($scheduled_info['schedule_type']) ? $scheduled_info['schedule_type'] : 'I';
         $make_initial_payment = ($scheduled_info['make_initial_payment'])?$scheduled_info['make_initial_payment']:'';
-        $period = ($scheduled_info['period']) ? $scheduled_info['period'] : 2;
+        $period = isset($scheduled_info['period']) ? $scheduled_info['period'] : 0;
+
         $rate = 0;
         $start_date = ($scheduled_info['start_date']) ? $scheduled_info['start_date'] : date_format(new DateTime(),'Y-m-d');
         
@@ -149,7 +150,9 @@ class PurchaseService extends MainService
             'PaymentPlanPeriod' => $period,
             'PaymentPlanRate' => $rate,
             'PaymentPlanStartDate' => $start_date,
+            'PaymentPlanStartDateTime' => strtotime($start_date),
             'PaymentPlanEndDate' => date('Y-m-d', strtotime($start_date . ' + ' . ($this->getDaysofPeriodType($schdule_type) * $period) . ' days')),
+            'PaymentPlanEndDateTime' => strtotime(date('Y-m-d', strtotime($start_date . ' + ' . ($this->getDaysofPeriodType($schdule_type) * $period) . ' days'))),
             'PaymentPlanCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
             'PaymentPlanUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
             'UserSessionID' => $userID
@@ -174,31 +177,39 @@ class PurchaseService extends MainService
         }
 
         $next_date = $start_date;
-        for ($no=0; $no < $period; $no++) { 
-            # code...
-            if($no != 0){
-                $next_date = date('Y-m-d', strtotime($next_date . ' + ' . ($this->getDaysofPeriodType($schdule_type) * $no) . ' days'));
+
+        if($period > 0){
+            for ($no=0; $no < $period; $no++) {
+                # code...
+                if($no != 0){
+                    $next_date = date('Y-m-d', strtotime($next_date . ' + ' . ($this->getDaysofPeriodType($schdule_type) * $no) . ' days'));
+                }
+            
+                $createPayable = [
+                    'PaymentPlanSessionID' => $purchaseInfo['PaymentPlanSessionID'],
+                    'PayableDueDate' => $next_date,
+                    'PayableDueAmount' => ($amount / $period),
+                    'PayablePaidAmount' => $no ? 0 : ($make_initial_payment ? $amount / $period : 0),
+                    'PayablePaidDate' => ($no == 0  && $make_initial_payment) ? $next_date : 0,
+                    'PayableCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
+                    'PayableUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s'))
+                ];
+
+                $newPayable = $this->insertDatatoDB('payable', 
+                            $createPayable
+                            );
+
+                if(isset($newPayable['error_id'])){
+                    return $newPayable;
+                }
             }
-        
-            $createPayable = [
-                'PaymentPlanSessionID' => $purchaseInfo['PaymentPlanSessionID'],
-                'PayableDueDate' => $next_date,
-                'PayableDueAmount' => ($amount / $period),
-                'PayablePaidAmount' => $no ? 0 : ($make_initial_payment ? $amount / $period : 0),
-                'PayableCreatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s')),
-                'PayableUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s'))
-            ];
-
-            $newPayable = $this->insertDatatoDB('payable', 
-                        $createPayable
-                        );
-
-            if(isset($newPayable['error_id'])){
-                return $newPayable;
-            }
-
             $purchaseInfo['PaidAmount'] = $amount / $period;
+        }else{
+            $purchaseInfo['PaidAmount'] = $amount;
         }
+
+        return ($purchaseInfo);
+
 
         return ['success' => true, 'data' => $purchaseInfo];
     }
@@ -228,9 +239,9 @@ class PurchaseService extends MainService
             return ['success' => true, 'data' => ['ExpenseSessionID' => $newPayable['id']]];
         }elseif($external_pay_type == 'C') {
             # code...
-            return ['success' => true, 'data' => ['ExpenseSessionID' => random_string('alpha', 16)]];
+            return ['success' => true, 'data' => ['ExpenseSessionID' => random_string('alpha', 32)]];
         }elseif($external_pay_type == 'O') {
-            return ['success' => true, 'data' => ['ExpenseSessionID' => random_string('alpha', 16)]];
+            return ['success' => true, 'data' => ['ExpenseSessionID' => random_string('alpha', 32)]];
         }
     }
 

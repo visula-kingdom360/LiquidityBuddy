@@ -184,6 +184,18 @@ class AccountController extends AccountService
         }else{
             $data['internal_trans_content'] = "<div clasa='transaction-type-list' id='internal'><h3> Need more than one account to make internal transaction </h3></div>";
         }
+
+        $duedSettlements = $this->duedSettlementList($this->userAccess());
+
+        // TODO:: Error Handling Method
+        if(isset($duedSettlements['error_id'])){
+            $duedSettlements = [];
+        }
+
+        // var_dump($duedSettlements);
+        // die;
+        $data['income_trans_content'] = view('Transaction/income_trans_module', $data);
+        $data['dued_trans_content'] = view('Transaction/dued_trans_module', $data);
         $data['other_trans_content'] = view('Transaction/other_trans_module', $data);
         $data['purchase_content'] = view('Transaction/purchase_module', $data);
         $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);

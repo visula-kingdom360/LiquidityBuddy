@@ -75,6 +75,7 @@ $routes->get('/transaction/add', 'TransactionController::createTransaction');
 // JS requests: Transaction
 $routes->post('/js-request/account/transferred', 'AccountController::internalTransaction');
 $routes->post('/js-request/payment/expense', 'PurchaseController::expenseTransaction');
+$routes->post('/js-request/payment/income', 'PurchaseController::incomeTransaction');
 $routes->post('/js-request/payment/purchase', 'PurchaseController::purchaseTransaction');
 
 // Reports

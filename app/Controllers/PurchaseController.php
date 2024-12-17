@@ -36,7 +36,7 @@ class PurchaseController extends PurchaseService
 
         $expenseSessionId = ($transactionResponse['data']['ExpenseSessionID'])?$transactionResponse['data']['ExpenseSessionID']:random_int(1, 1000);
 
-        // DONE:: need to add a condition to implement the first payment and handle the the fisrt payment with the schedule.
+        // TODO:: need to add a condition to implement the first payment and handle the the fisrt payment with the schedule.
         // to implement the above need to allow scheduled info in to the transaction
         if(($scheduled_info == '')){
             // Account Balance Validation handle functionality
@@ -165,6 +165,76 @@ class PurchaseController extends PurchaseService
                 'data' => [
                     'createdResponse' => isset($transactionResponse) ? $transactionResponse : $purchasePlanResponse
                 ]
+            ],
+            'code' => 200
+        ];
+
+        echo json_encode($response['data']);
+        exit;
+    }
+
+    public function incomeTransaction(){
+        $request_data = $this->handlePOSTBodyDataList();
+        $accountService = new AccountService();
+
+        $requiredParameters = $this->handleRequiredParameters($request_data, ['type','amount','account_id','budget_id']);
+
+        if(isset($requiredParameters['error_id'])){
+            return $requiredParameters;
+        }
+
+        // required feilds
+        $type = $request_data['type'];
+        $amount = $request_data['amount'];
+        $accountID = $request_data['account_id'];
+        $budgetID = $request_data['budget_id'];
+
+        // optional feilds
+        $description = ($request_data['description'])?$request_data['description']:'Payment Received';
+        $collectionPlan = isset($request_data['collection_plan'])?$request_data['collection_plan']:'';
+
+        $accountResponse = $accountService->getAccountSessionID($accountID);
+
+        if(isset($accountResponse['error_id'])){
+            return $accountResponse;
+        }
+
+        if($type == 'till' || $type == 'monthly'){
+            $purchasePlanResponse = $this->paymentPlanInitProccess($this->userAccess(),'income', random_string('alpha', 32), $collectionPlan, $amount);
+
+            if(isset($purchasePlanResponse['error_id'])){
+                return $purchasePlanResponse;
+            }
+
+            $trans_amount = $purchasePlanResponse['data']['PaidAmount'];
+        }else{
+            $trans_amount = $amount;
+        }
+
+        $type = /*($transaction_type == 'income') ? 'expense' :*/ 'income';
+
+        if($trans_amount != 0){
+            // DONE:: link user default user
+            $transactionCreation = $accountService->transactionInitProccess($this->userAccess(), $description, $amount, $type, $accountID, $budgetID);
+            // transactionInitProccess($userID, $description, $amount, $type, $accountID, $budgetID)
+
+            // TODO:: Error Handling Method
+            if(isset($transactionCreation['error_id'])){
+                return $this->errorHandleforAPIResponses($transactionCreation);
+            }
+
+            $response = $transactionCreation;
+        }else{
+            $response = $purchasePlanResponse;
+        }
+
+        $response = [
+            'data' => [
+                'success'  => true,
+                'response' => 'Successfully created transaction',
+                'data' => [
+                    'createdResponse' => $response
+                    ]
             ],
             'code' => 200
         ];

@@ -23,7 +23,7 @@ if (!window.__process_initialized__) {
         }
         transid = $(this).data('transaction-type');
 
-        if(transid == 'internal'){
+        if(transid == 'internal' || transid == 'income'){
             $('#schedule-payment-section').addClass('d-none');
             $('#schedule-payment').addClass('d-none');
         }else{
