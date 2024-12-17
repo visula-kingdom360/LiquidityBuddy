@@ -33,7 +33,7 @@
     <div class="col-3">
         <div class="form-floating mb-3 mt-3">
             <input type="date" class="form-control" id="payment-plan-start-date" placeholder="Starting Date">
-            <label for="email">Starting Date</label>
+            <label for="payment-plan-start-date">Starting Date</label>
         </div>
     </div>
     <div class="col-12 mb-3">

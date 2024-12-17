@@ -8,7 +8,7 @@ class AccountService extends MainService
     public function getAccountSessionID($ID)
     {
 
-        $condtionList = ['AccountID' => $ID, 'AccountStatus' => 'A'];
+        $condtionList = ['AccountSessionID' => $ID, 'AccountStatus' => 'A'];
         $feildList = ['AccountSessionID'];
 
         // TODO:: User Session ID need to be handled from user login
@@ -481,6 +481,46 @@ class AccountService extends MainService
         if(isset($response['error_id']))
         {
             return $response;
+        }
+
+        return $response;
+    }
+
+
+    public function duedSettlementList($userID)
+    {
+        $condtionList = ['UserSessionID' => $userID, 'PaymentPlanStatus' => 'A'];
+
+        $response = $this->getDatafromDB(
+                        ['paymentplan'], 
+                        $condtionList
+                    );
+
+        if(isset($response['error_id']))
+        {
+            return $response;
+        }
+
+        $paymentPlan = $response;
+
+        foreach ($paymentPlan as $plan_key => $plan_list) {
+            # code...
+            $condtionList = ['PaymentPlanSessionID' => $plan_list['PaymentPlanSessionID']];
+
+            if($plan_list['PaymentPlan'] == 'C'){
+
+            }else{
+                $condtionList = ['sqldecrypt' => ''];
+                $response = $this->getDatafromDB(
+                            ['payable'], 
+                            $condtionList
+                        );
+
+                if(isset($response['error_id']))
+                {
+                    return $response;
+                }
+            }
         }
 
         return $response;
