@@ -142,14 +142,14 @@ class MainService extends BlueprintService
                 'Title' => 'Profile',
                 'Link' => '',
                 'SubMenu' => [
-                    'UserName' => [
-                        'Title' => 'User Name',
-                        'Link' => '',
-                    ],
-                    'MoreDetails' => [
-                        'Title' => 'More Details',
-                        'Link' => '/profile/info',
-                    ],
+                    // 'UserName' => [
+                    //     'Title' => 'User Name',
+                    //     'Link' => '',
+                    // ],
+                    // 'MoreDetails' => [
+                    //     'Title' => 'More Details',
+                    //     'Link' => '/profile/info',
+                    // ],
                     'SignOut' => [
                         'Title' => 'Sign Out',
                         'Link' => '/user/logout',

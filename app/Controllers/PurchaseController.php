@@ -193,11 +193,11 @@ class PurchaseController extends PurchaseService
         $description = ($request_data['description'])?$request_data['description']:'Payment Received';
         $collectionPlan = isset($request_data['collection_plan'])?$request_data['collection_plan']:'';
 
-        $accountResponse = $accountService->getAccountSessionID($accountID);
+        // $accountResponse = $accountService->getAccountSessionID($accountID);
 
-        if(isset($accountResponse['error_id'])){
-            return $accountResponse;
-        }
+        // if(isset($accountResponse['error_id'])){
+        //     return $accountResponse;
+        // }
 
         if($type == 'till' || $type == 'monthly'){
             $purchasePlanResponse = $this->paymentPlanInitProccess($this->userAccess(),'income', random_string('alpha', 32), $collectionPlan, $amount);
@@ -241,5 +241,60 @@ class PurchaseController extends PurchaseService
 
         echo json_encode($response['data']);
         exit;
+    }
+
+    public function duedTransaction(){
+        $request_data = $this->handlePOSTBodyDataList();
+        $accountService = new AccountService();
+
+        $requiredParameters = $this->handleRequiredParameters($request_data, ['amount','account_id','budget_id']);
+
+        if(isset($requiredParameters['error_id'])){
+            return $requiredParameters;
+        }
+
+        // required feilds
+        $amount = $request_data['amount'];
+        $accountID = $request_data['account_id'];
+        $budgetID = $request_data['budget_id'];
+
+        // optional feilds
+        $description = ($request_data['description'])?$request_data['description']:'Payment Received';
+        $paymentList = isset($request_data['payment_list'])?$request_data['payment_list']:'';
+
+        // $accountResponse = $accountService->getAccountSessionID($accountID);
+
+        // if(isset($accountResponse['error_id'])){
+        //     return $accountResponse;
+        // }
+
+        // $paymentList = json_decode($paymentList, true);
+
+        $response = $this->settlePayment($paymentList);
+
+        if(isset($response['error_id'])){
+            return $response;
+        }
+
+        // DONE:: link user default user
+        $transactionCreation = $accountService->transactionInitProccess($this->userAccess(), $description, $amount, 'expense', $accountID, $budgetID);
+
+        // TODO:: Error Handling Method
+        if(isset($transactionCreation['error_id'])){
+            return $this->errorHandleforAPIResponses($transactionCreation);
+        }
+
+        $response = [
+            'data' => [
+                'success'  => true,
+                'response' => 'Successfully created transaction',
+                'data' => [
+                    'createdResponse' => $transactionCreation
+                    ]
+            ],
+            'code' => 200
+        ];
+
+
     }
 }

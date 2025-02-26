@@ -109,6 +109,24 @@ class TransactionController extends AccountService
                     }
                 }
             }
+        }else{
+            $otherShopDetails = $this->otherShopList();
+                
+            $this->limit = 0;
+
+            // TODO:: Error Handling Method
+            if(!isset($otherShopDetails['error_id'])){
+
+                // TODO:: Change the route the accout create URL
+                // return $this->errorHandleLogAndPageRedirection($shopDetails, '/account/list');
+                // return redirect()->to(base_url('/account/list'))->with('msg', $accountDetails['error_message']);
+
+                if(!isset($otherShopDetails[0])){
+                    $shops[] = $otherShopDetails;
+                }else{
+                    $shops = array_merge($shops, $otherShopDetails);
+                }
+            }
         }
 
         // TODO:: link user default user
@@ -145,6 +163,14 @@ class TransactionController extends AccountService
             'allow_all_accounts' => true,
             'edit_mode' => true
         ];
+$response = $this->duedSettlementList($this->userAccess());
+
+        // TODO:: Error Handling Method
+        if(isset($response['error_id'])){
+            $response = [];
+        }
+
+        $duedSettlements['unpaidList'] = $response;
 
         $data['paymentPlan'] = $this->periodic;
 
@@ -155,7 +181,7 @@ class TransactionController extends AccountService
             $data['internal_trans_content'] = "<div clasa='transaction-type-list' id='internal'><h3> Need more than one account to make internal transaction </h3></div>";
         }
         $data['income_trans_content'] = view('Transaction/income_trans_module', $data);
-        $data['dued_trans_content'] = view('Transaction/dued_trans_module', $data);
+        $data['dued_trans_content'] = view('Transaction/dued_trans_module', $duedSettlements);
         $data['other_trans_content'] = view('Transaction/other_trans_module', $data);
         $data['purchase_content'] = view('Transaction/purchase_module', $data);
         // $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);

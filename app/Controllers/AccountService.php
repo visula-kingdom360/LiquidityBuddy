@@ -8,7 +8,7 @@ class AccountService extends MainService
     public function getAccountSessionID($ID)
     {
 
-        $condtionList = ['AccountSessionID' => $ID, 'AccountStatus' => 'A'];
+        $condtionList = ['AccountID' => $ID, 'AccountStatus' => 'A'];
         $feildList = ['AccountSessionID'];
 
         // TODO:: User Session ID need to be handled from user login
@@ -489,11 +489,14 @@ class AccountService extends MainService
 
     public function duedSettlementList($userID)
     {
-        $condtionList = ['UserSessionID' => $userID, 'PaymentPlanStatus' => 'A'];
+        $condtionList = ['UserSessionID' => $userID, 'PaymentPlanStatus' => 'A', 'sqldecrypt' => 'paymentplanlink != "income"'];
+        
+        $datetime = strtotime(date_format(new DateTime(),'Y-m-d h:i:s'));
 
         $response = $this->getDatafromDB(
                         ['paymentplan'], 
-                        $condtionList
+                        $condtionList,
+                        ['PaymentPlanSessionID','PaymentPlan']
                     );
 
         if(isset($response['error_id']))
@@ -505,12 +508,12 @@ class AccountService extends MainService
 
         foreach ($paymentPlan as $plan_key => $plan_list) {
             # code...
-            $condtionList = ['PaymentPlanSessionID' => $plan_list['PaymentPlanSessionID']];
+            $condtionList = ['PaymentPlanSessionID' => $plan_list['PaymentPlanSessionID'], 'PayablePaidAmount' => 0];
 
             if($plan_list['PaymentPlan'] == 'C'){
 
             }else{
-                $condtionList = ['sqldecrypt' => ''];
+                $condtionList['sqldecrypt'] = 'duedatetime < ' . $datetime;
                 $response = $this->getDatafromDB(
                             ['payable'], 
                             $condtionList
@@ -518,11 +521,14 @@ class AccountService extends MainService
 
                 if(isset($response['error_id']))
                 {
-                    return $response;
+                    continue;
+                    // return $response;
                 }
+
+                $paymentPlan[$plan_key]['PayableList'] = $response;
             }
         }
 
-        return $response;
+        return $paymentPlan;
     }
 }

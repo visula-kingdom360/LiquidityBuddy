@@ -224,13 +224,13 @@ class Home extends MainService
             // TODO:: Send to common Error
         }
 
-        $response = $this->insertDatatoDB('shop', 
-                ['UserSessionID' => $user['UserSessionID'], 'ShopName' => 'Default']);
+        // $response = $this->insertDatatoDB('shop', 
+        //         ['UserSessionID' => $user['UserSessionID'], 'ShopName' => 'Default']);
 
-        if(isset($response['error_id'])){
-            // TODO:: DB access fail log need
-            // TODO:: Send to common Error
-        }
+        // if(isset($response['error_id'])){
+        //     // TODO:: DB access fail log need
+        //     // TODO:: Send to common Error
+        // }
 
         $data = [
             'user_fname' => $user['UserFirstName'],
