@@ -79,8 +79,12 @@
     <div class="col-6">
         <div class="form-floating">
             <select class="form-select stackholder-name" name="stackholder-name" id="stackholder-name">
-                <?php foreach($stackholderInfo as $key => $stackholder){ ?>
-                    <option class="" value="<?= $key ?>" <?php if($key == 0){echo 'selected';} ?>><?= $stackholder['StackholderName'].' - '.$stackholder['StackholderRelationship'] ?></option>
+                <?php if(isset($stackholderInfo) && count($stackholderInfo) > 0){?>
+                    <?php foreach($stackholderInfo as $key => $stackholder){ ?>
+                        <?php if(isset($stackholder['StackholderName'])){?>
+                            <option class="" value="<?= $key ?>" <?php if($key == 0){echo 'selected';} ?>><?= $stackholder['StackholderName'].' - '.$stackholder['StackholderRelationship'] ?></option>
+                        <?php } ?>
+                    <?php } ?>
                 <?php } ?>
             </select>
             <label for="from-account-list" class="form-label">Stackholder:</label>

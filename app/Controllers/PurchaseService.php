@@ -188,6 +188,7 @@ class PurchaseService extends MainService
                 $createPayable = [
                     'PaymentPlanSessionID' => $purchaseInfo['PaymentPlanSessionID'],
                     'PayableDueDate' => $next_date,
+                    'PayableDueDateTime' => strtotime($next_date),
                     'PayableDueAmount' => ($amount / $period),
                     'PayablePaidAmount' => $no ? 0 : ($make_initial_payment ? $amount / $period : 0),
                     'PayablePaidDate' => ($no == 0  && $make_initial_payment) ? $next_date : 0,
@@ -207,9 +208,6 @@ class PurchaseService extends MainService
         }else{
             $purchaseInfo['PaidAmount'] = $amount;
         }
-
-        return ($purchaseInfo);
-
 
         return ['success' => true, 'data' => $purchaseInfo];
     }
@@ -245,5 +243,18 @@ class PurchaseService extends MainService
         }
     }
 
+    function settlePayment($paymentList){
+        foreach ($paymentList as $key => $payment) {
+            # code...
+            $response = $this->updateDBData('payable', ['PayableSessionID' => $payment['payment_id']], ['PayablePaidAmount' => $payment['amount'], 'PayableUpdatedDateTime' => strtotime(date_format(new DateTime(),'Y-m-d h:i:s'))]);
+
+            if(isset($response['error_id'])){
+                continue;
+            }
+        }
+        return $response;
+        // var_dump($paymentList);
+        // die;
+    }
     
 }

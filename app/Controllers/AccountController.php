@@ -185,17 +185,19 @@ class AccountController extends AccountService
             $data['internal_trans_content'] = "<div clasa='transaction-type-list' id='internal'><h3> Need more than one account to make internal transaction </h3></div>";
         }
 
-        $duedSettlements = $this->duedSettlementList($this->userAccess());
+        $response = $this->duedSettlementList($this->userAccess());
 
         // TODO:: Error Handling Method
-        if(isset($duedSettlements['error_id'])){
-            $duedSettlements = [];
+        if(isset($response['error_id'])){
+            $response = [];
         }
+
+        $duedSettlements['unpaidList'] = $response;
 
         // var_dump($duedSettlements);
         // die;
         $data['income_trans_content'] = view('Transaction/income_trans_module', $data);
-        $data['dued_trans_content'] = view('Transaction/dued_trans_module', $data);
+        $data['dued_trans_content'] = view('Transaction/dued_trans_module', $duedSettlements);
         $data['other_trans_content'] = view('Transaction/other_trans_module', $data);
         $data['purchase_content'] = view('Transaction/purchase_module', $data);
         $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
@@ -415,7 +417,7 @@ class AccountController extends AccountService
             $data['account_list_content'] = view('Account/commonModule/account_info_module', $data['accountInfo']);
         }else{
             $data['account_list_content'] = '';
-        }
+        }   
 
         return view('Account/creation', $data);
     }
